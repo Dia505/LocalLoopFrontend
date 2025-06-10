@@ -1,0 +1,100 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+p {
+    font-family: "Playfair Display";
+    color: black;
+}
+
+input {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    height: 28px;
+    width: 250px;
+    color: black;
+    outline: none;
+}
+
+input:focus {
+  border-width: 2px; 
+}
+
+.main-window {
+    background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    display: flex;
+    padding-left: 100px;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-div {
+    width: 500px;
+    margin-left: 80px;
+}
+
+.logo-img {
+    height: 480px;
+}
+
+.logo-catchphrase {
+    color: #EC709A;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: -230px;
+    margin-left: 160px;
+}
+
+.login-img {
+    height: 400px;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    border-image: linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%);
+    border-image-slice: 1;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+}
+
+.login-title {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.login-subtitle {
+    font-size: 16px;
+    margin-top: -10px;
+}
+
+.email-input-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.rememberMe-forgotPass-div {
+    display: flex;
+}
+
+.remember-me-div {
+    display: flex;
+}
