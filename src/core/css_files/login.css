@@ -21,10 +21,31 @@ input {
   width: 300px;
   color: black;
   outline: none;
+  padding-left: 7px;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.input-error:focus {
+  border-width: 2px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
 input:focus {
   border-width: 2px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .main-window {
@@ -34,30 +55,14 @@ input:focus {
   overflow: auto;
   display: flex;
   padding-left: 100px;
-  gap: 250px;
+  gap: 200px;
 }
 
 .left-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.logo-div {
-  width: 500px;
   margin-left: 80px;
-}
-
-.logo-img {
-  height: 480px;
-}
-
-.logo-catchphrase {
-  color: #EC709A;
-  font-size: 20px;
-  font-weight: 700;
-  margin-top: -230px;
-  margin-left: 160px;
 }
 
 .login-img {
@@ -68,12 +73,8 @@ input:focus {
   display: flex;
   flex-direction: column;
   height: 520px;
-  /* Your existing height */
-
   border-radius: 18px;
-  /* Apply border-radius here */
   border: 5px solid transparent;
-  /* Defines the thickness of your visual border */
 
   /* Multiple backgrounds to create the gradient border effect */
   background:
@@ -223,6 +224,10 @@ input:focus {
   background: black;
   color: white;
   border: 2px solid black;
+}
+
+.login-button:focus {
+  outline: none;
 }
 
 .sign-up-div {

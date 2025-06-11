@@ -1,8 +1,12 @@
-import React, { lazy, Suspense } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { AuthProvider } from './context/auth_context';
+import AuthRoute from './routes/auth_route';
 
 const Login = lazy(() => import("./core/public/login"));
+const HomePage = lazy(() => import("./core/private/event_explorer/home_page"));
+const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
 
 const queryClient = new QueryClient();
 
@@ -18,6 +22,21 @@ function App() {
       ),
       errorElement: <>error</>
     },
+
+    //--------------------------------Private Routes---------------------------------------
+    {
+      path: "/home",
+      element: (
+        <AuthRoute requiredRole="event explorer" element={<Suspense><HomePage/></Suspense>} />
+      )
+    },
+
+    {
+      path: "/dashboard",
+      element: (
+        <AuthRoute requiredRole="event organizer" element={<Suspense><Dashboard/></Suspense>} />
+      )
+    },
   ]
 
   const router = createBrowserRouter(routes);
@@ -25,9 +44,9 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-
-        <RouterProvider router={router} />
-
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </QueryClientProvider>
     </>
   )
