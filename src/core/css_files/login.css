@@ -1,100 +1,246 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 p {
-    font-family: "Playfair Display";
-    color: black;
+  font-family: "Playfair Display";
+  color: black;
 }
 
 input {
-    border: 1px solid;
-    border-radius: 10px;
-    border-color: black;
-    background-color: transparent;
-    height: 28px;
-    width: 250px;
-    color: black;
-    outline: none;
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: black;
+  background-color: transparent;
+  height: 28px;
+  width: 300px;
+  color: black;
+  outline: none;
 }
 
 input:focus {
-  border-width: 2px; 
+  border-width: 2px;
 }
 
 .main-window {
-    background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
-    height: 100vh;
-    width: 100vw;
-    overflow: auto;
-    display: flex;
-    padding-left: 100px;
+  background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  padding-left: 100px;
+  gap: 250px;
 }
 
 .left-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo-div {
-    width: 500px;
-    margin-left: 80px;
+  width: 500px;
+  margin-left: 80px;
 }
 
 .logo-img {
-    height: 480px;
+  height: 480px;
 }
 
 .logo-catchphrase {
-    color: #EC709A;
-    font-size: 20px;
-    font-weight: 700;
-    margin-top: -230px;
-    margin-left: 160px;
+  color: #EC709A;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: -230px;
+  margin-left: 160px;
 }
 
 .login-img {
-    height: 400px;
+  height: 400px;
 }
 
 .right-section {
-    display: flex;
-    flex-direction: column;
-    height: 600px;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    border-image: linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%);
-    border-image-slice: 1;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+  /* Your existing height */
+
+  border-radius: 18px;
+  /* Apply border-radius here */
+  border: 5px solid transparent;
+  /* Defines the thickness of your visual border */
+
+  /* Multiple backgrounds to create the gradient border effect */
+  background:
+    /* Layer 1: This is your inner background. It's transparent and clipped to the padding-box.
+       This is what 'punches' the hole in the gradient to make the center transparent. */
+    linear-gradient(to right, #ffcbe1 10%, #FFAFF5 100%) padding-box,
+
+    /* Layer 2: This is your actual gradient, clipped to the border-box
+       so it covers the entire element, including the border area. */
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+  /* Ensures both backgrounds start from the outer edge of the border. */
+  background-origin: border-box;
+
+  /* Defines how each background layer is clipped. Order must match the 'background' property.
+     The first background (transparent) is clipped to the padding area.
+     The second background (gradient) is clipped to the border area. */
+  background-clip: padding-box, border-box;
+
+  /* Your existing padding and margin styles */
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 30px;
+  margin-top: 130px;
+
+  /* Removed border-image properties that don't respect border-radius */
 }
 
 .login-title {
-    font-weight: bold;
-    font-size: 22px;
+  font-weight: bold;
+  font-size: 22px;
 }
 
 .login-subtitle {
-    font-size: 16px;
-    margin-top: -10px;
+  font-size: 16px;
+  margin-top: -10px;
 }
 
 .email-input-title {
-    font-size: 14px;
-    margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .rememberMe-forgotPass-div {
-    display: flex;
+  display: flex;
+  align-items: last baseline;
+  justify-content: space-between;
 }
 
-.remember-me-div {
-    display: flex;
+/* Container for the checkbox and text, makes the whole area clickable */
+.checkbox-label-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 10px;
+}
+
+/* Visually hide the native checkbox input */
+.remember-me-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* The custom visual representation of the checkbox */
+.custom-checkbox-visual {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  /* Black border when unchecked */
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+  /* Needed for the checkmark pseudo-element */
+  transition: all 0.2s ease-in-out;
+  /* Smooth transition for state changes */
+  box-sizing: border-box;
+  flex-shrink: 0;
+  /* Prevent it from shrinking in flex container */
+}
+
+/* Style for the custom visual when the native checkbox is checked */
+/* The '+' selector targets the .custom-checkbox-visual that is an immediate
+   sibling of the checked .remember-me-checkbox */
+.remember-me-checkbox:checked+.custom-checkbox-visual {
+  background-color: black;
+  border-color: black;
+}
+
+/* The checkmark using a pseudo-element */
+.custom-checkbox-visual::after {
+  content: '';
+  /* Required for pseudo-elements */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  /* Width of checkmark arm */
+  height: 10px;
+  /* Height of checkmark arm */
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  /* Only bottom and right borders */
+  transform: translate(-50%, -50%) rotate(45deg);
+  /* Position and rotate to form tick */
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  /* Smooth fade-in/out */
+}
+
+/* Show the checkmark when the checkbox is checked */
+.remember-me-checkbox:checked+.custom-checkbox-visual::after {
+  opacity: 1;
+  /* Make checkmark visible */
+}
+
+.remember-me-text {
+  font-size: 12px;
+}
+
+.forgot-password-text {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.forgot-password-text:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  border: 2px solid black;
+  border-radius: 10px;
+  background: transparent;
+  color: black;
+  font-family: "Playfair Display";
+  font-weight: bold;
+  font-size: 15px;
+  transition: background-color 0.3s ease-in-out 0s;
+  margin-top: 30px;
+}
+
+.login-button:hover {
+  background: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.sign-up-div {
+  display: flex;
+  gap: 5px;
+  align-self: center;
+}
+
+.new-to-localloop-text,
+.sign-up-text {
+  font-size: 12px;
+}
+
+.sign-up-text {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sign-up-text:hover {
+  text-decoration: underline;
 }
