@@ -1,0 +1,47 @@
+.card-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 380px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition:
+    border-color 0.3s ease-in-out;
+
+  border: 6px solid #BBBBBB;
+
+  /* Ensure background-clip and origin are reset for default state
+     if they might have been inherited or set differently elsewhere.
+     This is important for the transition between solid and gradient. */
+  background-origin: padding-box;
+  background-clip: border-box; /* Default for single background */
+}
+
+.card-div.active-gradient-border {
+  border: 5px solid transparent; 
+
+  background:
+    linear-gradient(to right, #ffcbe1 10%, #FFAFF5 100%) padding-box,
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.card-img {
+  height: 250px; 
+}
+
+.card-text-div {
+    width: 270px;
+}
+
+.card-text {
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}

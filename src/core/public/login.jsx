@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import "../css_files/login.css";
 
+import "../css_files/login.css";
 import AppLogo1 from '../../components/app_logo_1';
 import { useAuth } from "../../context/auth_context";
 
@@ -130,7 +130,7 @@ function Login() {
 
                         <div className='sign-up-div'>
                             <p className='new-to-localloop-text'>New to LocalLoop?</p>
-                            <p className='sign-up-text'>Sign Up</p>
+                            <p className='sign-up-text' onClick={() => navigate("/role-selection")}>Sign Up</p>
                         </div>
                     </div>
                 </form>

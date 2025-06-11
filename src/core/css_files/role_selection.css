@@ -1,0 +1,26 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-window {
+    background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 200px;
+    gap: 60px;
+}
+
+.role-card-div {
+    display: flex;
+    gap: 100px;
+    margin-right: 150px;
+}

@@ -7,6 +7,7 @@ import AuthRoute from './routes/auth_route';
 const Login = lazy(() => import("./core/public/login"));
 const HomePage = lazy(() => import("./core/private/event_explorer/home_page"));
 const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
+const RoleSelection = lazy(() => import("./core/public/role_selection"));
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,16 @@ function App() {
       element: (
         <Suspense>
           <Login />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/role-selection",
+      element: (
+        <Suspense>
+          <RoleSelection />
         </Suspense>
       ),
       errorElement: <>error</>
