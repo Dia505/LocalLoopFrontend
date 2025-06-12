@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
-import "../css_files/login.css";
+import "../css_files/public/login.css";
 import AppLogo1 from '../../components/app_logo_1';
 import { useAuth } from "../../context/auth_context";
 

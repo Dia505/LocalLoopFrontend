@@ -1,0 +1,122 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+p {
+  font-family: "Playfair Display";
+  color: black;
+}
+
+input {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: black;
+  background-color: transparent;
+  height: 28px;
+  width: 300px;
+  color: black;
+  outline: none;
+  padding-left: 15px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.input-error:focus {
+  border-width: 2px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+input:focus {
+  border-width: 2px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.65);
+  font-family: "Playfair Display";
+}
+
+.explorer-reg-main-window {
+  background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  padding-left: 10vw;
+  gap: 200px;
+}
+
+.explorer-reg-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 80px;
+}
+
+.explorer-reg-img {
+  height: 50vh;
+}
+
+.explorer-reg-right-section {
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  border: 5px solid transparent;
+
+  background:
+    /* Layer 1 */
+    linear-gradient(to right, #ffcbe1 10%, #FFAFF5 100%) padding-box,
+
+    /* Layer 2 */
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  margin-top: 130px;
+}
+
+.explorer-reg-backBtn-title-div {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.explorer-reg-back-btn {
+    color: black;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.explorer-reg-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.explorer-reg-subtitle {
+  font-size: 16px;
+  margin-top: -10px;
+}

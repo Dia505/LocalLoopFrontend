@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import AppLogo1 from '../../components/app_logo_1';
-import "../css_files/role_selection.css";
+import "../css_files/public/role_selection.css";
 
 function RoleSelection() {
     const [activeCardId, setActiveCardId] = useState(null);
