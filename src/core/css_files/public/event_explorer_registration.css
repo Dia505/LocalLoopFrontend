@@ -55,25 +55,39 @@ input::placeholder {
   font-family: "Playfair Display";
 }
 
+select {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: black;
+  background-color: transparent;
+  width: 150px;
+  height: 35.5px;
+  color: black;
+  outline: none;
+  padding-left: 15px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
 .explorer-reg-main-window {
   background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
   height: 100vh;
   width: 100vw;
   overflow: auto;
   display: flex;
-  padding-left: 10vw;
-  gap: 200px;
+  padding-left: 5vw;
+  gap: 150px;
 }
 
-.explorer-reg-section {
+.explorer-reg-left-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 80px;
+  margin-left: 120px;
 }
 
 .explorer-reg-img {
-  height: 50vh;
+  height: 55vh;
 }
 
 .explorer-reg-right-section {
@@ -84,7 +98,7 @@ input::placeholder {
 
   background:
     /* Layer 1 */
-    linear-gradient(to right, #ffcbe1 10%, #FFAFF5 100%) padding-box,
+    linear-gradient(to right, #fecde2 30%, #ffb8f6 100%) padding-box,
 
     /* Layer 2 */
     linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
@@ -93,10 +107,10 @@ input::placeholder {
   background-clip: padding-box, border-box;
 
   padding-left: 40px;
-  padding-right: 40px;
+  padding-right: 45px;
   padding-top: 30px;
-  padding-bottom: 50px;
-  margin-top: 130px;
+  padding-bottom: 40px;
+  margin-top: 90px;
 }
 
 .explorer-reg-backBtn-title-div {
@@ -117,6 +131,137 @@ input::placeholder {
 }
 
 .explorer-reg-subtitle {
-  font-size: 16px;
+  font-size: 15px;
   margin-top: -10px;
+}
+
+.input-fields-div {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin-top: 15px;
+}
+
+.address-city-div {
+  display: flex;
+  gap: 1.5vw;
+}
+
+.address-input {
+  width: 130px;
+}
+
+.city-drop-down option {
+  background-color: black;
+  color: white;
+}
+
+.terms-and-condition-div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.terms-and-condition-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.terms-and-condition-custom-checkbox-visual {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.terms-and-condition-checkbox:checked+.terms-and-condition-custom-checkbox-visual {
+  background-color: black;
+  border-color: black;
+}
+
+.terms-and-condition-custom-checkbox-visual::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.terms-and-condition-checkbox:checked+.terms-and-condition-custom-checkbox-visual::after {
+  opacity: 1;
+}
+
+.terms-and-condition-text-div {
+  width: 19vw;
+}
+
+.terms-and-condition-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #625D5D;
+}
+
+.terms-and-conditions-highlights {
+  color: #544FBD;
+  text-decoration: underline;
+}
+
+.explorer-register-button {
+  border: 2px solid black;
+  border-radius: 15px;
+  background: transparent;
+  color: black;
+  font-family: "Playfair Display";
+  font-weight: bold;
+  font-size: 15px;
+  transition: background-color 0.3s ease-in-out 0s;
+  margin-top: 10px;
+}
+
+.explorer-register-button:hover {
+  background: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.explorer-register-button:focus {
+  outline: none;
+}
+
+.explorer-register-login-div {
+  display: flex;
+  gap: 5px;
+  align-self: center;
+}
+
+.explorer-register-already-have-account-text,
+.explorer-register-login-text {
+  font-size: 14px;
+}
+
+.explorer-register-login-text {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.explorer-register-login-text:hover {
+  text-decoration: underline;
 }
