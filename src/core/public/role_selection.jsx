@@ -1,12 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import AppLogo1 from '../../components/app_logo_1';
-import "../../components/role_selection_card";
-import RoleSelectionCard from '../../components/role_selection_card';
 import "../css_files/role_selection.css";
 
 function RoleSelection() {
     const [activeCardId, setActiveCardId] = useState(null);
+    const navigate = useNavigate();
 
     const handleCardClick = (id) => {
         setActiveCardId(id);
@@ -18,19 +18,44 @@ function RoleSelection() {
                 <AppLogo1 />
 
                 <div className='role-card-div'>
-                    <RoleSelectionCard
-                        cardImg={"src/assets/event_explorer_role.png"}
-                        cardText={"I’m an event explorer, looking for events that match my vibe."}
-                        isActive={activeCardId === 'event-explorer'} 
+                    <div
+                        className={`explorer-card-div ${activeCardId === 'event-explorer' ? 'active-gradient-border' : ''}`}
                         onClick={() => handleCardClick('event-explorer')}
-                    />
+                    >
+                        <img src={"src/assets/event_explorer_role.png"} className="card-img" />
+                        <div className="card-text-div">
+                            <p className="card-text">I’m an event explorer, looking for events that match my vibe</p>
+                        </div>
+                    </div>
 
-                    <RoleSelectionCard
-                        cardImg={"src/assets/event_organizer_role.png"}
-                        cardText={"I’m an event organizer, hosting events and creating experiences"}
-                        isActive={activeCardId === 'event-organizer'} 
+                    <div
+                        className={`organizer-card-div ${activeCardId === 'event-organizer' ? 'active-gradient-border' : ''}`}
                         onClick={() => handleCardClick('event-organizer')}
-                    />
+                    >
+                        <img src={"src/assets/event_organizer_role.png"} className="card-img" />
+                        <div className="card-text-div">
+                            <p className="card-text">I’m an event organizer, hosting events and creating experiences</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='button-login-div'>
+                    <button
+                        className={`join-btn ${activeCardId
+                            ? "active-btn"
+                            : "disabled-btn"
+                            }`}
+                        disabled={!activeCardId}
+                    >
+                        {activeCardId
+                            ? `Join as ${activeCardId.replace("-", " ")}`
+                            : "Who are you joining as?"}
+                    </button>
+
+                    <div className='login-div'>
+                        <p className='already-have-account-text'>Already have an account?</p>
+                        <p className='login-text' onClick={() => navigate("/login")}>Log In</p>
+                    </div>
                 </div>
             </div>
         </>

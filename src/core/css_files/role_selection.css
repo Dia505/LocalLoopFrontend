@@ -7,6 +7,11 @@ body {
     overflow: hidden;
 }
 
+p {
+    font-family: "Playfair Display";
+    color: black;
+}
+
 .main-window {
     background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
     height: 100vh;
@@ -15,12 +20,152 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 200px;
-    gap: 60px;
+    padding-bottom: 27vh;
+    gap: 6vh;
+    padding-left: 7vw;
 }
 
 .role-card-div {
     display: flex;
-    gap: 100px;
+    gap: 6vw;
     margin-right: 150px;
+}
+
+.explorer-card-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 23vw;
+    cursor: pointer;
+    border-radius: 24px;
+    transition:
+        border-color 0.3s ease-in-out;
+
+    border: 6px solid #BBBBBB;
+
+    /* Ensure background-clip and origin are reset for default state
+     if they might have been inherited or set differently elsewhere.
+     This is important for the transition between solid and gradient. */
+    background-origin: padding-box;
+    background-clip: border-box;
+    /* Default for single background */
+}
+
+.explorer-card-div.active-gradient-border {
+    border: 5px solid transparent;
+
+    background:
+        linear-gradient(to right, #FFEFC6 8%, #FFD0DD 95%) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.organizer-card-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+    width: 26vw;
+    cursor: pointer;
+    border-radius: 24px;
+    transition:
+        border-color 0.3s ease-in-out;
+
+    border: 6px solid #BBBBBB;
+
+    /* Ensure background-clip and origin are reset for default state
+     if they might have been inherited or set differently elsewhere.
+     This is important for the transition between solid and gradient. */
+    background-origin: padding-box;
+    background-clip: border-box;
+    /* Default for single background */
+}
+
+.organizer-card-div.active-gradient-border {
+    border: 5px solid transparent;
+
+    background:
+        linear-gradient(to right, #FFCCDF 48%, #FFB4F1 93%) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.card-img {
+    height: 28vh;
+}
+
+.card-text-div {
+    width: 20vw;
+}
+
+.card-text {
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+}
+
+.join-btn {
+    width: 26vw;
+    height: 6vh;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 20px;
+    margin-right: 11vw;
+}
+
+.disabled-btn {
+    background-color: #666666;
+    color: white;
+    font-family: "Playfair Display";
+    font-weight: bolder;
+    border: none;
+    cursor: not-allowed;
+}
+
+.active-btn {
+    background-color: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bolder;
+    border: 2px solid black;
+}
+
+.active-btn:hover {
+    background-color: black;
+    color: white;
+    border-color: black;
+}
+
+.login-div {
+  display: flex;
+  gap: 5px;
+  align-self: center;
+  margin-left: 6.5vw;
+}
+
+.already-have-account-text,
+.login-text {
+  font-size: 14px;
+}
+
+.login-text {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-text:hover {
+  text-decoration: underline;
 }

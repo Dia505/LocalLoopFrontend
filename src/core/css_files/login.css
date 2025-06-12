@@ -48,7 +48,7 @@ input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.main-window {
+.login-main-window {
   background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
   height: 100vh;
   width: 100vw;

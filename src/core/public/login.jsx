@@ -74,7 +74,7 @@ function Login() {
 
     return (
         <>
-            <div className="main-window">
+            <div className="login-main-window">
 
                 <div className='left-section'>
                     <AppLogo1 />
