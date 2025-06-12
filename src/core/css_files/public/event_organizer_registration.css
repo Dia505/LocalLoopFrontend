@@ -1,0 +1,177 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+p {
+  font-family: "Playfair Display";
+  color: black;
+}
+
+input {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: black;
+  background-color: transparent;
+  height: 28px;
+  width: 300px;
+  color: black;
+  outline: none;
+  padding-left: 15px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.input-error:focus {
+  border-width: 2px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+input:focus {
+  border-width: 2px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.65);
+  font-family: "Playfair Display";
+}
+
+.organizer-reg-main-window {
+  background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  padding-left: 5vw;
+  gap: 150px;
+}
+
+.organizer-reg-left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 120px;
+}
+
+.organizer-reg-img {
+  height: 55vh;
+}
+
+.organizer-reg-right-section {
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  border: 5px solid transparent;
+
+  background:
+    /* Layer 1 */
+    linear-gradient(to right, #fecde2 30%, #ffb8f6 100%) padding-box,
+
+    /* Layer 2 */
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  padding-left: 40px;
+  padding-right: 45px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  margin-top: 130px;
+}
+
+.organizer-reg-backBtn-title-div {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.organizer-reg-back-btn {
+    color: black;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.organizer-reg-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.organizer-reg-subtitle {
+  font-size: 15px;
+  margin-top: -10px;
+}
+
+.organizer-reg-personal-details {
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.input-fields-div {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin-top: 1px;
+}
+
+.organizer-reg-next-button {
+  border: 2px solid black;
+  border-radius: 15px;
+  background: transparent;
+  color: black;
+  font-family: "Playfair Display";
+  font-weight: bold;
+  font-size: 15px;
+  transition: background-color 0.3s ease-in-out 0s;
+  margin-top: 50px;
+}
+
+.organizer-reg-next-button:hover {
+  background: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.organizer-reg-next-button:focus {
+  outline: none;
+}
+
+.organizer-reg-login-div {
+  display: flex;
+  gap: 5px;
+  align-self: center;
+}
+
+.organizer-reg-already-have-account-text,
+.organizer-reg-login-text {
+  font-size: 14px;
+}
+
+.organizer-reg-login-text {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.organizer-reg-login-text:hover {
+  text-decoration: underline;
+}

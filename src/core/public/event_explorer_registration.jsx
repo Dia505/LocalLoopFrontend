@@ -17,7 +17,7 @@ function EventExplorerRegistration() {
             <div className="explorer-reg-main-window">
                 <div className='explorer-reg-left-section'>
                     <AppLogo1 />
-                    <img className='explorer-reg-img' src='src\assets\event-explorer-registration.png' />
+                    <img className='explorer-reg-img' src='src\assets\registration.png' />
                 </div>
 
                 <form>

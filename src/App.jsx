@@ -9,6 +9,7 @@ const HomePage = lazy(() => import("./core/private/event_explorer/home_page"));
 const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
 const RoleSelection = lazy(() => import("./core/public/role_selection"));
 const EventExplorerRegistration = lazy(() => import("./core/public/event_explorer_registration"));
+const EventOrganizerRegistration = lazy(() => import("./core/public/event_organizer_registration"));
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,16 @@ function App() {
       element: (
         <Suspense>
           <EventExplorerRegistration />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/event-organizer-registration",
+      element: (
+        <Suspense>
+          <EventOrganizerRegistration />
         </Suspense>
       ),
       errorElement: <>error</>
