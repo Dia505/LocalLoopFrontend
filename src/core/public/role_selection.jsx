@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
 
 import AppLogo1 from '../../components/app_logo_1';
 import "../css_files/public/role_selection.css";
@@ -7,10 +7,17 @@ import "../css_files/public/role_selection.css";
 function RoleSelection() {
     const [activeCardId, setActiveCardId] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleCardClick = (id) => {
         setActiveCardId(id);
     };
+
+    useEffect(() => {
+        if (location.state?.selectedRole) {
+            setActiveCardId(location.state.selectedRole);
+        }
+    }, [location.state]);
 
     return (
         <>
@@ -46,6 +53,17 @@ function RoleSelection() {
                             : "disabled-btn"
                             }`}
                         disabled={!activeCardId}
+                        onClick={() => {
+                            if (activeCardId === "event-explorer") {
+                                navigate("/event-explorer-registration", {
+                                    state: { selectedRole: activeCardId }
+                                });
+                            } else if (activeCardId === "event-organizer") {
+                                navigate("/event-organizer-registration", {
+                                    state: { selectedRole: activeCardId }
+                                });
+                            }
+                        }}
                     >
                         {activeCardId
                             ? `Join as ${activeCardId.replace("-", " ")}`

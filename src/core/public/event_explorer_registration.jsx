@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import AppLogo1 from '../../components/app_logo_1';
 import '../css_files/public/event_explorer_registration.css';
@@ -7,6 +7,9 @@ import '../css_files/public/event_explorer_registration.css';
 function EventExplorerRegistration() {
     const [termsAndConditions, setTermsAndConditions] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const previousRole = location.state?.selectedRole;
 
     const handleTermsAndConditionsChange = (event) => {
         setTermsAndConditions(event.target.checked);
@@ -24,7 +27,10 @@ function EventExplorerRegistration() {
                     <div className='explorer-reg-right-section'>
                         <div>
                             <div className='explorer-reg-backBtn-title-div'>
-                                <span className='explorer-reg-back-btn'>&#8592;</span>
+                                <span className='explorer-reg-back-btn' 
+                                    onClick={() => navigate("/role-selection", { state: { selectedRole: previousRole }})}>
+                                        &#8592;
+                                </span>
                                 <p className='explorer-reg-title'>Sign up</p>
                             </div>
                             <p className='explorer-reg-subtitle'>Discover local experiences, curated just for your vibe</p>

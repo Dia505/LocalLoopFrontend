@@ -55,6 +55,25 @@ input::placeholder {
   font-family: "Playfair Display";
 }
 
+select {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: black;
+  background-color: transparent;
+  width: 21vw;
+  height: 35.5px;
+  color: black;
+  outline: none;
+  padding-left: 15px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+.business-type-drop-down option, .city-drop-down option {
+  background-color: black;
+  color: white;
+}
+
 .organizer-reg-main-window {
   background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
   height: 100vh;
@@ -174,4 +193,129 @@ input::placeholder {
 
 .organizer-reg-login-text:hover {
   text-decoration: underline;
+}
+
+.organizer-reg-right-section2 {
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  border: 5px solid transparent;
+
+  background:
+    /* Layer 1 */
+    linear-gradient(to right, #fecde2 30%, #ffb8f6 100%) padding-box,
+
+    /* Layer 2 */
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  padding-left: 40px;
+  padding-right: 45px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  margin-top: 5vh;
+}
+
+.address-city-div {
+  display: flex;
+  gap: 1.5vw;
+}
+
+.address-input {
+  width: 130px;
+}
+
+.city-drop-down {
+  width: 150px;
+}
+
+.terms-and-condition-div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.terms-and-condition-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.terms-and-condition-custom-checkbox-visual {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.terms-and-condition-checkbox:checked+.terms-and-condition-custom-checkbox-visual {
+  background-color: black;
+  border-color: black;
+}
+
+.terms-and-condition-custom-checkbox-visual::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.terms-and-condition-checkbox:checked+.terms-and-condition-custom-checkbox-visual::after {
+  opacity: 1;
+}
+
+.terms-and-condition-text-div {
+  width: 19vw;
+}
+
+.terms-and-condition-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #625D5D;
+}
+
+.terms-and-conditions-highlights {
+  color: #544FBD;
+  text-decoration: underline;
+}
+
+.organizer-reg-create-account-button {
+  border: 2px solid black;
+  border-radius: 15px;
+  background: transparent;
+  color: black;
+  font-family: "Playfair Display";
+  font-weight: bold;
+  font-size: 15px;
+  transition: background-color 0.3s ease-in-out 0s;
+}
+
+.organizer-reg-create-account-button:hover {
+  background: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.organizer-reg-create-account-button:focus {
+  outline: none;
 }
