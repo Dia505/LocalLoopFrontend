@@ -44,7 +44,7 @@ function Login() {
             if (response.role === "event explorer") {
                 navigate("/home");
             } else if (response.role === "event organizer") {
-                navigate("/event-organizer-dashboard");
+                navigate("/dashboard");
             }
         },
         onError: (error) => {

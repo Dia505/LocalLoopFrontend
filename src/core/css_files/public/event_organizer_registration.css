@@ -1,10 +1,10 @@
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden; 
+  overflow-y: auto;  
 }
 
 p {
@@ -38,6 +38,14 @@ input {
   color: red;
   font-size: 12px;
   margin-top: 4px;
+  margin-bottom: 0px;
+}
+
+.error-message-2 {
+  color: red;
+  font-size: 11px;
+  margin-top: 4px;
+  margin-bottom: -10px;
 }
 
 input:focus {
@@ -69,19 +77,30 @@ select {
   padding-bottom: 2px;
 }
 
-.business-type-drop-down option, .city-drop-down option {
+.select-error {
+  border-color: red;
+}
+
+.select-error option {
+  background-color: black;
+  color: white;
+}
+
+.business-type-drop-down option, .city-drop-down option, .city-drop-down-error option {
   background-color: black;
   color: white;
 }
 
 .organizer-reg-main-window {
   background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  overflow: auto;
+  overflow: visible;
   display: flex;
   padding-left: 5vw;
   gap: 150px;
+  align-items: center;
+  padding-top: 100px;
 }
 
 .organizer-reg-left-section {
@@ -89,6 +108,7 @@ select {
   flex-direction: column;
   align-items: center;
   margin-left: 120px;
+  margin-bottom: 80px;
 }
 
 .organizer-reg-img {
@@ -115,7 +135,6 @@ select {
   padding-right: 45px;
   padding-top: 30px;
   padding-bottom: 40px;
-  margin-top: 130px;
 }
 
 .organizer-reg-backBtn-title-div {
@@ -213,9 +232,8 @@ select {
 
   padding-left: 40px;
   padding-right: 45px;
-  padding-top: 10px;
-  padding-bottom: 30px;
-  margin-top: 5vh;
+  padding-top: 0px;
+  padding-bottom: 10px;
 }
 
 .address-city-div {
@@ -227,7 +245,17 @@ select {
   width: 130px;
 }
 
+.address-input-error {
+  border-color: red;
+  width: 130px;
+}
+
 .city-drop-down {
+  width: 150px;
+}
+
+.city-drop-down-error {
+  border-color: red;
   width: 150px;
 }
 
@@ -259,6 +287,10 @@ select {
   transition: all 0.2s ease-in-out;
   box-sizing: border-box;
   flex-shrink: 0;
+}
+
+.checkbox-error {
+  border-color: red;
 }
 
 .terms-and-condition-checkbox:checked+.terms-and-condition-custom-checkbox-visual {
@@ -319,3 +351,34 @@ select {
 .organizer-reg-create-account-button:focus {
   outline: none;
 }
+
+.chip-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 300px;
+}
+
+.chip {
+  background-color: black;
+  padding-left: 15px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.chip-close {
+  margin-left: 0px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
