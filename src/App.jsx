@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from './context/auth_context';
 import AuthRoute from './routes/auth_route';
 
@@ -60,14 +62,14 @@ function App() {
     {
       path: "/home",
       element: (
-        <AuthRoute requiredRole="event explorer" element={<Suspense><HomePage/></Suspense>} />
+        <AuthRoute requiredRole="event explorer" element={<Suspense><HomePage /></Suspense>} />
       )
     },
 
     {
       path: "/dashboard",
       element: (
-        <AuthRoute requiredRole="event organizer" element={<Suspense><Dashboard/></Suspense>} />
+        <AuthRoute requiredRole="event organizer" element={<Suspense><Dashboard /></Suspense>} />
       )
     },
   ]
@@ -76,6 +78,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <RouterProvider router={router} />

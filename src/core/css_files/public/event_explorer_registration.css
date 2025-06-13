@@ -38,6 +38,7 @@ input {
   color: red;
   font-size: 12px;
   margin-top: 4px;
+  margin-bottom: 0px;
 }
 
 input:focus {
@@ -69,6 +70,15 @@ select {
   padding-bottom: 2px;
 }
 
+.select-error {
+  border-color: red;
+}
+
+.select-error option {
+  background-color: black;
+  color: white;
+}
+
 .explorer-reg-main-window {
   background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
   height: 100vh;
@@ -77,6 +87,7 @@ select {
   display: flex;
   padding-left: 5vw;
   gap: 150px;
+  align-items: center;
 }
 
 .explorer-reg-left-section {
@@ -84,6 +95,7 @@ select {
   flex-direction: column;
   align-items: center;
   margin-left: 120px;
+  margin-bottom: 80px;
 }
 
 .explorer-reg-img {
@@ -108,9 +120,8 @@ select {
 
   padding-left: 40px;
   padding-right: 45px;
-  padding-top: 30px;
-  padding-bottom: 40px;
-  margin-top: 90px;
+  padding-top: 10px;
+  padding-bottom: 30px;
 }
 
 .explorer-reg-backBtn-title-div {
@@ -138,8 +149,8 @@ select {
 .input-fields-div {
   display: flex;
   flex-direction: column;
-  gap: 2vh;
   margin-top: 15px;
+  gap: 15px;
 }
 
 .address-city-div {
@@ -149,6 +160,15 @@ select {
 
 .address-input {
   width: 130px;
+}
+
+.address-input-error {
+  border-color: red;
+  width: 130px;
+}
+
+.address-input-error:focus {
+  border-width: 2px;
 }
 
 .city-drop-down option {
@@ -174,7 +194,7 @@ select {
 }
 
 .terms-and-condition-custom-checkbox-visual {
-  display: inline-block;
+  display: inline-block; 
   width: 20px;
   height: 20px;
   border: 2px solid black;
@@ -184,6 +204,10 @@ select {
   transition: all 0.2s ease-in-out;
   box-sizing: border-box;
   flex-shrink: 0;
+}
+
+.checkbox-error {
+  border-color: red;
 }
 
 .terms-and-condition-checkbox:checked+.terms-and-condition-custom-checkbox-visual {
