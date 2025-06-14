@@ -1,0 +1,89 @@
+p {
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: 500;
+}
+
+.nav-bar-main-div {
+    display: flex;
+    background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
+    width: 100vw;
+    height: 14vh;
+    position: fixed;
+    top: 0;
+    z-index: 500;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+  height: 310px;
+  margin-top: 25px;
+}
+
+.nav-bar-buttons {
+    display: flex;
+    gap: 5vw;
+    /* margin-left: 100px; */
+}
+
+.nav-bar-buttons p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-signup-div {
+    display: flex;
+    gap: 10px;
+    margin-right: 40px;
+}
+
+.login-signup-div button:hover {
+    border-color: black;
+}
+
+.nav-bar-login-btn {
+    color: black;
+    background-color: transparent;
+    border: 1px black solid;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 14px;
+    width: 143px;
+    height: 38px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+
+.nav-bar-signup-btn {
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 14px;
+    width: 143px;
+    height: 38px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+
+.active-link {
+  text-decoration: underline;
+}
+
+.notif-profile-div {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+    gap: 40px;
+}
+
+.notification {
+    height: 40px;
+}
+
+.profile {
+    height: 50px;
+    width: 50px;
+    border: 1px black solid;
+    border-radius: 50%;
+}

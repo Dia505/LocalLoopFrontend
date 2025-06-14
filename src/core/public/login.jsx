@@ -42,7 +42,7 @@ function Login() {
             login(response.token);
 
             if (response.role === "event explorer") {
-                navigate("/home");
+                navigate("/");
             } else if (response.role === "event organizer") {
                 navigate("/dashboard");
             }

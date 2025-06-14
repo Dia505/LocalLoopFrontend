@@ -7,7 +7,7 @@ import { AuthProvider } from './context/auth_context';
 import AuthRoute from './routes/auth_route';
 
 const Login = lazy(() => import("./core/public/login"));
-const HomePage = lazy(() => import("./core/private/event_explorer/home_page"));
+const Home = lazy(() => import("./core/public/home"));
 const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
 const RoleSelection = lazy(() => import("./core/public/role_selection"));
 const EventExplorerRegistration = lazy(() => import("./core/public/event_explorer_registration"));
@@ -23,6 +23,16 @@ function App() {
       element: (
         <Suspense>
           <Login />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/",
+      element: (
+        <Suspense>
+          <Home />
         </Suspense>
       ),
       errorElement: <>error</>
@@ -58,14 +68,7 @@ function App() {
       errorElement: <>error</>
     },
 
-    //--------------------------------Private Routes---------------------------------------
-    {
-      path: "/home",
-      element: (
-        <AuthRoute requiredRole="event explorer" element={<Suspense><HomePage /></Suspense>} />
-      )
-    },
-
+    //--------------------------------Private Routes--------------------------------------
     {
       path: "/dashboard",
       element: (

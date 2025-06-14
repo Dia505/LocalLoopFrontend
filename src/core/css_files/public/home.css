@@ -1,0 +1,4 @@
+.home-main-window {
+    display: flex;
+    flex-direction: column;
+}
