@@ -1,4 +1,4 @@
-import "./css_files/home_category_filter.css";
+import "../css_files/home/home_category_filter.css";
 import HomeCategory from "./home_category";
 
 function HomeCategoryFilter() {

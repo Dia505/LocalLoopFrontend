@@ -1,4 +1,4 @@
-import "./css_files/home_category.css"
+import "../css_files/home/home_category.css"
 
 function HomeCategory({category_img, category}) {
     return(

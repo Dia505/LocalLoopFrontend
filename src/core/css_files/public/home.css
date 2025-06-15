@@ -122,3 +122,39 @@ html, body {
     margin-left: -44px;
     cursor: pointer;
 }
+
+.home-upcoming-events-div {
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.home-upcoming-events-text, .home-location-filter-title {
+    font-size: 26px;
+}
+
+.home-location-filter-div {
+    margin-left: 150px;
+    margin-top: 30px;
+}
+
+.home-location-filter-title-div {
+    display: flex;
+    gap: 20px;
+    align-items: end;
+}
+
+.home-location-filter-gif {
+    height: 120px;
+}
+
+.home-locations-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 600px;
+  margin-left: 380px;
+}
+
+.home-locations-div p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

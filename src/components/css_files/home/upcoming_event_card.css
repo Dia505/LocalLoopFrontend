@@ -1,0 +1,114 @@
+.upcoming-events-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cards per row */
+    gap: 50px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.upcoming-event-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 15px;
+    border: 5px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 12px;
+    transition: height 0.3s ease;
+    height: 500px;
+}
+
+.upcoming-event-card:hover {
+    height: 570px; 
+}
+
+.upcoming-event-img {
+    width: 100%;
+    height: 208px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    display: block;
+}
+
+.upcoming-event-title-bookmark-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.material-symbols-outlined {
+    font-size: 45px;
+    color: black;
+}
+
+.upcoming-event-icon-detail-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upcoming-event-icon {
+    height: 25px;
+}
+
+.upcoming-event-detail {
+    color: #7A7A7A;
+    font-weight: 600;
+}
+
+.upcoming-events-payment-div {
+    display: flex;
+    gap: 10px;
+}
+
+.paid,
+.free {
+    width: 87px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.paid {
+    background-color: #0062CD;
+}
+
+.free {
+    background-color: #5CC750;
+}
+
+.limited-seats-text {
+    color: red;
+    font-size: 14px;
+}
+
+.upcoming-events-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  font-family: "Playfair Display";
+  border-radius: 15px;
+  width: 215px;
+  padding: 12px 0;
+  margin-top: 25px;
+  margin-left: 40px;
+}
+
+.upcoming-event-card:hover .upcoming-events-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
