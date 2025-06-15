@@ -1,0 +1,16 @@
+.home-category-main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-img {
+    height: 90px;
+}
+
+.category {
+    font-family: "Playfair Display";
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}

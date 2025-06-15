@@ -1,5 +1,6 @@
 import ExplorerNavBar from "../../components/explorer_nav_bar";
 import "../css_files/public/home.css";
+import HomeCategoryFilter from "../../components/home_category_filter";
 
 function Home() {
     return (
@@ -29,6 +30,8 @@ function Home() {
                         <img className="home-search-icon" src="src\assets\search_icon.png"/>
                     </div>
                 </div>
+
+                <HomeCategoryFilter/>
             </div>
         </>
     )

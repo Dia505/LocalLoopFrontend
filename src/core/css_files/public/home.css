@@ -1,6 +1,11 @@
-body {
-    background-color: white;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;         /* Forces body to match full viewport width */
+    overflow-x: hidden; 
+    background-color: white;  /* Only hides horizontal scrolling */
 }
+
 
 .home-main-window {
     display: flex;
