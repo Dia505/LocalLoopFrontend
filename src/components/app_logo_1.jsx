@@ -1,6 +1,9 @@
 import "./css_files/app_logo_1.css";
+import { useNavigate } from "react-router-dom";
 
 function AppLogo1() {
+    const navigate = useNavigate();
+
     return (
         <>
             <div className='logo-div'>

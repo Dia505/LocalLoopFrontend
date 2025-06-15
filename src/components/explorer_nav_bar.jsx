@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/auth_context";
+import { useNavigate } from "react-router-dom";
 
 import "./css_files/explorer_nav_bar.css";
 
@@ -11,6 +12,8 @@ function ExplorerNavBar() {
     const isLoggedIn = !!authToken;
 
     const location = useLocation();
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -34,8 +37,8 @@ function ExplorerNavBar() {
                         </div>
                     ) : (
                         <div className="login-signup-div">
-                            <button className="nav-bar-login-btn">Log In</button>
-                            <button className="nav-bar-signup-btn">Sign Up</button>
+                            <button onClick={() => navigate("/login")} className="nav-bar-login-btn">Log In</button>
+                            <button onClick={() => navigate("/role-selection")} className="nav-bar-signup-btn">Sign Up</button>
                         </div>
                     )}
                 </div>

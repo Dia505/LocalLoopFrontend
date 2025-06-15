@@ -9,10 +9,10 @@ body {
     /* Only hides horizontal scrolling */
 }
 
-
 .home-main-window {
     display: flex;
     flex-direction: column;
+    padding-bottom: 0px;
 }
 
 .slideshow {
@@ -132,7 +132,8 @@ body {
 }
 
 .home-upcoming-events-text,
-.home-location-filter-title {
+.home-location-filter-title,
+.home-testimonials-title {
     font-size: 26px;
 }
 
@@ -190,6 +191,10 @@ body {
     margin-top: 70px;
 }
 
+.home-about-gallery-bg {
+    height: 1200px;
+}
+
 .home-about-gallery-components {
     position: absolute;
     top: 30px;
@@ -214,3 +219,99 @@ body {
     height: 50px;
 }
 
+.home-gallery-div {
+    margin-top: 18vh;
+    display: flex;
+    margin-left: 70px;
+}
+
+.home-gallery-texts {
+    border: 2px black solid;
+    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-right: 250px;
+    height: 370px;
+}
+
+.home-gallery-title-div {
+    width: 400px;
+}
+
+.home-gallery-title {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.home-gallery-subtitle {
+    font-size: 19px;
+    margin-top: -13px;
+}
+
+.home-gallery-btn {
+    width: 350px;
+    border-radius: 22px;
+    font-family: "Playfair Display";
+    background-color: black;
+    border: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 40px;
+}
+
+/* Apply gradient only to the text */
+.gradient-text {
+    background: linear-gradient(to right, #E487B0 0%, #D2B7F2 50%, #6FA0D6 53%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.home-gallery-imgs-div {
+    display: flex;
+    gap: 10px;
+    margin-top: -50px;
+    margin-left: -250px;
+}
+
+.home_gallery_img {
+    height: 227px;
+    width: 330px;
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-gallery-imgs-inner-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.home-testimonials-div {
+    display: flex;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 80px;
+    gap: 50px;
+    padding-bottom: 70px;
+}
+
+.home-testimonials-text-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-testimonials-subtitle-div {
+    width: 300px;
+    margin-top: -20px;
+}
+
+.home-testimonials-subtitle {
+    font-size: 17px;
+    font-weight: lighter;
+}

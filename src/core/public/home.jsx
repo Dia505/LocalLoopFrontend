@@ -1,8 +1,10 @@
 import ExplorerNavBar from "../../components/explorer_nav_bar";
+import HomeAboutSlideshow from "../../components/home/home_about_slideshow";
 import HomeCategoryFilter from "../../components/home/home_category_filter";
 import UpcomingEventCard from "../../components/home/upcoming_event_card";
+import HomeTestimonialsSlideshow from "../../components/home/home_testimonials_slideshow";
+import Footer from "../../components/footer";
 import "../css_files/public/home.css";
-import HomeAboutSlideshow from "../../components/home/home_about_slideshow";
 
 function Home() {
     return (
@@ -158,10 +160,44 @@ function Home() {
                                 <img className="home-about-sparkle" src="src\assets\sparkle.png" />
                             </div>
 
-                            <HomeAboutSlideshow/>
+                            <HomeAboutSlideshow />
+                        </div>
+
+                        <div className="home-gallery-div">
+                            <div className="home-gallery-texts">
+                                <div className="home-gallery-title-div">
+                                    <p className="home-gallery-title">A glimpse of the magic we’ve shared</p>
+                                </div>
+                                <p className="home-gallery-subtitle">Real people, real moments, real fun.</p>
+                                <button className="home-gallery-btn">
+                                    <span className="gradient-text">See more in Gallery</span>
+                                </button>
+                            </div>
+
+                            <div className="home-gallery-imgs-div">
+                                <img className="home_gallery_img" src="src\assets\home_gallery1.jpeg"/>
+
+                                <div className="home-gallery-imgs-inner-div">
+                                    <img className="home_gallery_img" src="src\assets\home_gallery2.jpeg"/>
+                                    <img className="home_gallery_img" src="src\assets\home_gallery4.jpg"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div className="home-testimonials-div">
+                    <div className="home-testimonials-text-div">
+                        <p className="home-testimonials-title">Testimonials</p>
+                        <div className="home-testimonials-subtitle-div">
+                            <p className="home-testimonials-subtitle">Shared moments from those who’ve explored, hosted, and loved it.</p>
+                        </div>
+                    </div>
+
+                    <HomeTestimonialsSlideshow/>
+                </div>
+
+                <Footer/>
             </div>
         </>
     )
