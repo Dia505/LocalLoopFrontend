@@ -1,9 +1,12 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    width: 100vw;         /* Forces body to match full viewport width */
-    overflow-x: hidden; 
-    background-color: white;  /* Only hides horizontal scrolling */
+    width: 100vw;
+    /* Forces body to match full viewport width */
+    overflow-x: hidden;
+    background-color: white;
+    /* Only hides horizontal scrolling */
 }
 
 
@@ -128,7 +131,8 @@ html, body {
     margin-right: 150px;
 }
 
-.home-upcoming-events-text, .home-location-filter-title {
+.home-upcoming-events-text,
+.home-location-filter-title {
     font-size: 26px;
 }
 
@@ -148,13 +152,65 @@ html, body {
 }
 
 .home-locations-div {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 600px;
-  margin-left: 380px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 800px;
+    margin-left: 250px;
 }
 
-.home-locations-div p:hover {
+.home-locations-div p:hover,
+.home-sparkle {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.home-location-sparkle-div {
+    display: flex;
+}
+
+.sparkle-wrapper {
+    width: 30px;
+    height: 42px;
+    overflow: hidden;
+}
+
+.home-sparkle {
+    height: 70px;
+    margin-left: -8px;
+    opacity: 0;
+}
+
+.home-location-sparkle-div:hover .home-sparkle {
+    opacity: 1;
+}
+
+.home-about-gallery-div {
+    position: relative;
+    width: 100vw;
+    margin-top: 70px;
+}
+
+.home-about-gallery-components {
+    position: absolute;
+    top: 30px;
+    left: 130px;
+}
+
+.home-about-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-about-title-div {
+    display: flex;
+    align-items: center;
+}
+
+.home-about-title {
+    font-size: 24px;
+}
+
+.home-about-sparkle {
+    height: 50px;
+}
+
