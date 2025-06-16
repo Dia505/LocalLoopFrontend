@@ -25,7 +25,6 @@ p {
 .nav-bar-buttons {
     display: flex;
     gap: 5vw;
-    /* margin-left: 100px; */
 }
 
 .nav-bar-buttons p:hover {

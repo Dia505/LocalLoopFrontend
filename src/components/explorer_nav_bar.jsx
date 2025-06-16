@@ -7,8 +7,6 @@ import "./css_files/explorer_nav_bar.css";
 function ExplorerNavBar() {
     const { authToken, logout } = useAuth();
 
-    console.log("authtoken: ", authToken);
-
     const isLoggedIn = !!authToken;
 
     const location = useLocation();
@@ -24,7 +22,9 @@ function ExplorerNavBar() {
                     <Link to="/">
                         <p className={location.pathname === "/" ? "active-link" : ""}>Home</p>
                     </Link>
-                    <p>Explore</p>
+                    <Link to="/search">
+                        <p className={location.pathname === "/search" ? "active-link" : ""}>Explore</p>
+                    </Link>
                     <p>Gallery</p>
                     <p>Contact</p>
                 </div>
