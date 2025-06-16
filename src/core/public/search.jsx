@@ -1,7 +1,16 @@
+import { useState } from "react";
+
 import ExplorerNavBar from "../../components/explorer_nav_bar";
+import SearchCategoryFilter from "../../components/search/search_category_filter";
 import "../css_files/public/search.css";
 
 function Search() {
+    const [priceType, setPriceType] = useState("");
+
+    const handleCheckboxChange = (value) => {
+        setPriceType((prev) => (prev === value ? "" : value));
+    };
+
     return (
         <>
             <div className="search-main-window">
@@ -47,6 +56,81 @@ function Search() {
                             <option value="Janakpur">Janakpur</option>
                             <option value="Itahari">Itahari</option>
                         </select>
+
+                        <div className="search-cateogry-filter-div">
+                            <p className="search-categories-text">Categories</p>
+
+                            <div className="search-category-filter-wrapper">
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\music.png"
+                                    category="Music"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\dance.png"
+                                    category="Dance"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\art.png"
+                                    category="Art"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\theatre.png"
+                                    category="Theatre"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\food.png"
+                                    category="Food & Drinks"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\market.png"
+                                    category="Market & Pop-ups"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\community.png"
+                                    category="Community"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\health.png"
+                                    category="Health & Wellness"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\festival.png"
+                                    category="Festival"
+                                />
+                                <SearchCategoryFilter
+                                    categoryImg="src\assets\sports.png"
+                                    category="Sports"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="search-price-filter-div">
+                            <p className="search-categories-text">Price</p>
+
+                            <div className="search-price-filter-wrapper">
+                                <label className="checkbox-label-container">
+                                    <input
+                                        className="price-checkbox-input"
+                                        type="checkbox"
+                                        checked={priceType === 'Free'}
+                                        onChange={() => handleCheckboxChange('Free')}
+                                    />
+                                    <span className="custom-checkbox-visual"></span>
+                                    <p className="checkbox-label-text">Free</p>
+                                </label>
+
+                                <label className="checkbox-label-container">
+                                    <input
+                                        className="price-checkbox-input"
+                                        type="checkbox"
+                                        checked={priceType === 'Paid'}
+                                        onChange={() => handleCheckboxChange('Paid')}
+                                    />
+                                    <span className="custom-checkbox-visual"></span>
+                                    <p className="checkbox-label-text">Paid</p>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
