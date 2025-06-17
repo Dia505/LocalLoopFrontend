@@ -12,7 +12,8 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    margin-top: 14vh;
+    margin-top: 20vh;
+    padding-bottom: 100px;
 }
 
 .event-details-img {
@@ -48,10 +49,10 @@ body {
 }
 
 .event-details-ticket-btn {
-  font-family: "Playfair Display";
-  border-radius: 10px;
-  width: 170px;
-  outline: none;
+    font-family: "Playfair Display";
+    border-radius: 10px;
+    width: 170px;
+    outline: none;
 }
 
 .material-symbols-outlined {
@@ -66,7 +67,7 @@ body {
 
 .event-details-time-date-location-div {
     display: flex;
-    gap: 25px;
+    gap: 45px;
 }
 
 .event-details-icon-detail-div {
@@ -76,7 +77,7 @@ body {
 }
 
 .event-details-icon {
-    height: 25px;
+    height: 30px;
 }
 
 .event-details-detail {
@@ -85,3 +86,45 @@ body {
     font-size: 14px;
 }
 
+.limited-seats-text {
+    color: red;
+}
+
+.event-details-organizer-div {
+    display: flex;
+    border: 3px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 12px;
+    padding: 10px 20px;
+    width: 500px;
+    justify-content: space-between;
+    margin-top: 40px;
+    align-items: center;
+}
+
+.event-details-organizer-img-name-div {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.event-details-organizer-img {
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+}
+
+.event-details-organizer-name {
+    font-weight: lighter;
+    font-size: 18px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 12px;
+}
