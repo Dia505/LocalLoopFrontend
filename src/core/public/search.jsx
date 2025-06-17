@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
+import { useNavigate } from "react-router-dom";
 
 import art from "../../assets/art.png";
 import community from "../../assets/community.png";
@@ -38,6 +39,8 @@ function Search() {
     const categoryFromQuery = searchParams.get("category");
     const locationFromQuery = searchParams.get("location");
 
+    const navigate = useNavigate();
+
     const handleCheckboxChange = (value) => {
         setPriceType((prev) => (prev === value ? "" : value));
     };
@@ -45,8 +48,6 @@ function Search() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                if (!searchQuery.trim()) return;
-
                 setCity("");
                 setEventType("");
                 setPriceType("");
@@ -265,24 +266,26 @@ function Search() {
                     <div className="search-results-div">
                         {events.length === 0 ? (
                             <div className="no-results-div">
-                                <img className="no-results-img" src={noResultsImg}/>
+                                <img className="no-results-img" src={noResultsImg} />
                                 <p className="no-results-message">Looks like there’s nothing here right now. Try something else!</p>
                             </div>
                         ) : (
                             events.map((event) => (
-                                <SearchResult
-                                    key={event._id}
-                                    image={`http://localhost:3000/event-images/${event.eventPhoto}`}
-                                    venue={event.venue}
-                                    city={event.city}
-                                    date={event.date}
-                                    startTime={event.startTime}
-                                    endTime={event.endTime}
-                                    title={event.title}
-                                    subtitle={event.subtitle}
-                                    priceType={event.isPaid}
-                                    totalSeats={event.totalSeats}
-                                />
+                                <div onClick={() => navigate(`/event-details/${event._id}`)}>
+                                    <SearchResult
+                                        key={event._id}
+                                        image={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                                        venue={event.venue}
+                                        city={event.city}
+                                        date={event.date}
+                                        startTime={event.startTime}
+                                        endTime={event.endTime}
+                                        title={event.title}
+                                        subtitle={event.subtitle}
+                                        priceType={event.isPaid}
+                                        totalSeats={event.totalSeats}
+                                    />
+                                </div>
                             ))
                         )}
                     </div>

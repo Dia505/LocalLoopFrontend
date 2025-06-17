@@ -13,6 +13,7 @@ const RoleSelection = lazy(() => import("./core/public/role_selection"));
 const EventExplorerRegistration = lazy(() => import("./core/public/event_explorer_registration"));
 const EventOrganizerRegistration = lazy(() => import("./core/public/event_organizer_registration"));
 const Search = lazy(() => import("./core/public/search"));
+const EventDetails = lazy(() => import("./core/public/event_details"));
 
 const queryClient = new QueryClient();
 
@@ -84,6 +85,16 @@ function App() {
       element: (
         <Suspense>
           <Search />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/event-details/:_id",
+      element: (
+        <Suspense>
+          <EventDetails />
         </Suspense>
       ),
       errorElement: <>error</>

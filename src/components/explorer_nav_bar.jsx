@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/auth_context";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 import "./css_files/explorer_nav_bar.css";
 
@@ -16,7 +17,7 @@ function ExplorerNavBar() {
     return (
         <>
             <div className="nav-bar-main-div">
-                <img className='logo' src='src\assets\logo.png' />
+                <img className='logo' src={logo} />
 
                 <div className="nav-bar-buttons">
                     <Link to="/">

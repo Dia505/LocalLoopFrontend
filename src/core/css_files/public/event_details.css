@@ -1,0 +1,87 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.event-details-main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    margin-top: 14vh;
+}
+
+.event-details-img {
+    height: 55vh;
+    width: 30vw;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.event-details-title-subtitle-buttons-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7vw;
+}
+
+.event-details-title-buttons-div {
+    display: flex;
+    align-items: center;
+    gap: 35vw;
+    margin-top: 10px;
+}
+
+.event-details-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.event-details-buttons-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.event-details-ticket-btn {
+  font-family: "Playfair Display";
+  border-radius: 10px;
+  width: 170px;
+  outline: none;
+}
+
+.material-symbols-outlined {
+    font-size: 60px;
+    color: black;
+    margin-top: 5px;
+}
+
+.event-details-subtitle-div {
+    width: 50vw;
+}
+
+.event-details-time-date-location-div {
+    display: flex;
+    gap: 25px;
+}
+
+.event-details-icon-detail-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.event-details-icon {
+    height: 25px;
+}
+
+.event-details-detail {
+    color: #7A7A7A;
+    font-weight: 600;
+    font-size: 14px;
+}
+
