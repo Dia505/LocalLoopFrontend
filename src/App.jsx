@@ -79,6 +79,16 @@ function App() {
       errorElement: <>error</>
     },
 
+    {
+      path: "/search/:query",
+      element: (
+        <Suspense>
+          <Search />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
     //--------------------------------Private Routes--------------------------------------
     {
       path: "/dashboard",

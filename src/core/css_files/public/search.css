@@ -7,6 +7,15 @@ body {
     background-color: white;
 }
 
+input {
+    padding-left: 10px;
+    color: black;
+}
+
+input:focus {
+    outline: none;
+}
+
 select {
     border: 1px solid;
     border-radius: 10px;
@@ -122,68 +131,79 @@ select option {
 }
 
 .checkbox-label-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
 }
 
 /* Hide native checkbox */
 .price-checkbox-input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
 /* Custom checkbox box */
 .custom-checkbox-visual {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  border: 2px solid black;
-  border-radius: 4px;
-  margin-right: 8px;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-  box-sizing: border-box;
-  flex-shrink: 0;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 /* Black fill when checked */
-.price-checkbox-input:checked + .custom-checkbox-visual {
-  background-color: black;
-  border-color: black;
+.price-checkbox-input:checked+.custom-checkbox-visual {
+    background-color: black;
+    border-color: black;
 }
 
 /* White checkmark */
 .custom-checkbox-visual::after {
-  content: '';
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  width: 5px;
-  height: 13px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: translate(-50%, -50%) rotate(45deg);
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 5px;
+    height: 13px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
 }
 
-.price-checkbox-input:checked + .custom-checkbox-visual::after {
-  opacity: 1;
+.price-checkbox-input:checked+.custom-checkbox-visual::after {
+    opacity: 1;
 }
 
 .checkbox-label-text {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .search-results-div {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 30px;
     padding-top: 50px;
 }
 
+.no-results-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 250px;
+    margin-top: 50px;
+}
+
+.no-results-img {
+    height: 300px;
+}

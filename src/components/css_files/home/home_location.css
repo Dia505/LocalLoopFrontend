@@ -1,0 +1,25 @@
+.home-location-sparkle-div p:hover,
+.home-sparkle {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.home-location-sparkle-div {
+    display: flex;
+}
+
+.sparkle-wrapper {
+    width: 30px;
+    height: 42px;
+    overflow: hidden;
+}
+
+.home-sparkle {
+    height: 70px;
+    margin-left: -8px;
+    opacity: 0;
+}
+
+.home-location-sparkle-div:hover .home-sparkle {
+    opacity: 1;
+}

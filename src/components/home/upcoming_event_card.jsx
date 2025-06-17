@@ -25,7 +25,11 @@ function UpcomingEventCard() {
         <>
             <div className="upcoming-events-div">
                 {upcomingEvents.map((event) => (
-                    <div key={event._id} className="upcoming-event-card">
+                    <div key={event._id} className={
+                        (event.isPaid || (!event.isPaid && event.totalSeats > 0))
+                            ? "upcoming-event-card-hover"
+                            : "upcoming-event-card"
+                    }>
                         <img className="upcoming-event-img" src={`http://localhost:3000/event-images/${event.eventPhoto}`} />
 
                         <div className="upcoming-event-title-bookmark-div">
@@ -59,7 +63,11 @@ function UpcomingEventCard() {
                             {event.totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
                         </div>
 
-                        <button className="upcoming-events-btn">Buy tickets</button>
+                        {(event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
+                            <button className="upcoming-events-btn">
+                                {event.isPaid ? "Buy tickets" : "Book seats"}
+                            </button>
+                        )}
                     </div>
                 ))}
             </div>

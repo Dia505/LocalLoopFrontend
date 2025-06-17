@@ -9,6 +9,15 @@ body {
     /* Only hides horizontal scrolling */
 }
 
+input {
+    color: black;
+    padding-left: 10px;
+}
+
+input:focus {
+    outline: none;
+}
+
 .home-main-window {
     display: flex;
     flex-direction: column;
@@ -157,32 +166,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     width: 800px;
     margin-left: 250px;
-}
-
-.home-locations-div p:hover,
-.home-sparkle {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.home-location-sparkle-div {
-    display: flex;
-}
-
-.sparkle-wrapper {
-    width: 30px;
-    height: 42px;
-    overflow: hidden;
-}
-
-.home-sparkle {
-    height: 70px;
-    margin-left: -8px;
-    opacity: 0;
-}
-
-.home-location-sparkle-div:hover .home-sparkle {
-    opacity: 1;
 }
 
 .home-about-gallery-div {

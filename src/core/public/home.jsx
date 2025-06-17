@@ -1,12 +1,26 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import ExplorerNavBar from "../../components/explorer_nav_bar";
+import Footer from "../../components/footer";
 import HomeAboutSlideshow from "../../components/home/home_about_slideshow";
 import HomeCategoryFilter from "../../components/home/home_category_filter";
-import UpcomingEventCard from "../../components/home/upcoming_event_card";
 import HomeTestimonialsSlideshow from "../../components/home/home_testimonials_slideshow";
-import Footer from "../../components/footer";
+import UpcomingEventCard from "../../components/home/upcoming_event_card";
+import HomeLocation from "../../components/home/home_location";
 import "../css_files/public/home.css";
 
 function Home() {
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        if (searchQuery.trim()) {
+            navigate(`/search/${encodeURIComponent(searchQuery.trim())}`);
+        }
+    };
+
     return (
         <>
             <div className="home-main-window">
@@ -30,8 +44,15 @@ function Home() {
                     </div>
 
                     <div className="slideshow-search-bar-div">
-                        <input className="slideshow-search-bar" />
-                        <img className="home-search-icon" src="src\assets\search_icon.png" />
+                        <input
+                            className="slideshow-search-bar"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") handleSearch();
+                            }}
+                        />
+                        <img className="home-search-icon" src="src\assets\search_icon.png" onClick={handleSearch}/>
                     </div>
                 </div>
 
@@ -49,103 +70,20 @@ function Home() {
                     </div>
 
                     <div className="home-locations-div">
-                        <div className="home-location-sparkle-div">
-                            <p>Kathmandu</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Chitwan</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Dharan</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Janakpur</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Lalitpur</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Biratnagar</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Hetauda</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Itahari</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Bhaktapur</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Birgunj</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Nepalgunj</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Pokhara</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Butwal</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
-
-                        <div className="home-location-sparkle-div">
-                            <p>Dhangadhi</p>
-                            <div className="sparkle-wrapper">
-                                <img className="home-sparkle" src="src\assets\giphy.gif" />
-                            </div>
-                        </div>
+                        <HomeLocation location="Kathmandu"/>
+                        <HomeLocation location="Chitwan"/>
+                        <HomeLocation location="Dharan"/>
+                        <HomeLocation location="Janakpur"/>
+                        <HomeLocation location="Lalitpur"/>
+                        <HomeLocation location="Biratnagar"/>
+                        <HomeLocation location="Hetauda"/>
+                        <HomeLocation location="Itahari"/>
+                        <HomeLocation location="Bhaktapur"/>
+                        <HomeLocation location="Birgunj"/>
+                        <HomeLocation location="Nepalgunj"/>
+                        <HomeLocation location="Pokhara"/>
+                        <HomeLocation location="Butwal"/>
+                        <HomeLocation location="Dhangadhi"/>
                     </div>
                 </div>
 
@@ -175,11 +113,11 @@ function Home() {
                             </div>
 
                             <div className="home-gallery-imgs-div">
-                                <img className="home_gallery_img" src="src\assets\home_gallery1.jpeg"/>
+                                <img className="home_gallery_img" src="src\assets\home_gallery1.jpeg" />
 
                                 <div className="home-gallery-imgs-inner-div">
-                                    <img className="home_gallery_img" src="src\assets\home_gallery2.jpeg"/>
-                                    <img className="home_gallery_img" src="src\assets\home_gallery4.jpg"/>
+                                    <img className="home_gallery_img" src="src\assets\home_gallery2.jpeg" />
+                                    <img className="home_gallery_img" src="src\assets\home_gallery4.jpg" />
                                 </div>
                             </div>
                         </div>
@@ -194,10 +132,10 @@ function Home() {
                         </div>
                     </div>
 
-                    <HomeTestimonialsSlideshow/>
+                    <HomeTestimonialsSlideshow />
                 </div>
 
-                <Footer/>
+                <Footer />
             </div>
         </>
     )

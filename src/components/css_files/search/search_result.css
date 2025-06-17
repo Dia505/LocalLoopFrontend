@@ -8,14 +8,35 @@
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-radius: 12px;
-    gap: 20px;
-    padding-right: 20px;
+    gap: 25px;
+    cursor: pointer;
+}
+
+.search-result-main-div-hover {
+    display: flex;
+    border-radius: 15px;
+    border: 5px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 12px;
+    gap: 25px;
+    padding-right: 15px;
+    height: 240px;
+    transition: height 0.3s ease;
+    cursor: pointer;
+}
+
+.search-result-main-div-hover:hover {
+    height: 320px;
 }
 
 .search-result-img {
     display: block;
-    width: 300px;
-    height: 200px;
+    width: 270px;
+    height: 240px;
     object-fit: cover;
     object-position: center;
     border-top-left-radius: 7px;
@@ -25,6 +46,7 @@
 .search-result-details-div {
     display: flex;
     flex-direction: column;
+    padding-bottom: 10px;
 }
 
 .search-result-details-first-layer {
@@ -54,7 +76,7 @@
 }
 
 .search-result-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 0;
@@ -67,5 +89,56 @@
 .search-result-subtitle {
     margin-top: 0;
     font-weight: lighter;
-    font-size: 15px;
+    font-size: 14px;
 }
+
+.search-result-payment-div {
+    display: flex;
+    gap: 10px;
+}
+
+.paid,
+.free {
+    width: 87px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.paid {
+    background-color: #0062CD;
+}
+
+.free {
+    background-color: #5CC750;
+}
+
+.limited-seats-text {
+    color: red;
+    font-size: 14px;
+}
+
+.search-result-ticket-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  font-family: "Playfair Display";
+  border-radius: 15px;
+  width: 215px;
+  padding: 12px 0;
+  margin-top: 25px;
+  margin-left: 40px;
+}
+
+.search-result-main-div-hover:hover .search-result-ticket-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+

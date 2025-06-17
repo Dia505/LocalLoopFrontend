@@ -2,11 +2,11 @@ import { useState } from "react";
 
 import "../css_files/search/search_category_filter.css";
 
-function SearchCategoryFilter({ categoryImg, category }) {
-    const [isSelected, setIsSelected] = useState(false);
+function SearchCategoryFilter({ categoryImg, category, selectedCategory, onCategorySelect }) {
+    const isSelected = selectedCategory === category;
 
     const handleClick = () => {
-        setIsSelected((prev) => !prev);
+        onCategorySelect(isSelected ? "" : category);
     };
 
     return (
@@ -14,7 +14,7 @@ function SearchCategoryFilter({ categoryImg, category }) {
             className={isSelected ? "search-category-div2" : "search-category-div"}
             onClick={handleClick}
         >
-            <img className="search-category-img" src={categoryImg} />
+            <img className="search-category-img" src={categoryImg} alt={category} />
             <p className="search-category">{category}</p>
         </div>
     );
