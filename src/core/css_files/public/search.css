@@ -91,6 +91,7 @@ select option {
     display: flex;
     padding-left: 6vw;
     padding-bottom: 50px;
+    gap: 50px;
 }
 
 .search-filter-div {
@@ -177,5 +178,12 @@ select option {
 
 .checkbox-label-text {
   font-size: 16px;
+}
+
+.search-results-div {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-top: 50px;
 }
 

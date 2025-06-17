@@ -1,15 +1,33 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../context/auth_context";
 
 import ExplorerNavBar from "../../components/explorer_nav_bar";
 import SearchCategoryFilter from "../../components/search/search_category_filter";
+import SearchResult from "../../components/search/search_result";
 import "../css_files/public/search.css";
 
 function Search() {
     const [priceType, setPriceType] = useState("");
+    const [events, setEvents] = useState([]);
+    const authToken = useAuth();
 
     const handleCheckboxChange = (value) => {
         setPriceType((prev) => (prev === value ? "" : value));
     };
+
+    useEffect(() => {
+        const fetchEvents = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/api/event/home-events");
+                setEvents(response.data);
+            } catch (error) {
+                console.error("Error fetching events:", error);
+            }
+        };
+
+        fetchEvents();
+    }, [authToken]);
 
     return (
         <>
@@ -131,6 +149,21 @@ function Search() {
                                 </label>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="search-results-div">
+                        {events.map((event) => (
+                            <SearchResult
+                                image={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                                venue={event.venue}
+                                city={event.city}
+                                date={event.date}
+                                startTime={event.startTime}
+                                endTime={event.endTime}
+                                title={event.title}
+                                subtitle={event.subtitle}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
