@@ -26,7 +26,7 @@ function ExplorerMenuWindow({ userProfilePicture, userFullName, isMenuWindowOpen
                 </div>
 
                 <div className="explorer-main-window-nav-btns-div">
-                    <div className="explorer-main-window-btn-div">
+                    <div className="explorer-main-window-btn-div" onClick={() => navigate("/event-explorer-profile")}>
                         <img className="explorer-main-window-icon" src={profile} />
                         <p className="explorer-main-window-btn">Profile</p>
                     </div>

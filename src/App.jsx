@@ -15,6 +15,8 @@ const EventOrganizerRegistration = lazy(() => import("./core/public/event_organi
 const Search = lazy(() => import("./core/public/search"));
 const EventDetails = lazy(() => import("./core/public/event_details"));
 
+const EventExplorerProfile = lazy(() => import("./core/private/event_explorer/event_explorer_profile"));
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -105,6 +107,13 @@ function App() {
       path: "/dashboard",
       element: (
         <AuthRoute requiredRole="event organizer" element={<Suspense><Dashboard /></Suspense>} />
+      )
+    },
+
+    {
+      path: "/event-explorer-profile",
+      element: (
+        <AuthRoute requiredRole="event explorer" element={<Suspense><EventExplorerProfile /></Suspense>} />
       )
     },
   ]

@@ -1,0 +1,28 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.explorer-profile-main-window {
+    display: flex;
+    flex-direction: column;
+}
+
+.explorer-profile-centre {
+    display: flex;
+    margin-top: -80px;
+}
+
+.explorer-profile-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.explorer-profile-title-btn-di {
+    display: flex;
+    justify-content: space-between;
+}
