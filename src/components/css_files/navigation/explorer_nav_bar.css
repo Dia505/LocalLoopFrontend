@@ -85,4 +85,12 @@ p {
     width: 50px;
     border: 1px black solid;
     border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+.explorer-menu-window {
+    position: absolute;
+    top: 12vh;
+    right: 4vw;
 }

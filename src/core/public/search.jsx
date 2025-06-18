@@ -18,7 +18,7 @@ import searchImg2 from "../../assets/search_img2.png";
 import sports from "../../assets/sports.png";
 import theatre from "../../assets/theatre.png";
 import noResultsImg from "../../assets/login.png"
-import ExplorerNavBar from "../../components/explorer_nav_bar";
+import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchCategoryFilter from "../../components/search/search_category_filter";
 import SearchResult from "../../components/search/search_result";
 import Footer from "../../components/footer";

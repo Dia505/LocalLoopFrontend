@@ -1,0 +1,67 @@
+.explorer-menu-window-div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    border: 5px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    gap: 10px;
+}
+
+.explorer-main-window-user-details-div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 30px;
+    padding-right: 100px;
+}
+
+.explorer-main-window-user-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px black solid;
+}
+
+.explorer-main-window-user-name {
+    font-size: 18px;
+}
+
+.explorer-main-window-nav-btns-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.explorer-main-window-btn-div, .explorer-main-window-logout-div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding-left: 40px;
+}
+
+.explorer-main-window-btn-div:hover {
+    background-color: rgba(116, 116, 116, 0.25);
+}
+
+.explorer-main-window-icon {
+    height: 30px;
+}
+
+.explorer-main-window-btn, .explorer-main-window-logout-btn {
+    font-weight: lighter;
+}
+
+.explorer-main-window-logout-div {
+    margin-top: 20px;
+}
+
+.explorer-main-window-logout-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

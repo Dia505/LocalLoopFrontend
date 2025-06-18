@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ExplorerNavBar from "../../components/explorer_nav_bar";
+import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import Footer from "../../components/footer";
 import HomeAboutSlideshow from "../../components/home/home_about_slideshow";
 import HomeCategoryFilter from "../../components/home/home_category_filter";

@@ -11,7 +11,8 @@ import locationIcon from "../../assets/grey_location.png";
 import ticketIcon from "../../assets/grey_ticket.png";
 import instagram from "../../assets/instagram.png";
 import tiktok from "../../assets/tiktok.png";
-import ExplorerNavBar from "../../components/explorer_nav_bar";
+import noOrganizerEvents from "../../assets/no_organizer_events.png";
+import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchResult from "../../components/search/search_result";
 import SimilarEvents from "../../components/similar_events";
 import Footer from "../../components/footer";
@@ -187,7 +188,10 @@ function EventDetails() {
                 <div className="event-details-organizer-events-div">
                     <p className="event-details-organizer-events-text">More events from this organizer</p>
                     {organizerEvents.length === 0 ? (
-                        <p>No other events by this organizer</p>
+                        <div className="no-organizer-events-div">
+                            <img className="no-organizer-events-img" src={noOrganizerEvents}/>
+                            <p className="no-organizer-events-text">Looks like this is their only event for now</p>
+                        </div>
                     ) : (
                         organizerEvents.map((event) => (
                             <div onClick={() => navigate(`/event-details/${event._id}`)}>
