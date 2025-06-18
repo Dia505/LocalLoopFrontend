@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/auth_context";
+import { useNavigate } from "react-router-dom";
 
 import "../css_files/home/upcoming_event_card.css";
 
 function UpcomingEventCard() {
     const [upcomingEvents, setUpcomingEvents] = useState([]);
     const { authToken } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUpcomingEvents = async () => {
@@ -29,7 +31,7 @@ function UpcomingEventCard() {
                         (event.isPaid || (!event.isPaid && event.totalSeats > 0))
                             ? "upcoming-event-card-hover"
                             : "upcoming-event-card"
-                    }>
+                    } onClick={() => navigate(`/event-details/${event._id}`)}>
                         <img className="upcoming-event-img" src={`http://localhost:3000/event-images/${event.eventPhoto}`} />
 
                         <div className="upcoming-event-title-bookmark-div">

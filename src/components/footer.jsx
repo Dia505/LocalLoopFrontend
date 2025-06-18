@@ -1,4 +1,9 @@
 import "./css_files/footer.css";
+import logo from "../assets/logo.png";
+import footer_facebok from "../assets/footer_facebook.png";
+import footer_instagram from "../assets/footer_instagram.png";
+import footer_x from "../assets/footer_x.png";
+import footer_tiktok from "../assets/footer_tiktok.png";
 
 function Footer() {
     return (
@@ -6,7 +11,7 @@ function Footer() {
             <div className="footer-main-div">
                 <div className="footer-components-wrapper">
                     <div className="footer-first-section">
-                        <img className="footer-logo" src="src\assets\logo.png" />
+                        <img className="footer-logo" src={logo} />
 
                         <div className="footer-nav-details-div">
                             <div className="footer-nav-detail1">
@@ -32,10 +37,10 @@ function Footer() {
                         <p className="footer-copyright">© 2025 LocalLoop. All rights reserved.</p>
 
                         <div className="footer-social-icon-div">
-                            <img className="footer-social-icon" src="src\assets\footer_facebook.png" />
-                            <img className="footer-social-icon" src="src\assets\footer_instagram.png" />
-                            <img className="footer-social-icon" src="src\assets\footer_x.png" />
-                            <img className="footer-social-icon" src="src\assets\footer_tiktok.png" />
+                            <img className="footer-social-icon" src={footer_facebok} />
+                            <img className="footer-social-icon" src={footer_instagram} />
+                            <img className="footer-social-icon" src={footer_x} />
+                            <img className="footer-social-icon" src={footer_tiktok} />
                         </div>
                     </div>
                 </div>

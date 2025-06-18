@@ -1,0 +1,91 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import locationIcon from "../assets/grey_location.png"
+import calendarIcon from "../assets/grey_calendar.png";
+import clockIcon from "../assets/grey_clock.png"
+import "./css_files/similar_events.css";
+
+function SimilarEvents({ eventType, currentEventId }) {
+    const [similarEvents, setSimilarEvents] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!eventType) return;
+
+        const fetchSimilarEvents = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/api/event/event-type?eventType=${eventType}`);
+                let events = response.data;
+
+                events = events.filter(event => event._id !== currentEventId);
+
+                const shuffled = events.sort(() => 0.5 - Math.random());
+                const limited = shuffled.slice(0, 3);
+
+                setSimilarEvents(limited);
+            } catch (error) {
+                console.error("Error fetching events:", error);
+            }
+        };
+
+        fetchSimilarEvents();
+    }, [eventType, currentEventId]);
+
+
+    return (
+        <>
+            <div className="similar-events-div">
+                {similarEvents.map((event) => (
+                    <div key={event._id} className={
+                        (event.isPaid || (!event.isPaid && event.totalSeats > 0))
+                            ? "similar-event-card-hover"
+                            : "similar-event-card"
+                    } onClick={() => navigate(`/event-details/${event._id}`)}>
+                        <img className="similar-event-img" src={`http://localhost:3000/event-images/${event.eventPhoto}`} />
+
+                        <div className="similar-event-title-bookmark-div">
+                            <p className="similar-event-title">{event.title}</p>
+                            <span className="material-symbols-outlined">
+                                bookmark
+                            </span>
+                        </div>
+
+                        <div className="similar-event-icon-detail-div">
+                            <img className="similar-event-icon" src={calendarIcon} />
+                            <p className="similar-event-detail">{new Date(event.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                        </div>
+
+                        <div className="similar-event-icon-detail-div">
+                            <img className="similar-event-icon" src={clockIcon} />
+                            <p className="similar-event-detail">{event.endTime
+                                ? `${event.startTime} - ${event.endTime}`
+                                : `${event.startTime} onwards`}</p>
+                        </div>
+
+                        <div className="similar-event-icon-detail-div">
+                            <img className="similar-event-icon" src={locationIcon} />
+                            <p className="similar-event-detail">{event.venue}, {event.city}</p>
+                        </div>
+
+                        <div className="similar-events-payment-div">
+                            <div className={event.isPaid ? "paid" : "free"}>
+                                {event.isPaid ? "Paid" : "Free"}
+                            </div>
+                            {event.totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
+                        </div>
+
+                        {(event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
+                            <button className="similar-events-btn">
+                                {event.isPaid ? "Buy tickets" : "Book seats"}
+                            </button>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </>
+    )
+}
+
+export default SimilarEvents;

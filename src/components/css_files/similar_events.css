@@ -1,0 +1,138 @@
+.similar-events-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cards per row */
+    gap: 50px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.similar-event-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 15px;
+    border: 5px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 12px;
+    transition: height 0.3s ease;
+    height: 500px;
+    cursor: pointer;
+}
+
+.similar-event-card-hover {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 15px;
+    border: 5px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 12px;
+    transition: height 0.3s ease;
+    height: 500px;
+    cursor: pointer;
+}
+
+.similar-event-card-hover:hover {
+    height: 570px; 
+}
+
+.similar-event-img {
+    width: 100%;
+    height: 208px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    display: block;
+}
+
+.similar-event-title-bookmark-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.similar-event-title {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.material-symbols-outlined {
+    font-size: 45px;
+    color: black;
+    margin-top: 5px;
+}
+
+.similar-event-icon-detail-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.similar-event-icon {
+    height: 25px;
+}
+
+.similar-event-detail {
+    color: #7A7A7A;
+    font-weight: 600;
+}
+
+.similar-events-payment-div {
+    display: flex;
+    gap: 10px;
+}
+
+.paid,
+.free {
+    width: 87px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.paid {
+    background-color: #0062CD;
+}
+
+.free {
+    background-color: #5CC750;
+}
+
+.limited-seats-text {
+    color: red;
+    font-size: 14px;
+}
+
+.similar-events-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  font-family: "Playfair Display";
+  border-radius: 15px;
+  width: 215px;
+  padding: 12px 0;
+  margin-top: 25px;
+  margin-left: 40px;
+}
+
+.similar-event-card-hover:hover .similar-events-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}

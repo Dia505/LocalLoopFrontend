@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
+import { useNavigate } from "react-router-dom";
 
 import facebook from "../../assets/facebook2.png";
 import calendarIcon from "../../assets/grey_calendar.png";
@@ -11,6 +12,10 @@ import ticketIcon from "../../assets/grey_ticket.png";
 import instagram from "../../assets/instagram.png";
 import tiktok from "../../assets/tiktok.png";
 import ExplorerNavBar from "../../components/explorer_nav_bar";
+import SearchResult from "../../components/search/search_result";
+import SimilarEvents from "../../components/similar_events";
+import Footer from "../../components/footer";
+
 import "../css_files/public/event_details.css";
 
 function EventDetails() {
@@ -18,6 +23,8 @@ function EventDetails() {
     const authToken = useAuth();
     const [event, setEvent] = useState(null);
     const [tickets, setTickets] = useState([]);
+    const [organizerEvents, setOrganizerEvents] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchEventDetails = async () => {
@@ -44,6 +51,28 @@ function EventDetails() {
             fetchTicketDetails();
         }
     }, [_id, event]);
+
+    useEffect(() => {
+        if (event && event.eventOrganizerId) {
+            const organizerId = event.eventOrganizerId._id;
+
+            const fetchOrganizerEvents = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:3000/api/event/event-organizer/${organizerId}`);
+                    const otherEvents = response.data.filter(e => e._id !== event._id);
+
+                    const shuffled = otherEvents.sort(() => 0.5 - Math.random());
+                    const randomTwo = shuffled.slice(0, 2);
+
+                    setOrganizerEvents(randomTwo);
+                } catch (error) {
+                    console.error("Error fetching organizer's events:", error);
+                }
+            };
+
+            fetchOrganizerEvents();
+        }
+    }, [event]);
 
     if (!event) {
         return (
@@ -154,7 +183,39 @@ function EventDetails() {
                     </div>
 
                 </div>
+
+                <div className="event-details-organizer-events-div">
+                    <p className="event-details-organizer-events-text">More events from this organizer</p>
+                    {organizerEvents.length === 0 ? (
+                        <p>No other events by this organizer</p>
+                    ) : (
+                        organizerEvents.map((event) => (
+                            <div onClick={() => navigate(`/event-details/${event._id}`)}>
+                                <SearchResult
+                                    key={event._id}
+                                    image={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                                    venue={event.venue}
+                                    city={event.city}
+                                    date={event.date}
+                                    startTime={event.startTime}
+                                    endTime={event.endTime}
+                                    title={event.title}
+                                    subtitle={event.subtitle}
+                                    priceType={event.isPaid}
+                                    totalSeats={event.totalSeats}
+                                />
+                            </div>
+                        ))
+                    )}
+                </div>
+
+                <div className="event-details-similar-events-div">
+                    <p className="event-details-similar-events-text">Other similar events you may like</p>
+                    <SimilarEvents eventType={event.eventType} currentEventId={event._id}/>
+                </div>
             </div>
+
+            <Footer/>
         </div>
     );
 }

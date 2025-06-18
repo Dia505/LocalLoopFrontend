@@ -21,6 +21,7 @@ import noResultsImg from "../../assets/login.png"
 import ExplorerNavBar from "../../components/explorer_nav_bar";
 import SearchCategoryFilter from "../../components/search/search_category_filter";
 import SearchResult from "../../components/search/search_result";
+import Footer from "../../components/footer";
 import "../css_files/public/search.css";
 
 function Search() {
@@ -291,6 +292,8 @@ function Search() {
                     </div>
 
                 </div>
+
+                <Footer/>
             </div>
         </>
     )
