@@ -1,0 +1,72 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+.contact-main-window {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 67vh;
+}
+
+.contact-content-section {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    padding-bottom: 10vh;
+    padding-top: 6vh;
+}
+
+.contact-details-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-help-text {
+    font-size: 20px;
+}
+
+.contact-title {
+    font-size: 26px;
+    background: linear-gradient(to right, #E487B0 0%, #D2B7F2 38%, #6FA0D6 66%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: bolder;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 200px;
+}
+
+.contact-subtitle-div {
+    width: 22vw;
+}
+
+.contact-subtitle {
+    font-weight: lighter;
+}
+
+.contact-icon-detail-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-icon {
+    height: 25px;
+}
+
+.contact-email-icon {
+    height: 30px;
+}
+
+.contact-img {
+    height: 45vh;
+}

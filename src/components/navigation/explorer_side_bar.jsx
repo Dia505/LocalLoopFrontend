@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import bookings from "../../assets/bookings.png";
 import bookmark from "../../assets/bookmark.png";
@@ -7,15 +7,17 @@ import ticket from "../../assets/ticket.png";
 import "../css_files/navigation/explorer_side_bar.css";
 
 function ExplorerSideBar() {
-    const navigate = useNavigate();
-    
+    const location = useLocation();
+
     return (
         <>
             <div className="explorer-side-bar-main-window">
-                <div className="explorer-side-bar-btn-div" onClick={() => navigate("/event-explorer-profile")}>
-                    <img className="explorer-side-bar-icon" src={profile} />
-                    <p className="explorer-side-bar-btn">Profile</p>
-                </div>
+                <Link to="/event-explorer-profile">
+                    <div className={location.pathname === "/event-explorer-profile" ? "active-explorer-side-bar-btn" : "explorer-side-bar-btn-div"}>
+                        <img className="explorer-side-bar-icon" src={profile} />
+                        <p className="explorer-side-bar-btn">Profile</p>
+                    </div>
+                </Link>
                 <div className="explorer-side-bar-btn-div">
                     <img className="explorer-side-bar-icon" src={bookmark} />
                     <p className="explorer-side-bar-btn">Bookmarks</p>

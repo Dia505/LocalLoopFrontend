@@ -60,7 +60,9 @@ function ExplorerNavBar() {
                         <p className={location.pathname === "/search" ? "active-link" : ""}>Explore</p>
                     </Link>
                     <p>Gallery</p>
-                    <p>Contact</p>
+                    <Link to="/contact">
+                        <p className={location.pathname === "/contact" ? "active-link" : ""}>Contact</p>
+                    </Link>
                 </div>
 
                 <div className="nav-bar-auth-buttons">

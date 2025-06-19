@@ -14,6 +14,7 @@ const EventExplorerRegistration = lazy(() => import("./core/public/event_explore
 const EventOrganizerRegistration = lazy(() => import("./core/public/event_organizer_registration"));
 const Search = lazy(() => import("./core/public/search"));
 const EventDetails = lazy(() => import("./core/public/event_details"));
+const Contact = lazy(() => import("./core/public/contact"));
 
 const EventExplorerProfile = lazy(() => import("./core/private/event_explorer/event_explorer_profile"));
 
@@ -97,6 +98,16 @@ function App() {
       element: (
         <Suspense>
           <EventDetails />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/contact",
+      element: (
+        <Suspense>
+          <Contact />
         </Suspense>
       ),
       errorElement: <>error</>

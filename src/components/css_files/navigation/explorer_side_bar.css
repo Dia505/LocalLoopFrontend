@@ -19,6 +19,17 @@
     background-color: #D3D3FF;
 }
 
+.active-explorer-side-bar-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding-left: 25px;
+    padding-right: 85px;
+    border-radius: 10px;
+    background-color: #D3D3FF;
+}
+
 .explorer-side-bar-icon {
     height: 40px;
 }
