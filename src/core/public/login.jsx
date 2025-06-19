@@ -6,9 +6,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
-import "../css_files/public/login.css";
 import AppLogo1 from '../../components/app_logo_1';
 import { useAuth } from "../../context/auth_context";
+import "../css_files/public/login.css";
 
 const loginSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("*Email required"),
@@ -43,6 +43,9 @@ function Login() {
 
             if (response.role === "event explorer") {
                 navigate("/");
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 100);
             } else if (response.role === "event organizer") {
                 navigate("/dashboard");
             }

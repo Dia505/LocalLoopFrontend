@@ -1,8 +1,7 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
-import { useNavigate } from "react-router-dom";
 
 import facebook from "../../assets/facebook2.png";
 import calendarIcon from "../../assets/grey_calendar.png";
@@ -10,12 +9,12 @@ import clockIcon from "../../assets/grey_clock.png";
 import locationIcon from "../../assets/grey_location.png";
 import ticketIcon from "../../assets/grey_ticket.png";
 import instagram from "../../assets/instagram.png";
-import tiktok from "../../assets/tiktok.png";
 import noOrganizerEvents from "../../assets/no_organizer_events.png";
+import tiktok from "../../assets/tiktok.png";
+import Footer from "../../components/footer";
 import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchResult from "../../components/search/search_result";
 import SimilarEvents from "../../components/similar_events";
-import Footer from "../../components/footer";
 
 import "../css_files/public/event_details.css";
 
@@ -26,6 +25,13 @@ function EventDetails() {
     const [tickets, setTickets] = useState([]);
     const [organizerEvents, setOrganizerEvents] = useState([]);
     const navigate = useNavigate();
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleVideoPlay = () => {
+        videoRef.current.play();
+        setIsPlaying(true);
+    };
 
     useEffect(() => {
         const fetchEventDetails = async () => {
@@ -155,6 +161,23 @@ function EventDetails() {
                     ) : null}
                 </div>
 
+                {event.eventVideo.length > 0 && (
+                    <div className="video-container">
+                        <video
+                            ref={videoRef}
+                            src={`http://localhost:3000/event-videos/${event.eventVideo[0]}`}
+                            className="custom-video"
+                            controls={isPlaying}
+                            poster="your-thumbnail.jpg"
+                        />
+                        {!isPlaying && (
+                            <div className="video-overlay" onClick={handleVideoPlay}>
+                                <button className="play-button">▶</button>
+                            </div>
+                        )}
+                    </div>
+                )}
+
                 <div className="event-details-organizer-div">
                     <div className="event-details-organizer-img-name-div">
                         <img className="event-details-organizer-img" src={`http://localhost:3000/event-organizer-images/${event.eventOrganizerId.profilePicture}`} />
@@ -189,7 +212,7 @@ function EventDetails() {
                     <p className="event-details-organizer-events-text">More events from this organizer</p>
                     {organizerEvents.length === 0 ? (
                         <div className="no-organizer-events-div">
-                            <img className="no-organizer-events-img" src={noOrganizerEvents}/>
+                            <img className="no-organizer-events-img" src={noOrganizerEvents} />
                             <p className="no-organizer-events-text">Looks like this is their only event for now</p>
                         </div>
                     ) : (
@@ -215,11 +238,11 @@ function EventDetails() {
 
                 <div className="event-details-similar-events-div">
                     <p className="event-details-similar-events-text">Other similar events you may like</p>
-                    <SimilarEvents eventType={event.eventType} currentEventId={event._id}/>
+                    <SimilarEvents eventType={event.eventType} currentEventId={event._id} />
                 </div>
             </div>
 
-            <Footer/>
+            <Footer />
         </div>
     );
 }

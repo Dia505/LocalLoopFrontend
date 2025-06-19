@@ -158,3 +158,38 @@ body {
     font-size: 15px;
     font-weight: lighter;
 }
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin-top: 50px;
+}
+
+.custom-video {
+    width: 100%;
+    height: 50vh;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.play-button {
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    padding: 15px 20px;
+    cursor: pointer;
+}

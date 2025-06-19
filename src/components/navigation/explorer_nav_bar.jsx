@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import notification from "../../assets/notification_icon.png"
 import { useAuth } from "../../context/auth_context";
 
 import "../css_files/navigation/explorer_nav_bar.css";
@@ -68,7 +69,7 @@ function ExplorerNavBar() {
                 <div className="nav-bar-auth-buttons">
                     {isLoggedIn ? (
                         <div className="notif-profile-div">
-                            <img className="notification" src="src\assets\notification_icon.png" />
+                            <img className="notification" src={notification} />
                             <img className="profile" src={
                                 user?.profilePicture
                                     ? user.profilePicture
