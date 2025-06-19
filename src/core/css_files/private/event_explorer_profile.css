@@ -10,19 +10,61 @@ body {
 .explorer-profile-main-window {
     display: flex;
     flex-direction: column;
+    width: 100vw;
 }
 
 .explorer-profile-centre {
     display: flex;
     margin-top: -80px;
+    gap: 6vw;
+    margin-top: 22vh;
+    padding-bottom: 8vh;
 }
 
 .explorer-profile-div {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-.explorer-profile-title-btn-di {
+.explorer-profile-title-btn-div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.explorer-profile-title {
+    font-size: 22px;
+    margin-top: 0;
+}
+
+.explorer-profile-edit-btn {
+    height: 40px;
+}
+
+.explorer-profile-img-details-div {
+    display: flex;
+    gap: 7vw;
+    padding-left: 5vw;
+}
+
+.explorer-profile-img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.explorer-profile-details-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.explorer-profile-detail-title {
+    color: #666666;
+    font-size: 18px;
+}
+
+.explorer-profile-address-city-div {
+    display: flex;
+    gap: 10vw;
 }
