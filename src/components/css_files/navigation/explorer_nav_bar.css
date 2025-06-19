@@ -87,6 +87,8 @@ p {
     border-radius: 50%;
     cursor: pointer;
     position: relative;
+    object-fit: cover;
+    object-position: center;
 }
 
 .explorer-menu-window {

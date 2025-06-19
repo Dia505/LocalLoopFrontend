@@ -1,0 +1,184 @@
+input {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    height: 28px;
+    width: 300px;
+    color: black;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+.input-error {
+    border-color: red;
+}
+
+.input-error:focus {
+    border-width: 2px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+input:focus {
+    border-width: 2px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+select {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    width: 150px;
+    height: 35.5px;
+    color: black;
+    outline: none;
+    padding-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+.select-error {
+    border-color: red;
+}
+
+.select-error option {
+    background-color: black;
+    color: white;
+}
+
+.explorer-edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.explorer-edit-profile-title {
+    font-size: 22px;
+    margin-top: 0;
+}
+
+.explorer-edit-profile-img-inputs-div {
+    display: flex;
+    gap: 7vw;
+    padding-left: 5vw;
+}
+
+.explorer-edit-profile-img-div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.explorer-edit-profile-img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hidden-img-input {
+    display: none;
+}
+
+.explorer-edit-profile-update-img-btn {
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 0.3s ease-in-out 0s;
+}
+
+.explorer-edit-profile-update-img-btn:hover {
+    background: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.explorer-edit-profile-update-img-btn:focus {
+    outline: none;
+}
+
+.explorer-edit-profile-input-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.explorer-edit-profile-input-label {
+    color: #666666;
+    font-size: 18px;
+}
+
+.explorer-edit-profile-address-city-div {
+    display: flex;
+    gap: 5vw;
+}
+
+.address-city-div {
+    display: flex;
+    gap: 1.5vw;
+}
+
+.address-input {
+    width: 130px;
+}
+
+.address-input-error {
+    border-color: red;
+    width: 130px;
+}
+
+.address-input-error:focus {
+    border-width: 2px;
+}
+
+.city-drop-down option {
+    background-color: black;
+    color: white;
+}
+
+.explorer-edit-profile-btns-div {
+    display: flex;
+    gap: 15px;
+    margin-top: 10vh;
+    margin-left: 35vw;
+}
+
+.explorer-edit-profile-cancel-btn {
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 14vw;
+}
+
+.explorer-edit-profile-update-btn {
+    background-color: black;
+    border-radius: 15px;
+    color: white;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 14vw;
+}
+
