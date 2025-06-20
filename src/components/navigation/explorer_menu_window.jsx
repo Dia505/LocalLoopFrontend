@@ -38,7 +38,7 @@ function ExplorerMenuWindow({ userProfilePicture, userFullName, isMenuWindowOpen
                         <img className="explorer-main-window-icon" src={ticket} />
                         <p className="explorer-main-window-btn">My Tickets</p>
                     </div>
-                    <div className="explorer-main-window-btn-div">
+                    <div className="explorer-main-window-btn-div" onClick={() => navigate("/my-bookings")}>
                         <img className="explorer-main-window-icon" src={bookings} />
                         <p className="explorer-main-window-btn">My Bookings</p>
                     </div>

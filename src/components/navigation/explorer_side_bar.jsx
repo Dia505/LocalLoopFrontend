@@ -18,18 +18,23 @@ function ExplorerSideBar() {
                         <p className="explorer-side-bar-btn">Profile</p>
                     </div>
                 </Link>
+
                 <div className="explorer-side-bar-btn-div">
                     <img className="explorer-side-bar-icon" src={bookmark} />
                     <p className="explorer-side-bar-btn">Bookmarks</p>
                 </div>
+
                 <div className="explorer-side-bar-btn-div">
                     <img className="explorer-side-bar-icon" src={ticket} />
                     <p className="explorer-side-bar-btn">My Tickets</p>
                 </div>
-                <div className="explorer-side-bar-btn-div">
-                    <img className="explorer-side-bar-icon" src={bookings} />
-                    <p className="explorer-side-bar-btn">My Bookings</p>
-                </div>
+
+                <Link to="/my-bookings">
+                    <div className={location.pathname === "/my-bookings" ? "active-explorer-side-bar-btn" : "explorer-side-bar-btn-div"}>
+                        <img className="explorer-side-bar-icon" src={bookings} />
+                        <p className="explorer-side-bar-btn">My Bookings</p>
+                    </div>
+                </Link>
             </div>
         </>
     )

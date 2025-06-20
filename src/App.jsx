@@ -17,6 +17,7 @@ const EventDetails = lazy(() => import("./core/public/event_details"));
 const Contact = lazy(() => import("./core/public/contact"));
 
 const EventExplorerProfile = lazy(() => import("./core/private/event_explorer/event_explorer_profile"));
+const MyBookings = lazy(() => import("./core/private/event_explorer/my_bookings"));
 
 const queryClient = new QueryClient();
 
@@ -125,6 +126,13 @@ function App() {
       path: "/event-explorer-profile",
       element: (
         <AuthRoute requiredRole="event explorer" element={<Suspense><EventExplorerProfile /></Suspense>} />
+      )
+    },
+
+    {
+      path: "/my-bookings",
+      element: (
+        <AuthRoute requiredRole="event explorer" element={<Suspense><MyBookings /></Suspense>} />
       )
     },
   ]

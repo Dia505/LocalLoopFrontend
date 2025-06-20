@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/auth_context";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth_context";
 
 import "../css_files/home/upcoming_event_card.css";
 
@@ -66,7 +66,23 @@ function UpcomingEventCard() {
                         </div>
 
                         {(event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
-                            <button className="upcoming-events-btn">
+                            <button
+                                className="upcoming-events-btn"
+                                onClick={(e) => {
+                                    e.stopPropagation(); //prevent card's click handler
+                                    if (!event.isPaid) {
+                                        if (authToken) {
+                                            navigate(`/event-details/${event._id}`, {
+                                                state: { openBookingForm: true },
+                                            });
+                                        } else {
+                                            navigate("/login");
+                                        }
+                                    } else {
+                                        navigate(`/event-details/${event._id}`);
+                                    }
+                                }}
+                            >
                                 {event.isPaid ? "Buy tickets" : "Book seats"}
                             </button>
                         )}

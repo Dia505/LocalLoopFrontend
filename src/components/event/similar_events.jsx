@@ -1,16 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth_context";
 
-import noSimilarEvents from "../../assets/no_similar_events.png";
 import calendarIcon from "../../assets/grey_calendar.png";
 import clockIcon from "../../assets/grey_clock.png";
 import locationIcon from "../../assets/grey_location.png";
+import noSimilarEvents from "../../assets/no_similar_events.png";
 import "../css_files/event/similar_events.css";
 
 function SimilarEvents({ eventType, currentEventId }) {
     const [similarEvents, setSimilarEvents] = useState([]);
     const navigate = useNavigate();
+    const { authToken } = useAuth();
 
     useEffect(() => {
         if (!eventType) return;
@@ -84,7 +86,23 @@ function SimilarEvents({ eventType, currentEventId }) {
                             </div>
 
                             {(event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
-                                <button className="similar-events-btn">
+                                <button
+                                    className="similar-events-btn"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (!event.isPaid) {
+                                            if (authToken) {
+                                                navigate(`/event-details/${event._id}`, {
+                                                    state: { openBookingForm: true },
+                                                });
+                                            } else {
+                                                navigate("/login");
+                                            }
+                                        } else {
+                                            navigate(`/event-details/${event._id}`);
+                                        }
+                                    }}
+                                >
                                     {event.isPaid ? "Buy tickets" : "Book seats"}
                                 </button>
                             )}

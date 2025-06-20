@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
-import { useNavigate } from "react-router-dom";
 
 import art from "../../assets/art.png";
 import community from "../../assets/community.png";
@@ -10,6 +9,7 @@ import dance from "../../assets/dance.png";
 import festival from "../../assets/festival.png";
 import food from "../../assets/food.png";
 import health from "../../assets/health.png";
+import noResultsImg from "../../assets/login.png";
 import market from "../../assets/market.png";
 import music from "../../assets/music.png";
 import searchIcon from "../../assets/search_icon.png";
@@ -17,11 +17,10 @@ import searchImg1 from "../../assets/search_img1.png";
 import searchImg2 from "../../assets/search_img2.png";
 import sports from "../../assets/sports.png";
 import theatre from "../../assets/theatre.png";
-import noResultsImg from "../../assets/login.png"
+import Footer from "../../components/footer";
 import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchCategoryFilter from "../../components/search/search_category_filter";
 import SearchResult from "../../components/search/search_result";
-import Footer from "../../components/footer";
 import "../css_files/public/search.css";
 
 function Search() {
@@ -272,28 +271,27 @@ function Search() {
                             </div>
                         ) : (
                             events.map((event) => (
-                                <div onClick={() => navigate(`/event-details/${event._id}`)}>
-                                    <SearchResult
-                                        key={event._id}
-                                        image={`http://localhost:3000/event-images/${event.eventPhoto}`}
-                                        venue={event.venue}
-                                        city={event.city}
-                                        date={event.date}
-                                        startTime={event.startTime}
-                                        endTime={event.endTime}
-                                        title={event.title}
-                                        subtitle={event.subtitle}
-                                        priceType={event.isPaid}
-                                        totalSeats={event.totalSeats}
-                                    />
-                                </div>
+                                <SearchResult
+                                    key={event._id}
+                                    image={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                                    venue={event.venue}
+                                    city={event.city}
+                                    date={event.date}
+                                    startTime={event.startTime}
+                                    endTime={event.endTime}
+                                    title={event.title}
+                                    subtitle={event.subtitle}
+                                    priceType={event.isPaid}
+                                    totalSeats={event.totalSeats}
+                                    eventId={event._id}
+                                />
                             ))
                         )}
                     </div>
 
                 </div>
 
-                <Footer/>
+                <Footer />
             </div>
         </>
     )

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
 
 import facebook from "../../assets/facebook2.png";
@@ -22,7 +22,7 @@ import "../css_files/public/event_details.css";
 
 function EventDetails() {
     const { _id } = useParams();
-    const {authToken} = useAuth();
+    const { authToken } = useAuth();
     const [event, setEvent] = useState(null);
     const [tickets, setTickets] = useState([]);
     const [organizerEvents, setOrganizerEvents] = useState([]);
@@ -30,6 +30,7 @@ function EventDetails() {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [user, setUser] = useState(null);
+    const location = useLocation();
 
     const [showBookingForm, setShowBookingForm] = useState(false);
 
@@ -100,7 +101,7 @@ function EventDetails() {
                 if (!authToken) return;
 
                 const decoded = jwtDecode(authToken);
-                const userId = decoded._id || decoded.id;
+                const userId = decoded._id;
 
                 const response = await axios.get(
                     `http://localhost:3000/api/event-explorer/${userId}`,
@@ -119,6 +120,14 @@ function EventDetails() {
 
         fetchUserDetails();
     }, [authToken]);
+
+    useEffect(() => {
+        if (location.state?.openBookingForm && !event?.isPaid && authToken) {
+            setShowBookingForm(true);
+            window.history.replaceState({}, ''); // Optional: clear state
+        }
+    }, [location.key, event?._id, authToken]);
+
 
     if (!event) {
         return (

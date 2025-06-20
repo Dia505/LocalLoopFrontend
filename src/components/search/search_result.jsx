@@ -1,16 +1,20 @@
-import "../css_files/search/search_result.css";
-import locationIcon from "../../assets/grey_location.png"
-import calendarIcon from "../../assets/grey_calendar.png";
-import clockIcon from "../../assets/grey_clock.png"
+import { useNavigate } from "react-router-dom";
 
-function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats }) {
+import calendarIcon from "../../assets/grey_calendar.png";
+import clockIcon from "../../assets/grey_clock.png";
+import locationIcon from "../../assets/grey_location.png";
+import "../css_files/search/search_result.css";
+
+function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats, eventId }) {
+    const navigate = useNavigate();
+
     return (
         <>
             <div className={
                 (priceType || (!priceType && totalSeats > 0))
                     ? "search-result-main-div-hover"
                     : "search-result-main-div"
-            }>
+            } onClick={() => navigate(`/event-details/${eventId}`)}>
                 <img className="search-result-img" src={image} />
 
                 <div className="search-result-details-div">

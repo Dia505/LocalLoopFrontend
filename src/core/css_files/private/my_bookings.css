@@ -1,0 +1,53 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.my-bookings-main-window {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.my-bookings-centre-div {
+    display: flex;
+    margin-top: -80px;
+    gap: 6vw;
+    padding-bottom: 8vh;
+}
+
+.my-bookings-main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.my-bookings-title {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.my-bookings-filter-div {
+    display: flex;
+    gap: 40px;
+}
+
+.my-bookings-filter-btn {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.my-bookings-filter-btn:hover {
+    text-decoration: underline;
+}
+
+.my-bookings-filter-btn-selected {
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: underline;
+}
