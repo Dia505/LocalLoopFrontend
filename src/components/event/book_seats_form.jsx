@@ -1,9 +1,15 @@
-import "../css_files/event/book_seats_form.css";
-import location from "../../assets/location.png";
+import { useState } from "react";
+
 import calendar from "../../assets/calendar.png";
 import clock from "../../assets/clock.png";
+import location from "../../assets/location.png";
+import "../css_files/event/book_seats_form.css";
 
 function BookSeatsForm({ eventPhoto, title, venue, city, date, startTime, endTime, fullName, mobileNumber, email, closeForm }) {
+    const [seats, setSeats] = useState(1);
+
+    const increment = () => setSeats((prev) => prev + 1);
+    const decrement = () => setSeats((prev) => (prev > 1 ? prev - 1 : 1));
 
     return (
         <>
@@ -71,7 +77,21 @@ function BookSeatsForm({ eventPhoto, title, venue, city, date, startTime, endTim
                         </div>
 
                         <div className="booking-form-btn-div">
-                            
+                            <div>
+                                <p className='booking-form-input-label'>Number of seats</p>
+                                <div className="seat-selector">
+                                    <input
+                                        type="text"
+                                        value={seats}
+                                        readOnly
+                                        className="seat-input"
+                                    />
+
+                                    <p onClick={decrement} className="minus-seat-btn">-</p>
+                                    <p className="seat-btn-divider">|</p>
+                                    <p onClick={increment} className="plus-seat-btn">+</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

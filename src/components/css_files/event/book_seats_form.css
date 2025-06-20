@@ -74,6 +74,7 @@ input {
 
 .booking-form-bottom-div {
     display: flex;
+    gap: 25px;
 }
 
 .booking-form-explorer-details-div {
@@ -85,4 +86,48 @@ input {
 .booking-form-btn-div {
     display: flex;
     flex-direction: column;
+}
+
+.seat-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px black solid;
+    border-radius: 10px;
+    height: 35px;
+}
+
+.seat-input {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    padding-right: 60px;
+    font-family: "Playfair Display";
+    font-weight: 700;
+    color: black;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.plus-seat-btn, .minus-seat-btn {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.plus-seat-btn {
+    padding-right: 15px;
+}
+
+.minus-seat-btn {
+    margin-top: 18px;
+}
+
+.seat-btn:focus, .seat-btn:hover {
+    border-color: white;
+}
+
+.seat-btn-divider {
+    font-size: 14px;
+    font-weight: 700;
 }
