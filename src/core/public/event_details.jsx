@@ -1,4 +1,5 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
@@ -11,22 +12,26 @@ import ticketIcon from "../../assets/grey_ticket.png";
 import instagram from "../../assets/instagram.png";
 import noOrganizerEvents from "../../assets/no_organizer_events.png";
 import tiktok from "../../assets/tiktok.png";
+import SimilarEvents from "../../components/event/similar_events";
 import Footer from "../../components/footer";
 import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchResult from "../../components/search/search_result";
-import SimilarEvents from "../../components/similar_events";
 
+import BookSeatsForm from "../../components/event/book_seats_form";
 import "../css_files/public/event_details.css";
 
 function EventDetails() {
     const { _id } = useParams();
-    const authToken = useAuth();
+    const {authToken} = useAuth();
     const [event, setEvent] = useState(null);
     const [tickets, setTickets] = useState([]);
     const [organizerEvents, setOrganizerEvents] = useState([]);
     const navigate = useNavigate();
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [user, setUser] = useState(null);
+
+    const [showBookingForm, setShowBookingForm] = useState(false);
 
     const handleVideoPlay = () => {
         videoRef.current.play();
@@ -81,6 +86,40 @@ function EventDetails() {
         }
     }, [event]);
 
+    useEffect(() => {
+        if (showBookingForm) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [showBookingForm]);
+
+    useEffect(() => {
+        const fetchUserDetails = async () => {
+            try {
+                if (!authToken) return;
+
+                const decoded = jwtDecode(authToken);
+                const userId = decoded._id || decoded.id;
+
+                const response = await axios.get(
+                    `http://localhost:3000/api/event-explorer/${userId}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${authToken}`,
+                        },
+                    }
+                );
+
+                setUser(response.data);
+            } catch (error) {
+                console.error("Error fetching user details:", error);
+            }
+        };
+
+        fetchUserDetails();
+    }, [authToken]);
+
     if (!event) {
         return (
             <div className="event-details-main-window">
@@ -107,7 +146,19 @@ function EventDetails() {
 
                         <div className="event-details-buttons-div">
                             {(event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
-                                <button className="event-details-ticket-btn">
+                                <button
+                                    className="event-details-ticket-btn"
+                                    onClick={() => {
+                                        if (!event.isPaid) {
+                                            if (authToken) {
+                                                console.log(authToken);
+                                                setShowBookingForm(true);
+                                            } else {
+                                                navigate("/login");
+                                            }
+                                        }
+                                    }}
+                                >
                                     {event.isPaid ? "Buy tickets" : "Book seats"}
                                 </button>
                             )}
@@ -243,6 +294,27 @@ function EventDetails() {
             </div>
 
             <Footer />
+
+            {showBookingForm && (
+                <>
+                    <div className="event-details-overlay" onClick={() => setShowBookingForm(false)}></div>
+                    <div className="event-details-form-modal">
+                        <BookSeatsForm
+                            closeForm={() => setShowBookingForm(false)}
+                            eventPhoto={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                            title={event.title}
+                            venue={event.venue}
+                            city={event.city}
+                            date={event.date}
+                            startTime={event.startTime}
+                            endTime={event.endTime}
+                            fullName={user?.fullName}
+                            mobileNumber={user?.mobileNumber}
+                            email={user?.email}
+                        />
+                    </div>
+                </>
+            )}
         </div>
     );
 }

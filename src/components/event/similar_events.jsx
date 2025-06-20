@@ -2,11 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import noSimilarEvents from "../assets/no_similar_events.png";
-import calendarIcon from "../assets/grey_calendar.png";
-import clockIcon from "../assets/grey_clock.png";
-import locationIcon from "../assets/grey_location.png";
-import "./css_files/similar_events.css";
+import noSimilarEvents from "../../assets/no_similar_events.png";
+import calendarIcon from "../../assets/grey_calendar.png";
+import clockIcon from "../../assets/grey_clock.png";
+import locationIcon from "../../assets/grey_location.png";
+import "../css_files/event/similar_events.css";
 
 function SimilarEvents({ eventType, currentEventId }) {
     const [similarEvents, setSimilarEvents] = useState([]);
