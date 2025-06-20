@@ -301,6 +301,7 @@ function EventDetails() {
                     <div className="event-details-form-modal">
                         <BookSeatsForm
                             closeForm={() => setShowBookingForm(false)}
+                            eventId={event._id}
                             eventPhoto={`http://localhost:3000/event-images/${event.eventPhoto}`}
                             title={event.title}
                             venue={event.venue}

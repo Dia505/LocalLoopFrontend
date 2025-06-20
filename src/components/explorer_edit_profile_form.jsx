@@ -42,7 +42,7 @@ function ExplorerEditProfileForm({ closeForm }) {
     const [updatedProfilePicture, setUpdatedProfilePicture] = useState(null);
 
     const decoded = jwtDecode(authToken);
-    const userId = decoded._id || decoded.id;
+    const userId = decoded._id;
 
     useEffect(() => {
         const fetchUserDetails = async () => {
