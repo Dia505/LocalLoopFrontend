@@ -1,0 +1,53 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.my-tickets-main-window {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.my-tickets-centre-div {
+    display: flex;
+    margin-top: -80px;
+    gap: 6vw;
+    padding-bottom: 8vh;
+}
+
+.my-tickets-main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.my-tickets-title {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.my-tickets-filter-div {
+    display: flex;
+    gap: 40px;
+}
+
+.my-tickets-filter-btn {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.my-tickets-filter-btn:hover {
+    text-decoration: underline;
+}
+
+.my-tickets-filter-btn-selected {
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: underline;
+}

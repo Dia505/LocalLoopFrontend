@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../../context/auth_context";
 
 import edit from "../../../assets/edit.png";
-import ExplorerEditProfileForm from "../../../components/explorer_edit_profile_form";
+import ExplorerEditProfileForm from "../../../components/event_explorer/explorer_edit_profile_form";
 import Footer from "../../../components/footer";
 import ExplorerNavBar from "../../../components/navigation/explorer_nav_bar";
 import ExplorerSideBar from "../../../components/navigation/explorer_side_bar";

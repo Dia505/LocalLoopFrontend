@@ -1,7 +1,7 @@
-import calendarIcon from "../assets/grey_calendar.png";
-import clockIcon from "../assets/grey_clock.png";
-import locationIcon from "../assets/grey_location.png";
-import "./css_files/my_booking_card.css";
+import calendarIcon from "../../assets/grey_calendar.png";
+import clockIcon from "../../assets/grey_clock.png";
+import locationIcon from "../../assets/grey_location.png";
+import "../css_files/event_explorer/my_booking_card.css";
 
 function MyBookingCard({ eventPhoto, title, venue, city, date, startTime, endTime, seats }) {
     return (

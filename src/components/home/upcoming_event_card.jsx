@@ -78,7 +78,16 @@ function UpcomingEventCard() {
                                         } else {
                                             navigate("/login");
                                         }
-                                    } else {
+                                    } else if (event.isPaid) {
+                                        if (authToken) {
+                                            navigate(`/event-details/${event._id}`, {
+                                                state: { openBuyTicketForm: true },
+                                            });
+                                        } else {
+                                            navigate("/login");
+                                        }
+                                    }
+                                    else {
                                         navigate(`/event-details/${event._id}`);
                                     }
                                 }}

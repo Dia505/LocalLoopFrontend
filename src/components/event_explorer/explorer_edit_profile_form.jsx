@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import { useAuth } from "../context/auth_context";
+import { useAuth } from "../../context/auth_context";
 
-import "./css_files/explorer_edit_profile_form.css";
+import "../css_files/event_explorer/explorer_edit_profile_form.css";
 
 const explorerEditProfileSchema = yup.object().shape({
     fullName: yup.string(),

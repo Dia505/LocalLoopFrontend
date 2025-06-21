@@ -2,76 +2,76 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../context/auth_context";
 
-import MyBookingCard from "../../../components/event_explorer/my_booking_card";
 import ExplorerNavBar from "../../../components/navigation/explorer_nav_bar";
 import ExplorerSideBar from "../../../components/navigation/explorer_side_bar";
-import "../../css_files/private/my_bookings.css";
+import MyTicketCard from "../../../components/event_explorer/my_ticket_card";
+import "../../css_files/private/my_tickets.css";
 
-function MyBookings() {
+function MyTickets() {
     const { authToken } = useAuth();
-    const [upcomingBookings, setUpcomingBookings] = useState([]);
-    const [pastBookings, setPastBookings] = useState([]);
+    const [upcomingTickets, setUpcomingTickets] = useState([]);
+    const [pastTickets, setPastTickets] = useState([]);
     const [selectedFilter, setSelectedFilter] = useState("upcoming");
 
     useEffect(() => {
-        const fetchUpcomingBookings = async () => {
+        const fetchUpcomingTickets = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/booking/upcoming",
+                const response = await axios.get("http://localhost:3000/api/purchased-ticket/upcoming",
                     {
                         headers: {
                             Authorization: `Bearer ${authToken}`,
                         },
                     }
                 );
-                setUpcomingBookings(response.data);
+                setUpcomingTickets(response.data);
             } catch (error) {
-                console.error("Error fetching upcoming bookings:", error);
+                console.error("Error fetching upcoming tickets:", error);
             }
         };
 
-        fetchUpcomingBookings();
+        fetchUpcomingTickets();
     }, [authToken]);
 
     useEffect(() => {
-        const fetchPastBookings = async () => {
+        const fetchPastTickets = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/booking/past",
+                const response = await axios.get("http://localhost:3000/api/purchased-ticket/past",
                     {
                         headers: {
                             Authorization: `Bearer ${authToken}`,
                         },
                     }
                 );
-                setPastBookings(response.data);
+                setPastTickets(response.data);
             } catch (error) {
-                console.error("Error fetching past bookings:", error);
+                console.error("Error fetching past tickets:", error);
             }
         };
 
-        fetchPastBookings();
+        fetchPastTickets();
     }, [authToken]);
 
     return (
         <>
-            <div className="my-bookings-main-window">
+            <div className="my-tickets-main-window">
                 <ExplorerNavBar />
 
-                <div className="my-bookings-centre-div">
+                <div className="my-tickets-centre-div">
                     <ExplorerSideBar />
 
-                    <div className="my-bookings-main-section">
-                        <p className="my-bookings-title">My Bookings</p>
+                    <div className="my-tickets-main-section">
+                        <p className="my-tickets-title">My Tickets</p>
 
-                        <div className="my-bookings-filter-div">
+                        <div className="my-tickets-filter-div">
                             <p
-                                className={`my-bookings-filter-btn ${selectedFilter === "upcoming" ? "my-bookings-filter-btn-selected" : ""}`}
+                                className={`my-tickets-filter-btn ${selectedFilter === "upcoming" ? "my-tickets-filter-btn-selected" : ""}`}
                                 onClick={() => setSelectedFilter("upcoming")}
                             >
                                 Upcoming
                             </p>
 
                             <p
-                                className={`my-bookings-filter-btn ${selectedFilter === "past" ? "my-bookings-filter-btn-selected" : ""}`}
+                                className={`my-tickets-filter-btn ${selectedFilter === "past" ? "my-tickets-filter-btn-selected" : ""}`}
                                 onClick={() => setSelectedFilter("past")}
                             >
                                 Past
@@ -80,8 +80,8 @@ function MyBookings() {
 
                         <div>
                             {selectedFilter === "upcoming" ? (
-                                upcomingBookings.map((event) => (
-                                    <MyBookingCard
+                                upcomingTickets.map((event) => (
+                                    <MyTicketCard
                                         key={event._id}
                                         eventPhoto={`http://localhost:3000/event-images/${event.eventDetails.eventPhoto}`}
                                         venue={event.eventDetails.venue}
@@ -90,12 +90,16 @@ function MyBookings() {
                                         startTime={event.eventDetails.startTime}
                                         endTime={event.eventDetails.endTime}
                                         title={event.eventDetails.title}
-                                        seats={event.seats}
+                                        quantity={event.quantity}
+                                        ticketType={event.ticketDetails.ticketType}
+                                        ticketPrice={event.ticketDetails.ticketPrice}
+                                        totalPrice={event.totalPrice}
+                                        paymentMethod={event.paymentMethod}
                                     />
                                 ))
                             ) : (
-                                pastBookings.map((event) => (
-                                    <MyBookingCard
+                                pastTickets.map((event) => (
+                                    <MyTicketCard
                                         key={event._id}
                                         eventPhoto={`http://localhost:3000/event-images/${event.eventDetails.eventPhoto}`}
                                         venue={event.eventDetails.venue}
@@ -104,12 +108,15 @@ function MyBookings() {
                                         startTime={event.eventDetails.startTime}
                                         endTime={event.eventDetails.endTime}
                                         title={event.eventDetails.title}
-                                        seats={event.seats}
+                                        quantity={event.quantity}
+                                        ticketType={event.ticketDetails.ticketType}
+                                        ticketPrice={event.ticketDetails.ticketPrice}
+                                        totalPrice={event.totalPrice}
+                                        paymentMethod={event.paymentMethod}
                                     />
                                 ))
                             )}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -117,4 +124,4 @@ function MyBookings() {
     )
 }
 
-export default MyBookings;
+export default MyTickets;

@@ -1,0 +1,76 @@
+.my-ticket-card-main-div {
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+    padding: 20px;
+    gap: 10px;
+    height: 14vh;
+    transition: height 0.3s ease;
+}
+
+.my-ticket-card-main-div:hover {
+    height: 26vh;
+}
+
+.my-ticket-card-event-details-div {
+    display: flex;
+    gap: 20px;
+}
+
+.my-ticket-card-img {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.my-ticket-card-details-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-ticket-card-event-title {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.my-ticket-card-location-date-time-div {
+    display: flex;
+    gap: 30px;
+}
+
+.my-ticket-card-icon-detail-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.my-ticket-card-icon {
+    height: 25px;
+}
+
+.my-ticket-card-detail {
+    color: #7A7A7A;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.my-ticket-card-ticket-details-div {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.my-ticket-card-ticket-details-text {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.my-ticket-card-ticket-details {
+    display: flex;
+    gap: 5vw;
+}
+
+.my-ticket-card-main-div:hover .my-ticket-card-ticket-details-div {
+    opacity: 1;
+}

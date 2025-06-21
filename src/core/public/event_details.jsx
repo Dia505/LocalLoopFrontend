@@ -128,8 +128,11 @@ function EventDetails() {
             setShowBookingForm(true);
             window.history.replaceState({}, ''); // Optional: clear state
         }
+        else if (location.state?.openBuyTicketForm && event?.isPaid && authToken) {
+            setShowBuyTicketsForm(true);
+            window.history.replaceState({}, '');
+        }
     }, [location.key, event?._id, authToken]);
-
 
     if (!event) {
         return (
@@ -167,8 +170,8 @@ function EventDetails() {
                                                 navigate("/login");
                                             }
                                         }
-                                        if(event.isPaid) {
-                                            if(authToken) {
+                                        if (event.isPaid) {
+                                            if (authToken) {
                                                 setShowBuyTicketsForm(true);
                                             } else {
                                                 navigate("/login");
