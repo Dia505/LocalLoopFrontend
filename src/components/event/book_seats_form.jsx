@@ -1,4 +1,3 @@
-import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -13,9 +12,6 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
     const [seats, setSeats] = useState(1);
     const { authToken } = useAuth();
     const { handleSubmit } = useForm();
-
-    const decoded = jwtDecode(authToken);
-    const userId = decoded._id;
 
     const increment = () => setSeats((prev) => prev + 1);
     const decrement = () => setSeats((prev) => (prev > 1 ? prev - 1 : 1));
@@ -38,7 +34,7 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                 }
             );
 
-            toast.success("Profile updated!", {
+            toast.success("Successfully booked seats", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -93,7 +89,7 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                     <div className="booking-form-bottom-div">
                         <div className="booking-form-explorer-details-div">
                             <div>
-                                <p className='booking-form-input-label'>Full name</p>
+                                <p>Full name</p>
                                 <input
                                     type='text'
                                     value={fullName}
@@ -102,7 +98,7 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                             </div>
 
                             <div>
-                                <p className='booking-form-input-label'>Mobile number</p>
+                                <p>Mobile number</p>
                                 <input
                                     type='text'
                                     value={mobileNumber}
@@ -111,7 +107,7 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                             </div>
 
                             <div>
-                                <p className='booking-form-input-label'>Email address</p>
+                                <p>Email address</p>
                                 <input
                                     type='text'
                                     value={email}
@@ -122,7 +118,7 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
 
                         <div className="booking-form-btn-div">
                             <div>
-                                <p className='booking-form-input-label'>Number of seats</p>
+                                <p>Number of seats</p>
                                 <div className="seat-selector">
                                     <input
                                         type="text"

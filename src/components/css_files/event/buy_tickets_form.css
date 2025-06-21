@@ -1,0 +1,289 @@
+input {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    height: 28px;
+    width: 200px;
+    color: #6b6b6b;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+.buy-tickets-form-main-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.buy-tickets-form-img {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: 0.41;
+}
+
+.buy-tickets-form-event-details-div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    padding-left: 20px;
+}
+
+.buy-tickets-form-close-btn {
+    font-size: 40px;
+    font-weight: lighter;
+    cursor: pointer;
+    margin-left: 37vw;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.buy-tickets-form-title-div {
+    width: 250px;
+}
+
+.buy-tickets-form-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.buy-tickets-form-details-container {
+    display: flex;
+    gap: 15px;
+}
+
+.buy-tickets-form-icon-detail-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.buy-tickets-form-icon {
+    height: 30px;
+}
+
+.buy-tickets-form-detail {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.buy-tickets-form-bottom-div {
+    display: flex;
+    gap: 2vw;
+}
+
+.buy-tickets-form-ticket-type-div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 8vw;
+}
+
+.ticket-amount-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px black solid;
+    border-radius: 10px;
+    height: 35px;
+}
+
+.ticket-amount-input {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    padding-right: 90px;
+    font-family: "Playfair Display";
+    font-weight: 600;
+    color: black;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.plus-ticket-amount-btn,
+.minus-ticket-amount-btn {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.minus-ticket-amount-btn {
+    margin-top: 18px;
+}
+
+.ticket-amount-btn:focus,
+.ticket-amount-btn:hover {
+    border-color: white;
+}
+
+.ticket-amount-btn-divider {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.buy-tickets-form-next-button {
+    border: 1px solid black;
+    border-radius: 10px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out 0s;
+    margin-left: 5vw;
+    margin-top: 5vh;
+}
+
+.buy-tickets-form-next-button:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.buy-tickets-form-divider {
+    width: 1px;
+    height: 1;
+    background-color: black;
+}
+
+.ticket-summary-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.buy-tickets-form-select {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    height: 35.5px;
+    color: black;
+    outline: none;
+    padding-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    padding-right: 30px;
+}
+
+.buy-tickets-form-select-error {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: red;
+    background-color: transparent;
+    height: 35.5px;
+    color: black;
+    outline: none;
+    padding-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    padding-right: 30px;
+}
+
+.buy-tickets-form-select option {
+    background-color: black;
+    color: white;
+}
+
+.ticket-summary-text {
+    font-size: 18px;
+    margin-bottom: 0;
+    padding-right: 4vw;
+}
+
+.ticket-summary-divider {
+    height: 1px;
+    background-color: black;
+}
+
+.buy-tickets-total-price-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-method-form-bottom-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+    padding-right: 10vw;
+}
+
+.payment-methods-div {
+    display: flex;
+    gap: 2vw;
+    margin-top: 15px;
+    margin-left: 7vw;
+}
+
+.esewa-img {
+    height: 30px;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
+
+.selected-esewa-img {
+    height: 30px;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    background-color: #D3D3FF;
+}
+
+.khalti-img {
+    height: 30px;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 10px 15px 15px;
+    cursor: pointer;
+}
+
+.selected-khalti-img {
+    height: 30px;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 10px 15px 15px;
+    cursor: pointer;
+    background-color: #D3D3FF;
+}
+
+.payment-method-form-btns-div {
+    display: flex;
+    gap: 10px;
+    margin-top: 5vh;
+    margin-left: 6vw;
+}
+
+.payment-method-form-btn {
+    border: 2px solid black;
+    border-radius: 10px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out 0s;
+    width: 150px;
+    padding: 10px;
+}
+
+.payment-method-form-btn:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}

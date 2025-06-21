@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
-import "../core/css_files/public/event_organizer_registration.css";
+import "../../core/css_files/public/event_organizer_registration.css";
 
 const organizerPersonalDetailsSchema = yup.object().shape({
     fullName: yup.string().required("*required"),

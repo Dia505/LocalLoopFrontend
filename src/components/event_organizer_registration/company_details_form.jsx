@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import * as yup from "yup";
 
-import "../core/css_files/public/event_organizer_registration.css";
+import "../../core/css_files/public/event_organizer_registration.css";
 
 const organizerCompanyDetailsSchema = yup.object().shape({
     companyName: yup.string().required("*required"),

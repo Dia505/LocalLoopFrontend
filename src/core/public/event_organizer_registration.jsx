@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import AppLogo1 from '../../components/app_logo_1';
-import CompanyDetailsForm from '../../components/company_details_form';
-import PersonalDetailsForm from '../../components/personal_details_form';
+import CompanyDetailsForm from '../../components/event_organizer_registration/company_details_form';
+import PersonalDetailsForm from '../../components/event_organizer_registration/personal_details_form';
 import "../css_files/public/event_organizer_registration.css";
 
 function EventOrganizerRegistration() {

@@ -18,6 +18,7 @@ import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchResult from "../../components/search/search_result";
 
 import BookSeatsForm from "../../components/event/book_seats_form";
+import BuyTicketsForm from "../../components/event/buy_tickets_form";
 import "../css_files/public/event_details.css";
 
 function EventDetails() {
@@ -33,6 +34,7 @@ function EventDetails() {
     const location = useLocation();
 
     const [showBookingForm, setShowBookingForm] = useState(false);
+    const [showBuyTicketsForm, setShowBuyTicketsForm] = useState(false);
 
     const handleVideoPlay = () => {
         videoRef.current.play();
@@ -160,8 +162,14 @@ function EventDetails() {
                                     onClick={() => {
                                         if (!event.isPaid) {
                                             if (authToken) {
-                                                console.log(authToken);
                                                 setShowBookingForm(true);
+                                            } else {
+                                                navigate("/login");
+                                            }
+                                        }
+                                        if(event.isPaid) {
+                                            if(authToken) {
+                                                setShowBuyTicketsForm(true);
                                             } else {
                                                 navigate("/login");
                                             }
@@ -321,6 +329,25 @@ function EventDetails() {
                             fullName={user?.fullName}
                             mobileNumber={user?.mobileNumber}
                             email={user?.email}
+                        />
+                    </div>
+                </>
+            )}
+
+            {showBuyTicketsForm && (
+                <>
+                    <div className="event-details-overlay" onClick={() => setShowBuyTicketsForm(false)}></div>
+                    <div className="event-details-form-modal">
+                        <BuyTicketsForm
+                            closeForm={() => setShowBuyTicketsForm(false)}
+                            eventId={event._id}
+                            eventPhoto={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                            title={event.title}
+                            venue={event.venue}
+                            city={event.city}
+                            date={event.date}
+                            startTime={event.startTime}
+                            endTime={event.endTime}
                         />
                     </div>
                 </>

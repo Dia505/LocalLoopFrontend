@@ -32,13 +32,14 @@ input {
     display: flex;
     flex-direction: column;
     top: 0;
+    padding-left: 20px;
 }
 
 .booking-form-close-btn {
     font-size: 40px;
     font-weight: lighter;
     cursor: pointer;
-    margin-left: 38vw;
+    margin-left: 37vw;
     margin-top: 0;
     margin-bottom: 0;
 }
