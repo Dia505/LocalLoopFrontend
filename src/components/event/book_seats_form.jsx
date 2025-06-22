@@ -6,17 +6,21 @@ import { useAuth } from "../../context/auth_context";
 import calendar from "../../assets/calendar.png";
 import clock from "../../assets/clock.png";
 import location from "../../assets/location.png";
+import loading from "../../assets/loading.gif";
 import "../css_files/event/book_seats_form.css";
 
 function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTime, endTime, fullName, mobileNumber, email, closeForm }) {
     const [seats, setSeats] = useState(1);
     const { authToken } = useAuth();
     const { handleSubmit } = useForm();
+    const [isLoading, setIsLoading] = useState(false);
 
     const increment = () => setSeats((prev) => prev + 1);
     const decrement = () => setSeats((prev) => (prev > 1 ? prev - 1 : 1));
 
     const onSubmit = async (data) => {
+        setIsLoading(true);
+
         const bookingData = {
             seats: seats,
             eventId: eventId
@@ -34,7 +38,7 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                 }
             );
 
-            toast.success("Successfully booked seats", {
+            toast.success("Booking successful! We've sent you a confirmation email.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -48,6 +52,8 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
         } catch (err) {
             console.error("Error booking seats:", err);
             toast.error("Failed to book seats");
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -133,7 +139,10 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                                 </div>
                             </div>
 
-                            <button type="submit" className="booking-form-button">Book seats</button>
+                            {isLoading
+                                ? <img src={loading} className="book-form-loading"/>
+                                : <button type="submit" className="booking-form-button">Book seats</button>
+                            }
                         </div>
                     </div>
                 </div>

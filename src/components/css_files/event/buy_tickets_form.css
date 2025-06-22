@@ -287,3 +287,10 @@ input {
     color: white;
     border: 1px solid black;
 }
+
+.buy-tickets-form-loading {
+    height: 30px;
+    width: 30px;
+    margin-left: 14vw;
+    margin-top: 5vh;
+}

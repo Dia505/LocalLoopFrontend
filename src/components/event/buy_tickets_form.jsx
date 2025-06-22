@@ -11,6 +11,7 @@ import clock from "../../assets/clock.png";
 import esewa from "../../assets/esewa.png";
 import khalti from "../../assets/khalti.png";
 import location from "../../assets/location.png";
+import loading from "../../assets/loading.gif";
 import "../css_files/event/buy_tickets_form.css";
 
 const ticketDetailsSchema = yup.object().shape({
@@ -35,6 +36,7 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
     const [ticketPrice, setTicketPrice] = useState(0);
     const [buyTicketFormState, setBuyTicketFormState] = useState(1);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const increment = () => setTicketAmount((prev) => prev + 1);
     const decrement = () => setTicketAmount((prev) => (prev > 1 ? prev - 1 : 1));
@@ -60,6 +62,7 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
 
     const handleBuyTickets = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
 
         const ticketTypeId = getValues("ticketType");
 
@@ -83,7 +86,7 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
                 }
             );
 
-            toast.success("Tickets purchased successful! ", {
+            toast.success("Tickets purchased successfully! We've sent you a confirmation email.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -96,6 +99,8 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
         } catch (error) {
             console.error("Error purchasing ticket:", error);
             toast.error("Failed to purchase tickets");
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -227,10 +232,13 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
                                     />
                                 </div>
 
-                                <div className='payment-method-form-btns-div'>
-                                    <button className='payment-method-form-btn' onClick={() => setBuyTicketFormState(1)}>Previous</button>
-                                    <button type='submit' className='payment-method-form-btn' onClick={handleBuyTickets}>Buy tickets</button>
-                                </div>
+                                {isLoading
+                                    ? <img src={loading} className="buy-tickets-form-loading"/>
+                                    : <div className='payment-method-form-btns-div'>
+                                        <button className='payment-method-form-btn' onClick={() => setBuyTicketFormState(1)}>Previous</button>
+                                        <button type='submit' className='payment-method-form-btn' onClick={handleBuyTickets}>Buy tickets</button>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </form>
