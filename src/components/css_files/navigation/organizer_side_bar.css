@@ -1,0 +1,84 @@
+p {
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: 500;
+}
+
+.organizer-side-bar-main-div {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #FFF9BE 8%, #FFA9F9 94%);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    padding-top: 20px;
+    width: 250px;
+}
+
+.logo {
+  height: 310px;
+  width: 170px;
+  margin-top: -10vh;
+  padding-left: 2.5vw;
+}
+
+.organizer-side-bar-nav-btns-div {
+    display: flex;
+    flex-direction: column;
+    margin-top: -13vh;
+}
+
+.main-menu-text {
+    font-size: 14px;
+    padding-left: 17px;
+}
+
+.organizer-side-bar-divider {
+    height: 1px;
+    background-color: black;
+}
+
+.organizer-side-bar-btn-div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding-left: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.organizer-side-bar-btn-div:hover {
+    background-color: rgb(0, 0, 0, 0.45);
+}
+
+.organizer-side-bar-selected-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding-left: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(0, 0, 0, 0.45);
+}
+
+.organizer-side-bar-icon {
+    height: 27px;
+}
+
+.organizer-side-bar-logout-div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 4.5vw;
+    position: fixed;
+    bottom: 4vh;
+}
+
+.organizer-side-bar-logout-btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

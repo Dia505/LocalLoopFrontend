@@ -1,0 +1,39 @@
+.upcoming-slideshow-main-div {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: 40px;
+    width: 45vw;
+}
+
+.upcoming-slideshow-text {
+    font-size: 18px;
+}
+
+.upcoming-slideshow-slide {
+    display: flex;
+    gap: 3vw;
+}
+
+.upcoming-slideshow-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px black solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: black;
+}

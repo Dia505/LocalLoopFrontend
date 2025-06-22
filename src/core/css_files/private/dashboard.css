@@ -1,0 +1,105 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.dashboard-main-window {
+    display: flex;
+}
+
+.dashboard-main-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    padding-left: 4vw;
+    margin-top: 7vh;
+    padding-bottom: 7vh;
+}
+
+.dashboard-title {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.dashboard-organizer-create-btn-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-welcome-back-div {
+    display: flex;
+    margin-top: 10px;
+}
+
+.dashboard-welcome-back-text {
+    background: linear-gradient(to right, #E487B0 0%, #D2B7F2 38%, #6FA0D6 66%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.dashboard-organizer-name {
+    margin-top: 0;
+}
+
+.dashboard-create-event-btn {
+    border: 1px solid black;
+    border-radius: 10px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 17px;
+    transition: background-color 0.3s ease-in-out 0s;
+    margin-left: 2vw;
+    height: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.dashboard-create-event-btn:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.dashboard-insights-div {
+    display: flex;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.dashboard-insight {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    align-items: center;
+}
+
+.dashboard-insight-title {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.dashboard-insight-stats {
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+

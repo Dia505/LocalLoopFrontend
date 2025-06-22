@@ -1,0 +1,43 @@
+import "../css_files/organizer_events/upcoming_event_card.css";
+
+function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats }) {
+    return (
+        <>
+            <div className="org-upcoming-event-main-div">
+                <img className="org-upcoming-event-img" src={`http://localhost:3000/event-images/${eventPhoto}`} />
+                <p className="org-upcoming-event-title">{title}</p>
+
+                <div className="org-upcoming-event-icon-detail-div">
+                    <img className="org-upcoming-event-icon" src="src\assets\grey_calendar.png" />
+                    <p className="org-upcoming-event-detail">{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                </div>
+
+                <div className="org-upcoming-event-icon-detail-div">
+                    <img className="org-upcoming-event-icon" src="src\assets\grey_clock.png" />
+                    <p className="org-upcoming-event-detail">{endTime
+                        ? `${startTime} - ${endTime}`
+                        : `${startTime} onwards`}</p>
+                </div>
+
+                <div className="org-upcoming-event-icon-detail-div">
+                    <img className="org-upcoming-event-icon" src="src\assets\grey_location.png" />
+                    <p className="org-upcoming-event-detail">{venue}, {city}</p>
+                </div>
+
+                <div className="org-upcoming-events-payment-div">
+                    <div className={isPaid ? "paid" : "free"}>
+                        {isPaid ? "Paid" : "Free"}
+                    </div>
+                    {totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
+                </div>
+
+                <div className="org-upcoming-events-btns-div">
+                    <button className="org-upcoming-events-btn">Details</button>
+                    <button className="org-upcoming-events-btn">Insights</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default UpcomingEventCard;
