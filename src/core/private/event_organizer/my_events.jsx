@@ -8,6 +8,7 @@ import OrganizerSideBar from "../../../components/navigation/organizer_side_bar"
 import ArchivedEventCard from "../../../components/organizer_events/archived_event_card";
 import UpcomingEventCard from "../../../components/organizer_events/upcoming_event_card";
 import OrganizerFooter from "../../../components/organizer_footer";
+import CreateEventForm from "../../../components/organizer_events/create_event_form";
 import "../../css_files/private/my_events.css";
 
 function MyEvents() {
@@ -15,6 +16,7 @@ function MyEvents() {
     const [archivedEvents, setArchivedEvents] = useState([]);
     const { authToken } = useAuth();
     const [selectedFilter, setSelectedFilter] = useState("upcoming");
+    const [showCreateEventForm, setShowCreateEventForm] = useState(false);
 
     const decoded = jwtDecode(authToken);
     const organizerId = decoded._id || decoded.id;
@@ -47,7 +49,7 @@ function MyEvents() {
                 <div className="my-events-main-div">
                     <div className="my-events-title-create-div">
                         <p className="my-events-title">My Events</p>
-                        <button className="my-events-create-event-btn">Create event +</button>
+                        <button className="my-events-create-event-btn" onClick={() => setShowCreateEventForm(true)}>Create event +</button>
                     </div>
 
                     <div className="my-events-filter-div">
@@ -114,6 +116,16 @@ function MyEvents() {
                     </div>
 
                     <OrganizerFooter />
+
+                    {showCreateEventForm && (
+                        <>
+                            <div className="my-events-overlay" onClick={() => setShowCreateEventForm(false)}></div>
+                            <div className="my-events-form-modal">
+                                <CreateEventForm/>
+                            </div>
+                        </>
+                        
+                    )}
                 </div>
             </div>
         </>

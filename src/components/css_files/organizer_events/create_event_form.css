@@ -1,0 +1,331 @@
+input {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    height: 28px;
+    width: 300px;
+    color: black;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+.input-error {
+    border-color: red;
+}
+
+.input-error:focus {
+    border-width: 2px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+input:focus {
+    border-width: 2px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input[type="date"],
+input[type="time"] {
+    color: #333;
+    background-color: white;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 1;
+}
+
+
+textarea {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    color: black;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 300px;
+    height: 80px;
+}
+
+.textarea-error {
+    border-color: red;
+}
+
+.textarea-error:focus {
+    border-width: 2px;
+}
+
+.textarea:focus {
+    border-width: 2px;
+}
+
+select {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    width: 21vw;
+    height: 35.5px;
+    color: black;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+select option {
+    background-color: black;
+    color: white;
+}
+
+.select-error {
+    border-color: red;
+}
+
+.select-error option {
+    background-color: black;
+    color: white;
+}
+
+.create-event-form-main-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.create-event-form-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.create-event-form-centre-div {
+    display: flex;
+    gap: 3vw;
+}
+
+.create-event-form-img-div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.create-event-form-hidden-img-input {
+    display: none;
+}
+
+.create-event-form-img-btn {
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 0.3s ease-in-out 0s;
+}
+
+.create-event-form-img-btn:hover {
+    background: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.create-event-form-img-btn:focus {
+    outline: none;
+}
+
+.create-event-form-img {
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.create-event-form-input-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-event-form-input-label {
+    color: #666666;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.textarea-container {
+    position: relative;
+}
+
+.char-count {
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+.create-event-form-address-city-div {
+  display: flex;
+  gap: 1.5vw;
+}
+
+.create-event-form-address-input {
+  width: 130px;
+}
+
+.create-event-form-address-input-error {
+  border-color: red;
+  width: 130px;
+}
+
+.create-event-form-city-drop-down {
+  width: 150px;
+}
+
+.create-event-form-city-drop-down option {
+    background-color: black;
+    color: white;
+}
+
+.create-event-form-city-drop-down-error {
+  border-color: red;
+  width: 150px;
+}
+
+.video-upload-wrapper {
+    position: relative;
+    margin-top: 3vh;
+}
+
+.add-video-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px dashed #999;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.play-icon {
+    color: #555;
+}
+
+.video-preview-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.video-preview {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    height: 300px;
+}
+
+.remove-video-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 30px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.search-category-filter-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 20vw;
+}
+
+.create-event-form-price-wrapper {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.checkbox-label-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hide native checkbox */
+.price-checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* Custom checkbox box */
+.custom-checkbox-visual {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+/* Black fill when checked */
+.price-checkbox-input:checked+.custom-checkbox-visual {
+    background-color: black;
+    border-color: black;
+}
+
+/* White checkmark */
+.custom-checkbox-visual::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 5px;
+    height: 13px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.price-checkbox-input:checked+.custom-checkbox-visual::after {
+    opacity: 1;
+}
+
+.checkbox-label-text {
+    font-size: 16px;
+}
