@@ -37,3 +37,21 @@
 .dot.active {
   background-color: black;
 }
+
+.no-upcoming-events-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-upcoming-events-img {
+  height: 50vh;
+}
+
+.no-upcoming-event-text {
+    text-align: center;
+}
+
+.no-upcoming-event-text-div {
+  width: 30vw;
+}

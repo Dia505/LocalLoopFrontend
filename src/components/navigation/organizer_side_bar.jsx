@@ -1,6 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
-import { useNavigate } from "react-router-dom";
 
 import dashboard from "../../assets/dashboard.png";
 import logo from "../../assets/logo.png";
@@ -35,10 +34,12 @@ function OrganizerSideBar() {
                         </div>
                     </Link>
 
-                    <div className="organizer-side-bar-btn-div">
-                        <img className="organizer-side-bar-icon" src={events} />
-                        <p>My Events</p>
-                    </div>
+                    <Link to="/my-events">
+                        <div className={location.pathname === "/my-events" ? "organizer-side-bar-selected-btn" : "organizer-side-bar-btn-div"}>
+                            <img className="organizer-side-bar-icon" src={events} />
+                            <p>My Events</p>
+                        </div>
+                    </Link>
 
                     <div className="organizer-side-bar-btn-div">
                         <img className="organizer-side-bar-icon" src={profile} />

@@ -1,0 +1,114 @@
+.archived-event-main-div {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 15px;
+    border: 5px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: height 0.3s ease;
+    height: 500px;
+    cursor: pointer;
+    width: 250px;
+}
+
+.archived-event-main-div:hover {
+    height: 600px; 
+}
+
+.archived-event-img {
+    width: 100%;
+    height: 188px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    display: block;
+}
+
+.archived-event-title {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.archived-event-icon-detail-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.archived-event-icon {
+    height: 25px;
+}
+
+.archived-event-detail {
+    color: #7A7A7A;
+    font-weight: 600;
+}
+
+.archived-events-payment-div {
+    display: flex;
+    gap: 10px;
+}
+
+.paid,
+.free {
+    width: 87px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.paid {
+    background-color: #0062CD;
+}
+
+.free {
+    background-color: #5CC750;
+}
+
+.limited-seats-text {
+    color: red;
+    font-size: 14px;
+}
+
+.archived-events-days {
+    color: red;
+    margin-left: 40px;
+    font-weight: 700;
+}
+
+.archived-events-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+  font-family: "Playfair Display";
+  border-radius: 15px;
+  width: 215px;
+  padding: 12px 0;
+  margin-top: 25px;
+  margin-left: 17px;
+  color: black;
+  background-color: white;
+  border: 2px black solid;
+}
+
+.archived-events-btn:hover {
+    background-color: black;
+    color: white;
+    border: 2px black solid;
+}
+
+.archived-event-main-div:hover .archived-events-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}

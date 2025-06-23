@@ -8,7 +8,6 @@ import AuthRoute from './routes/auth_route';
 
 const Login = lazy(() => import("./core/public/login"));
 const Home = lazy(() => import("./core/public/home"));
-const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
 const RoleSelection = lazy(() => import("./core/public/role_selection"));
 const EventExplorerRegistration = lazy(() => import("./core/public/event_explorer_registration"));
 const EventOrganizerRegistration = lazy(() => import("./core/public/event_organizer_registration"));
@@ -16,9 +15,11 @@ const Search = lazy(() => import("./core/public/search"));
 const EventDetails = lazy(() => import("./core/public/event_details"));
 const Contact = lazy(() => import("./core/public/contact"));
 
+const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
 const EventExplorerProfile = lazy(() => import("./core/private/event_explorer/event_explorer_profile"));
 const MyBookings = lazy(() => import("./core/private/event_explorer/my_bookings"));
 const MyTickets = lazy(() => import("./core/private/event_explorer/my_tickets"));
+const MyEvents = lazy(() => import("./core/private/event_organizer/my_events"));
 
 const queryClient = new QueryClient();
 
@@ -143,6 +144,13 @@ function App() {
         <AuthRoute requiredRole="event explorer" element={<Suspense><MyTickets /></Suspense>} />
       )
     },
+
+     {
+      path: "/my-events",
+      element: (
+        <AuthRoute requiredRole="event organizer" element={<Suspense><MyEvents /></Suspense>} />
+      )
+     }
   ]
 
   const router = createBrowserRouter(routes);

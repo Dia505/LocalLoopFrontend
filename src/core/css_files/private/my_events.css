@@ -1,0 +1,99 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.my-events-main-window {
+    display: flex;
+}
+
+.my-events-main-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    padding-left: 4vw;
+    margin-top: 7vh;
+    padding-bottom: 7vh;
+}
+
+.my-events-title-create-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5vw;
+}
+
+.my-events-title {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.my-events-create-event-btn {
+    border: 1px solid black;
+    border-radius: 10px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 17px;
+    transition: background-color 0.3s ease-in-out 0s;
+    margin-left: 2vw;
+    height: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.my-events-create-event-btn:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.my-events-filter-div {
+    display: flex;
+    gap: 40px;
+}
+
+.my-events-filter-btn {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.my-events-filter-btn:hover {
+    text-decoration: underline;
+}
+
+.my-events-filter-btn-selected {
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.my-events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.no-events-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 15vw;
+}
+
+.no-events-img {
+    height: 50vh;
+}
+
+.no-event-text {
+    text-align: center;
+}
