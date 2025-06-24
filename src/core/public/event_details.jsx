@@ -41,6 +41,20 @@ function EventDetails() {
         setIsPlaying(true);
     };
 
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
+
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
@@ -73,7 +87,7 @@ function EventDetails() {
 
             const fetchOrganizerEvents = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:3000/api/event/event-organizer/${organizerId}`);
+                    const response = await axios.get(`http://localhost:3000/api/event/upcoming/event-organizer/${organizerId}`);
                     const otherEvents = response.data.filter(e => e._id !== event._id);
 
                     const shuffled = otherEvents.sort(() => 0.5 - Math.random());
@@ -207,9 +221,9 @@ function EventDetails() {
 
                     <div className="event-details-icon-detail-div">
                         <img className="event-details-icon" src={clockIcon} />
-                        <p className="event-details-detail">{event.endTime
-                            ? `${event.startTime} - ${event.endTime}`
-                            : `${event.startTime} onwards`}</p>
+                        <p className="event-details-detail">{event?.endTime
+                            ? `${formatTo12Hour(event?.startTime)} - ${formatTo12Hour(event?.endTime)}`
+                            : `${formatTo12Hour(event?.startTime)} onwards`}</p>
                     </div>
 
                     {event.isPaid ? (
@@ -286,7 +300,8 @@ function EventDetails() {
                             <p className="no-organizer-events-text">Looks like this is their only event for now</p>
                         </div>
                     ) : (
-                        organizerEvents.map((event) => (
+                        <div className="event-details-organizer-event-container">
+                            {organizerEvents.map((event) => (
                             <div onClick={() => navigate(`/event-details/${event._id}`)}>
                                 <SearchResult
                                     key={event._id}
@@ -302,7 +317,8 @@ function EventDetails() {
                                     totalSeats={event.totalSeats}
                                 />
                             </div>
-                        ))
+                            ))}
+                        </div>
                     )}
                 </div>
 

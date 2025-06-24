@@ -8,6 +8,20 @@ import "../css_files/search/search_result.css";
 function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats, eventId }) {
     const navigate = useNavigate();
 
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
+
     return (
         <>
             <div className={
@@ -32,8 +46,8 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
                         <div className="search-result-icon-detail-div">
                             <img className="search-result-icon" src={clockIcon} />
                             <p className="search-result-detail">{endTime
-                                ? `${startTime} - ${endTime}`
-                                : `${startTime} onwards`}</p>
+                                ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
+                                : `${formatTo12Hour(startTime)} onwards`}</p>
                         </div>
                     </div>
 

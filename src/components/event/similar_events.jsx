@@ -14,6 +14,20 @@ function SimilarEvents({ eventType, currentEventId }) {
     const navigate = useNavigate();
     const { authToken } = useAuth();
 
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
+
     useEffect(() => {
         if (!eventType) return;
 
@@ -68,9 +82,9 @@ function SimilarEvents({ eventType, currentEventId }) {
 
                             <div className="similar-event-icon-detail-div">
                                 <img className="similar-event-icon" src={clockIcon} />
-                                <p className="similar-event-detail">{event.endTime
-                                    ? `${event.startTime} - ${event.endTime}`
-                                    : `${event.startTime} onwards`}</p>
+                                <p className="similar-event-detail">{event?.endTime
+                                    ? `${formatTo12Hour(event?.startTime)} - ${formatTo12Hour(event?.endTime)}`
+                                    : `${formatTo12Hour(event?.startTime)} onwards`}</p>
                             </div>
 
                             <div className="similar-event-icon-detail-div">

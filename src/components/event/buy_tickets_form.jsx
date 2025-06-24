@@ -41,6 +41,20 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
     const increment = () => setTicketAmount((prev) => prev + 1);
     const decrement = () => setTicketAmount((prev) => (prev > 1 ? prev - 1 : 1));
 
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
+
     useEffect(() => {
         const fetchTicketDetails = async () => {
             try {
@@ -131,8 +145,8 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
                             <div className="buy-tickets-form-icon-detail-div">
                                 <img className="buy-tickets-form-icon" src={clock} />
                                 <p className="buy-tickets-form-detail">{endTime
-                                    ? `${startTime} - ${endTime}`
-                                    : `${startTime} onwards`}</p>
+                                ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
+                                : `${formatTo12Hour(startTime)} onwards`}</p>
                             </div>
                         </div>
                     </div>

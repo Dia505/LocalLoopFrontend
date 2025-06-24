@@ -4,6 +4,20 @@ import "../css_files/organizer_events/upcoming_event_card.css";
 function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats, _id }) {
     const navigate = useNavigate();
 
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
+
     return (
         <>
             <div className="org-upcoming-event-main-div">
@@ -18,8 +32,8 @@ function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue,
                 <div className="org-upcoming-event-icon-detail-div">
                     <img className="org-upcoming-event-icon" src="src\assets\grey_clock.png" />
                     <p className="org-upcoming-event-detail">{endTime
-                        ? `${startTime} - ${endTime}`
-                        : `${startTime} onwards`}</p>
+                        ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
+                        : `${formatTo12Hour(startTime)} onwards`}</p>
                 </div>
 
                 <div className="org-upcoming-event-icon-detail-div">

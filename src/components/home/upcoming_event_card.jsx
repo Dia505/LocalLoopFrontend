@@ -10,6 +10,20 @@ function UpcomingEventCard() {
     const { authToken } = useAuth();
     const navigate = useNavigate();
 
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
+
     useEffect(() => {
         const fetchUpcomingEvents = async () => {
             try {
@@ -48,9 +62,9 @@ function UpcomingEventCard() {
 
                         <div className="upcoming-event-icon-detail-div">
                             <img className="upcoming-event-icon" src="src\assets\grey_clock.png" />
-                            <p className="upcoming-event-detail">{event.endTime
-                                ? `${event.startTime} - ${event.endTime}`
-                                : `${event.startTime} onwards`}</p>
+                            <p className="upcoming-event-detail">{event?.endTime
+                                ? `${formatTo12Hour(event?.startTime)} - ${formatTo12Hour(event?.endTime)}`
+                                : `${formatTo12Hour(event?.startTime)} onwards`}</p>
                         </div>
 
                         <div className="upcoming-event-icon-detail-div">

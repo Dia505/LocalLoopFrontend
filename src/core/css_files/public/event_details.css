@@ -141,6 +141,12 @@ body {
     font-size: 20px;
 }
 
+.event-details-organizer-event-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .event-details-similar-events-div {
     padding-left: 200px;
     padding-right: 200px;

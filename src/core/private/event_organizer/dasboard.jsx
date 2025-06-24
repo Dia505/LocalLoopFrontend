@@ -121,7 +121,7 @@ function Dashboard() {
                             <p className="dashboard-organizer-name">{organizer?.fullName}</p>
                         </div>
 
-                        <button className="dashboard-create-event-btn" onClick={navigate(`/my-events`, {
+                        <button className="dashboard-create-event-btn" onClick={() => navigate(`/my-events`, {
                             state: { openCreateEventForm: true },
                         })}>Create event +</button>
                     </div>

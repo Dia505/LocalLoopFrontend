@@ -4,6 +4,20 @@ import locationIcon from "../../assets/grey_location.png";
 import "../css_files/event_explorer/my_booking_card.css";
 
 function MyBookingCard({ eventPhoto, title, venue, city, date, startTime, endTime, seats }) {
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
+
     return (
         <>
             <div className="my-booking-card-main-div">
@@ -26,8 +40,8 @@ function MyBookingCard({ eventPhoto, title, venue, city, date, startTime, endTim
                         <div className="my-booking-card-icon-detail-div">
                             <img className="my-booking-card-icon" src={clockIcon} />
                             <p className="my-booking-card-detail">{endTime
-                                ? `${startTime} - ${endTime}`
-                                : `${startTime} onwards`}</p>
+                                ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
+                                : `${formatTo12Hour(startTime)} onwards`}</p>
                         </div>
                     </div>
 

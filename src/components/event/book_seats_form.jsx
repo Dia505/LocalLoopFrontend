@@ -5,8 +5,8 @@ import { useAuth } from "../../context/auth_context";
 
 import calendar from "../../assets/calendar.png";
 import clock from "../../assets/clock.png";
-import location from "../../assets/location.png";
 import loading from "../../assets/loading.gif";
+import location from "../../assets/location.png";
 import "../css_files/event/book_seats_form.css";
 
 function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTime, endTime, fullName, mobileNumber, email, closeForm }) {
@@ -17,6 +17,20 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
 
     const increment = () => setSeats((prev) => prev + 1);
     const decrement = () => setSeats((prev) => (prev > 1 ? prev - 1 : 1));
+
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        }).toLowerCase();
+    };
 
     const onSubmit = async (data) => {
         setIsLoading(true);
@@ -85,8 +99,8 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                                 <div className="booking-form-icon-detail-div">
                                     <img className="booking-form-icon" src={clock} />
                                     <p className="booking-form-detail">{endTime
-                                        ? `${startTime} - ${endTime}`
-                                        : `${startTime} onwards`}</p>
+                                        ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
+                                        : `${formatTo12Hour(startTime)} onwards`}</p>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +154,7 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
                             </div>
 
                             {isLoading
-                                ? <img src={loading} className="book-form-loading"/>
+                                ? <img src={loading} className="book-form-loading" />
                                 : <button type="submit" className="booking-form-button">Book seats</button>
                             }
                         </div>
