@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useState } from "react";
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from '../../context/auth_context';
@@ -29,7 +30,7 @@ const createEventFormSchema = yup.object().shape({
     endTime: yup.string(),
     eventPhoto: yup
         .mixed()
-        .required("*Please upload an image"),
+        .required("*Please upload an image")
 });
 
 function CreateEventForm({ closeForm }) {
@@ -43,15 +44,16 @@ function CreateEventForm({ closeForm }) {
     const [priceType, setPriceType] = useState("");
     const [limitedSeats, setLimitedSeats] = useState(false);
 
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         formState: { errors },
-        setValue,
-        watch
+        setValue
     } = useForm({
         resolver: yupResolver(createEventFormSchema),
-        mode: "all",
+        mode: "all"
     });
 
     const handleImageChange = (e) => {
@@ -88,16 +90,20 @@ function CreateEventForm({ closeForm }) {
         try {
             const formData = new FormData();
 
-            Object.entries(data).forEach(([key, value]) => {
-                if (key !== "priceType") {
-                    formData.append(key, value);
-                }
-            });
-
-            if (selectedFile) formData.append("eventPhoto", imageFile);
-            if (videoFile) formData.append("eventVideo", videoFile);
-
+            formData.append("title", data.title);
+            formData.append("subtitle", data.subtitle);
+            formData.append("eventType", data.eventType);
+            formData.append("venue", data.venue);
+            formData.append("address", data.address);
+            formData.append("city", data.city);
+            formData.append("date", new Date(data.date).toISOString());
+            formData.append("startTime", data.startTime);
+            if (data.endTime) formData.append("endTime", data.endTime);
+            formData.append("totalSeats", limitedSeats ? data.totalSeats || "0" : "0");
             formData.append("isPaid", priceType === "Paid" ? "true" : "false");
+
+            if (selectedFile) formData.append("eventPhoto", selectedFile);
+            if (videoFile) formData.append("eventVideo", videoFile);
 
             const response = await axios.post("http://localhost:3000/api/event", formData, {
                 headers: {
@@ -115,8 +121,12 @@ function CreateEventForm({ closeForm }) {
                 draggable: true,
                 theme: "colored",
             });
+            
+            const eventId = response.data._id;
             closeForm();
+            navigate(`/view-event/${eventId}`);
         } catch (err) {
+            console.log("Failed to create event: ", err);
             toast.error("Failed to create the event. Please try again.", {
                 position: "top-center",
                 autoClose: 3000,

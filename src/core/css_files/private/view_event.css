@@ -1,0 +1,99 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.view-event-main-window {
+    display: flex;
+}
+
+.view-event-main-div {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    margin-left: 250px;
+    gap: 5vh;
+}
+
+.view-event-img {
+    height: 55vh;
+    width: 30vw;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    margin-left: 25vw;
+}
+
+.view-event-title-edit-div {
+    display: flex;
+    gap: 1vw;
+}
+
+.view-event-title {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.view-event-edit-icon {
+    height: 35px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin-left: 19vw;
+}
+
+.custom-video {
+    width: 100%;
+    height: 50vh;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.play-button {
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.view-event-details-div {
+    display: flex;
+    gap: 10vw;
+    padding-left: 30px;
+}
+
+.view-event-details {
+    display: flex;
+    flex-direction: column ;
+}
+
+.view-event-detail-title {
+    color: #666666;
+    font-size: 18px;
+}
+
+.view-event-subtitle-div {
+    width: 400px;
+}

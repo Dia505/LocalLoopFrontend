@@ -109,9 +109,8 @@ body {
 }
 
 .my-events-form-modal {
-    margin-top: -70vh;
-    margin-left: 30vw;
-    transform: translate(-50%, -50%);
+    margin-top: -140vh;
+    margin-left: 10vw;
     z-index: 1000;
     background: white;
     padding: 2rem;

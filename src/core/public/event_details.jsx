@@ -239,7 +239,6 @@ function EventDetails() {
                             src={`http://localhost:3000/event-videos/${event.eventVideo[0]}`}
                             className="custom-video"
                             controls={isPlaying}
-                            poster="your-thumbnail.jpg"
                         />
                         {!isPlaying && (
                             <div className="video-overlay" onClick={handleVideoPlay}>
