@@ -87,7 +87,7 @@ function EventExplorerRegistration() {
                 pauseOnHover: false,
                 draggable: true,
                 theme: "colored",
-            })
+            });
         },
     });
 

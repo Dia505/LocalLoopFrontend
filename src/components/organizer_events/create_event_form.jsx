@@ -1,7 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 import { useState } from "react";
 import { useForm } from 'react-hook-form';
+import { toast } from "react-toastify";
 import * as yup from "yup";
+import { useAuth } from '../../context/auth_context';
 
 import createEventImg from "../../assets/create_event_img.jpg";
 import "../css_files/organizer_events/create_event_form.css";
@@ -24,23 +27,28 @@ const createEventFormSchema = yup.object().shape({
         .required("*required"),
     startTime: yup.string().required("*required"),
     endTime: yup.string(),
-    isPaid: yup.boolean().required("*required"),
+    eventPhoto: yup
+        .mixed()
+        .required("*Please upload an image"),
 });
 
 function CreateEventForm({ closeForm }) {
+    const { authToken } = useAuth();
+
     const [previewImage, setPreviewImage] = useState(createEventImg);
     const [selectedFile, setSelectedFile] = useState(null);
     const [subtitleLength, setSubtitleLength] = useState(0);
     const [videoFile, setVideoFile] = useState(null);
     const [videoPreview, setVideoPreview] = useState("");
     const [priceType, setPriceType] = useState("");
+    const [limitedSeats, setLimitedSeats] = useState(false);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-        setError,
         setValue,
+        watch
     } = useForm({
         resolver: yupResolver(createEventFormSchema),
         mode: "all",
@@ -68,13 +76,63 @@ function CreateEventForm({ closeForm }) {
         setVideoPreview("");
     };
 
-    const handleCheckboxChange = (value) => {
+    const handleCheckboxChange = (e) => {
+        setLimitedSeats(e.target.checked);
+    };
+
+    const handlePriceTypeChange = (value) => {
         setPriceType((prev) => (prev === value ? "" : value));
     };
 
+    const onSubmit = async (data) => {
+        try {
+            const formData = new FormData();
+
+            Object.entries(data).forEach(([key, value]) => {
+                if (key !== "priceType") {
+                    formData.append(key, value);
+                }
+            });
+
+            if (selectedFile) formData.append("eventPhoto", imageFile);
+            if (videoFile) formData.append("eventVideo", videoFile);
+
+            formData.append("isPaid", priceType === "Paid" ? "true" : "false");
+
+            const response = await axios.post("http://localhost:3000/api/event", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${authToken}`
+                }
+            });
+
+            toast.success("Event created successfully!", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                theme: "colored",
+            });
+            closeForm();
+        } catch (err) {
+            toast.error("Failed to create the event. Please try again.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                theme: "colored",
+            });
+        }
+    };
+
+
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="create-event-form-main-div">
                     <p className="create-event-form-title">Create event</p>
 
@@ -87,7 +145,10 @@ function CreateEventForm({ closeForm }) {
                                 accept="image/*"
                                 id="createEventImgInput"
                                 className="create-event-form-hidden-img-input"
-                                onChange={handleImageChange}
+                                onChange={(e) => {
+                                    handleImageChange(e);
+                                    setValue("eventPhoto", e.target.files[0], { shouldValidate: true });
+                                }}
                             />
 
                             <button
@@ -99,6 +160,7 @@ function CreateEventForm({ closeForm }) {
                             >
                                 Upload picture
                             </button>
+                            {errors.eventPhoto && <p className="error-message">{errors.eventPhoto.message}</p>}
                         </div>
 
                         <div className="create-event-form-input-div">
@@ -237,7 +299,6 @@ function CreateEventForm({ closeForm }) {
                             <div className="video-upload-wrapper">
                                 {!videoFile ? (
                                     <div className="add-video-btn" onClick={() => document.getElementById("videoInput").click()}>
-                                        {/* <FaPlay className="play-icon" /> */}
                                         <span>Add video</span>
                                         <input
                                             type="file"
@@ -251,34 +312,70 @@ function CreateEventForm({ closeForm }) {
                                     <div className="video-preview-container">
                                         <video className="video-preview" controls src={videoPreview} />
                                         <button className="remove-video-btn" onClick={handleRemoveVideo}>
-                                            {/* <FaTimes /> */}X
+                                            X
                                         </button>
                                     </div>
                                 )}
                             </div>
 
                             <div className="create-event-form-price-wrapper">
-                                <label className="checkbox-label-container">
+                                <label className="custom-radio-label">
                                     <input
-                                        className="price-checkbox-input"
-                                        type="checkbox"
+                                        type="radio"
+                                        value="Free"
                                         checked={priceType === 'Free'}
-                                        onChange={() => handleCheckboxChange('Free')}
+                                        onChange={() => handlePriceTypeChange('Free')}
                                     />
-                                    <span className="custom-checkbox-visual"></span>
-                                    <p className="checkbox-label-text">Free</p>
+                                    <span className="custom-radio-visual"></span>
+                                    <p className="radio-label-text">Free</p>
                                 </label>
 
+                                <label className="custom-radio-label">
+                                    <input
+                                        type="radio"
+                                        value="Paid"
+                                        checked={priceType === 'Paid'}
+                                        onChange={() => handlePriceTypeChange('Paid')}
+                                    />
+                                    <span className="custom-radio-visual"></span>
+                                    <p className="radio-label-text">Paid</p>
+                                </label>
+                            </div>
+
+                            {priceType === "Free" && (
                                 <label className="checkbox-label-container">
                                     <input
-                                        className="price-checkbox-input"
+                                        className="limited-seating-checkbox-input"
                                         type="checkbox"
-                                        checked={priceType === 'Paid'}
-                                        onChange={() => handleCheckboxChange('Paid')}
+                                        onChange={handleCheckboxChange}
                                     />
                                     <span className="custom-checkbox-visual"></span>
-                                    <p className="checkbox-label-text">Paid</p>
+                                    <p className="checkbox-label-text">Limited seating?</p>
                                 </label>
+                            )}
+
+                            {limitedSeats === true && (
+                                <div>
+                                    <input
+                                        className={errors.totalSeats ? "input-error" : ""}
+                                        type='text'
+                                        name='totalSeats'
+                                        {...register("totalSeats")}
+                                        placeholder='Total number of seats'
+                                    />
+                                    {errors.totalSeats && <p className="error-message">{errors.totalSeats.message}</p>}
+                                </div>
+                            )}
+
+                            <div className='create-event-form-btns-div'>
+                                <button type='button' className='create-event-form-cancel-btn' onClick={closeForm}>Cancel</button>
+                                {priceType === "Paid" ? (
+                                    <button className='create-event-form-update-btn'>Ticket details →</button>
+                                ) :
+                                    (
+                                        <button type='submit' className='create-event-form-update-btn'>Create event</button>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

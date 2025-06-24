@@ -121,7 +121,7 @@ function MyEvents() {
                         <>
                             <div className="my-events-overlay" onClick={() => setShowCreateEventForm(false)}></div>
                             <div className="my-events-form-modal">
-                                <CreateEventForm/>
+                                <CreateEventForm closeForm={() => setShowCreateEventForm(false)}/>
                             </div>
                         </>
                         
