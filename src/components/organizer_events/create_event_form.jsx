@@ -33,7 +33,7 @@ const createEventFormSchema = yup.object().shape({
         .required("*Please upload an image")
 });
 
-function CreateEventForm({ closeForm }) {
+function CreateEventForm({ closeForm, defaultValues = {}, onNext }) {
     const { authToken } = useAuth();
 
     const [previewImage, setPreviewImage] = useState(createEventImg);
@@ -52,6 +52,7 @@ function CreateEventForm({ closeForm }) {
         formState: { errors },
         setValue
     } = useForm({
+        defaultValues,
         resolver: yupResolver(createEventFormSchema),
         mode: "all"
     });
@@ -86,7 +87,7 @@ function CreateEventForm({ closeForm }) {
         setPriceType((prev) => (prev === value ? "" : value));
     };
 
-    const onSubmit = async (data) => {
+    const submitFreeEvent = async (data) => {
         try {
             const formData = new FormData();
 
@@ -121,7 +122,7 @@ function CreateEventForm({ closeForm }) {
                 draggable: true,
                 theme: "colored",
             });
-            
+
             const eventId = response.data._id;
             closeForm();
             navigate(`/view-event/${eventId}`);
@@ -139,10 +140,25 @@ function CreateEventForm({ closeForm }) {
         }
     };
 
+    const onSubmit = (data) => {
+        if (priceType !== "Paid") {
+            submitFreeEvent(data);
+        } else {
+            onNext(
+                {
+                    ...data,
+                    priceType,
+                    limitedSeats
+                },
+                selectedFile,
+                videoFile
+            );
+        }
+    };
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>
                 <div className="create-event-form-main-div">
                     <p className="create-event-form-title">Create event</p>
 
@@ -379,13 +395,13 @@ function CreateEventForm({ closeForm }) {
 
                             <div className='create-event-form-btns-div'>
                                 <button type='button' className='create-event-form-cancel-btn' onClick={closeForm}>Cancel</button>
-                                {priceType === "Paid" ? (
-                                    <button className='create-event-form-update-btn'>Ticket details →</button>
-                                ) :
-                                    (
-                                        <button type='submit' className='create-event-form-update-btn'>Create event</button>
-                                    )
-                                }
+                                <button
+                                    type="button"
+                                    className="create-event-form-update-btn"
+                                    onClick={handleSubmit(onSubmit)}
+                                >
+                                    {priceType === "Paid" ? "Ticket details →" : "Create event"}
+                                </button>
                             </div>
                         </div>
                     </div>

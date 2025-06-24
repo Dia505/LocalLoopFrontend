@@ -145,25 +145,32 @@ function ViewEvent() {
                     </div>
 
                     {tickets.length > 0 && (
-                        <div className="view-event-title-edit-div">
-                            <p className="view-event-title">Ticket details</p>
-                            <img src={editIcon} className="view-event-edit-icon" />
+                        <div>
+                            <div className="view-event-title-edit-div">
+                                <p className="view-event-title">Ticket details</p>
+                                <img src={editIcon} className="view-event-edit-icon" />
+                            </div>
 
-                            {tickets.map((event, index) => (
-                                <div className="view-event-ticket-details-div" key={index}>
-                                    <div className="view-event-ticket-detail-container">
-                                        <p className="view-event-ticket-type">{index + 1}. {event.type}</p>
-                                        <p><span className="view-event-ticket-topic">Price:</span> Rs. {event.price}</p>
-                                        <div className="view-event-ticket-quantity-icon-div">
-                                            <p><span className="view-event-ticket-topic">Total tickets:</span> {event.quantity}</p>
-                                            <img src={ticketIcon} className="view-event-ticket-icon" />
+                            <div className="view-event-ticket-details-div">
+                                {tickets.map((event, index) => (
+                                    <div className="view-event-ticket-details-div" key={index}>
+                                        <div className="view-event-ticket-detail-container">
+                                            <p className="view-event-ticket-type">{index + 1}. {event.ticketType}</p>
+                                            <p><span className="view-event-ticket-topic">Price:</span> Rs. {event.ticketPrice}</p>
+                                            <div className="view-event-ticket-quantity-icon-div">
+                                                <p><span className="view-event-ticket-topic">Total tickets:</span> {event.ticketQuantity}</p>
+                                                <img src={ticketIcon} className="view-event-ticket-icon" />
+                                            </div>
+                                            <p><span className="view-event-ticket-topic">Sold:</span> {event.sold}</p>
                                         </div>
-                                        <p><span className="view-event-ticket-topic">Sold:</span> {event.sold}</p>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+
                         </div>
                     )}
+
+                    <button className="view-event-delete-btn">Delete event</button>
                 </div>
             </div>
         </>

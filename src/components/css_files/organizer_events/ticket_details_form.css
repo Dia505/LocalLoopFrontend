@@ -1,0 +1,138 @@
+input {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    height: 28px;
+    width: 300px;
+    color: black;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+.input-error {
+    border-color: red;
+}
+
+.input-error:focus {
+    border-width: 2px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+input:focus {
+    border-width: 2px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.ticket-details-form-main-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.ticket-details-form-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.ticket-details-form-input-div {
+    display: flex;
+    gap: 20px;
+}
+
+.ticket-details-form-input-label {
+    color: #666666;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.ticket-details-form-input {
+  width: 130px;
+}
+
+.ticket-details-form-input-error {
+  border-color: red;
+  width: 130px;
+}
+
+.ticket-details-form-divider {
+    height: 1px;
+    width: 1;
+    background-color: black;
+    margin-top: 3vh;
+}
+
+.ticket-details-form-add-btn-div {
+    margin-top: 25px;
+    margin-left: 17vw;
+}
+
+.ticket-details-form-add-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px black solid;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.ticket-details-form-add-icon {
+    position: absolute;
+    font-size: 28px;
+    margin-left: 11px;
+    margin-top: -1px;
+}
+
+.ticket-details-form-btns-div {
+    display: flex;
+    gap: 15px;
+    margin-top: 3vh;
+}
+
+.ticket-details-form-cancel-btn {
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 10vw;
+}
+
+.ticket-details-form-create-btn {
+    background-color: black;
+    border-radius: 15px;
+    color: white;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 10vw;
+}
+
+.ticket-remove-btn {
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+    border: 1px solid black;
+    height: 50px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 4vh;
+}

@@ -86,7 +86,7 @@ body {
 
 .view-event-details {
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
 }
 
 .view-event-detail-title {
@@ -141,4 +141,31 @@ body {
 
 .view-event-ticket-icon {
     height: 20px;
+}
+
+.view-event-ticket-details-div {
+    display: flex;
+    gap: 2vw;
+    margin-top: 2vh;
+}
+
+.view-event-delete-btn {
+    transition: background-color 0.3s ease;
+    font-family: "Playfair Display";
+    border-radius: 15px;
+    width: 215px;
+    padding: 12px 0;
+    margin-top: 25px;
+    margin-left: 40px;
+    color: black;
+    font-weight: 600;
+    background-color: transparent;
+    border: 2px red solid;
+    margin-left: 30vw;
+}
+
+.view-event-delete-btn:hover {
+    background-color: black;
+    color: red;
+    border: 2px black solid;
 }

@@ -9,7 +9,7 @@ import OrganizerSideBar from "../../../components/navigation/organizer_side_bar"
 import ArchivedEventCard from "../../../components/organizer_events/archived_event_card";
 import UpcomingEventCard from "../../../components/organizer_events/upcoming_event_card";
 import OrganizerFooter from "../../../components/organizer_footer";
-import CreateEventForm from "../../../components/organizer_events/create_event_form";
+import EventCreationWrapper from "../../../components/organizer_events/event_creation_wrapper";
 import "../../css_files/private/my_events.css";
 
 function MyEvents() {
@@ -132,7 +132,7 @@ function MyEvents() {
                         <>
                             <div className="my-events-overlay" onClick={() => setShowCreateEventForm(false)}></div>
                             <div className="my-events-form-modal">
-                                <CreateEventForm closeForm={() => setShowCreateEventForm(false)}/>
+                                <EventCreationWrapper closeForm={() => setShowCreateEventForm(false)}/>
                             </div>
                         </>
                         
