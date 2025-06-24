@@ -2,9 +2,10 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../context/auth_context";
+import { useNavigate } from "react-router-dom";
 
-import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
 import UpcomingEventsSlideshow from "../../../components/dashboard/upcoming_events_slideshow";
+import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
 import OrganizerFooter from "../../../components/organizer_footer";
 import "../../css_files/private/dashboard.css";
 
@@ -17,6 +18,8 @@ function Dashboard() {
 
     const decoded = jwtDecode(authToken);
     const organizerId = decoded._id || decoded.id;
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchOrganizerDetails = async () => {
@@ -118,7 +121,9 @@ function Dashboard() {
                             <p className="dashboard-organizer-name">{organizer?.fullName}</p>
                         </div>
 
-                        <button className="dashboard-create-event-btn">Create event +</button>
+                        <button className="dashboard-create-event-btn" onClick={navigate(`/my-events`, {
+                            state: { openCreateEventForm: true },
+                        })}>Create event +</button>
                     </div>
 
                     <div className="dashboard-insights-div">
@@ -136,9 +141,9 @@ function Dashboard() {
                         </div>
                     </div>
 
-                    <UpcomingEventsSlideshow/>
+                    <UpcomingEventsSlideshow />
 
-                    <OrganizerFooter/>
+                    <OrganizerFooter />
                 </div>
             </div>
         </>

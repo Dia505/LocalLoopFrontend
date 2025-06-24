@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "../css_files/organizer_events/upcoming_event_card.css";
 
-function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats }) {
+function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats, _id }) {
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="org-upcoming-event-main-div">
@@ -32,7 +35,7 @@ function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue,
                 </div>
 
                 <div className="org-upcoming-events-btns-div">
-                    <button className="org-upcoming-events-btn">Details</button>
+                    <button className="org-upcoming-events-btn" onClick={() => navigate(`/view-event/${_id}`)}>Details</button>
                     <button className="org-upcoming-events-btn">Insights</button>
                 </div>
             </div>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../context/auth_context";
+import { useLocation } from "react-router-dom";
 
 import noEvents from "../../../assets/no_events.png";
 import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
@@ -20,6 +21,8 @@ function MyEvents() {
 
     const decoded = jwtDecode(authToken);
     const organizerId = decoded._id || decoded.id;
+
+    const location = useLocation();
 
     useEffect(() => {
         const fetchUpcomingEvents = async () => {
@@ -40,6 +43,13 @@ function MyEvents() {
 
         fetchUpcomingEvents();
     }, [organizerId]);
+
+    useEffect(() => {
+        if (location.state?.openCreateEventForm) {
+            setShowCreateEventForm(true);
+            window.history.replaceState({}, '');
+        }
+    }, [location.key]);
 
     return (
         <>
@@ -84,6 +94,7 @@ function MyEvents() {
                                         city={event.city}
                                         isPaid={event.isPaid}
                                         totalSeats={event.totalSeats}
+                                        _id={event._id}
                                     />
                                 ))
                             ) :

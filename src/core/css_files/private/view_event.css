@@ -97,3 +97,48 @@ body {
 .view-event-subtitle-div {
     width: 400px;
 }
+
+.view-event-ticket-details-div {
+    display: flex;
+    gap: 20px;
+}
+
+.view-event-ticket-detail-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 80px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    gap: 10px;
+}
+
+.view-event-ticket-detail-container p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.view-event-ticket-type {
+    font-size: 18px;
+}
+
+.view-event-ticket-topic {
+    color: #666666;
+}
+
+.view-event-ticket-quantity-icon-div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.view-event-ticket-icon {
+    height: 20px;
+}

@@ -62,6 +62,7 @@ function UpcomingEventsSlideshow() {
                                     city={event.city}
                                     isPaid={event.isPaid}
                                     totalSeats={event.totalSeats}
+                                    _id={event._id}
                                 />
                             ))}
                         </div>

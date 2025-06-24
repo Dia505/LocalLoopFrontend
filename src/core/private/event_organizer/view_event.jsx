@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import editIcon from "../../../assets/edit.png";
+import ticketIcon from "../../../assets/ticket.png";
 import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
 import "../../css_files/private/view_event.css";
 
@@ -16,6 +17,20 @@ function ViewEvent() {
     const handleVideoPlay = () => {
         videoRef.current.play();
         setIsPlaying(true);
+    };
+
+    const formatTo12Hour = (timeStr) => {
+        if (!timeStr) return "";
+
+        const [hour, minute] = timeStr.split(":");
+        const date = new Date();
+        date.setHours(+hour, +minute);
+
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        });
     };
 
     useEffect(() => {
@@ -116,8 +131,8 @@ function ViewEvent() {
                             <div>
                                 <p className="view-event-detail-title">Time</p>
                                 <p>{event?.endTime
-                                    ? `${event?.startTime} - ${event?.endTime}`
-                                    : `${event?.startTime} onwards`}</p>
+                                    ? `${formatTo12Hour(event?.startTime)} - ${formatTo12Hour(event?.endTime)}`
+                                    : `${formatTo12Hour(event?.startTime)} onwards`}</p>
                             </div>
 
                             {event?.totalSeats && (
@@ -129,19 +144,24 @@ function ViewEvent() {
                         </div>
                     </div>
 
-                    <div className="view-event-title-edit-div">
-                        <p className="view-event-title">Ticket details</p>
-                        <img src={editIcon} className="view-event-edit-icon" />
-                    </div>
-
-                    <div>
-                        
-                    </div>
-
                     {tickets.length > 0 && (
                         <div className="view-event-title-edit-div">
                             <p className="view-event-title">Ticket details</p>
                             <img src={editIcon} className="view-event-edit-icon" />
+
+                            {tickets.map((event, index) => (
+                                <div className="view-event-ticket-details-div" key={index}>
+                                    <div className="view-event-ticket-detail-container">
+                                        <p className="view-event-ticket-type">{index + 1}. {event.type}</p>
+                                        <p><span className="view-event-ticket-topic">Price:</span> Rs. {event.price}</p>
+                                        <div className="view-event-ticket-quantity-icon-div">
+                                            <p><span className="view-event-ticket-topic">Total tickets:</span> {event.quantity}</p>
+                                            <img src={ticketIcon} className="view-event-ticket-icon" />
+                                        </div>
+                                        <p><span className="view-event-ticket-topic">Sold:</span> {event.sold}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>
