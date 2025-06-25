@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../../context/auth_context";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import editIcon from "../../../assets/edit.png";
 import ticketIcon from "../../../assets/ticket.png";
 import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
 import "../../css_files/private/view_event.css";
+import deleteIcon from "../../../assets/delete.png";
 
 function ViewEvent() {
     const { _id } = useParams();
@@ -13,6 +17,17 @@ function ViewEvent() {
     const [tickets, setTickets] = useState([]);
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [showDeleteEventPopUp, setShowDeleteEventPopUp] = useState(false);
+    const { authToken } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (showDeleteEventPopUp) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [showDeleteEventPopUp]);
 
     const handleVideoPlay = () => {
         videoRef.current.play();
@@ -58,6 +73,24 @@ function ViewEvent() {
             fetchTicketDetails();
         }
     }, [_id, event]);
+
+    const handleDeleteEvent = async () => {
+    try {
+        await axios.delete(`http://localhost:3000/api/event/${event._id}`, {
+            headers: {
+                Authorization: `Bearer ${authToken}`,
+            }
+        });
+
+        toast.success("Event deleted successfully!");
+        setShowDeleteEventPopUp(false);
+        navigate("/my-events"); 
+
+    } catch (error) {
+        console.error("Failed to delete event:", error);
+        toast.error("Failed to delete event. Try again.");
+    }
+};
 
     return (
         <>
@@ -170,7 +203,28 @@ function ViewEvent() {
                         </div>
                     )}
 
-                    <button className="view-event-delete-btn">Delete event</button>
+                    <button className="view-event-delete-btn" onClick={() => setShowDeleteEventPopUp(true)}>Delete event</button>
+
+                    {showDeleteEventPopUp && (
+                        <>
+                            <div className="view-event-overlay" onClick={() => setShowDeleteEventPopUp(false)}></div>
+                            <div className="view-event-form-modal">
+                                <div className="view-event-delete-pop-up">
+                                    <img src={deleteIcon} className="view-event-delete-icon"/>
+                                    <p className="view-event-delete-title">Delete Event</p>
+                                    
+                                    <div className="view-event-subtitle-div">
+                                        <p>You’re going to delete “{event?.title}” event. Are you sure? </p>
+                                    </div>
+
+                                    <div className="view-event-delete-pop-up-btns">
+                                        <button type='button' className='delete-pop-up-cancel-btn' onClick={() => setShowDeleteEventPopUp(false)}>No, keep it</button>
+                                        <button type='button' className='delete-pop-up-delete-btn' onClick={handleDeleteEvent}>Yes, delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </>

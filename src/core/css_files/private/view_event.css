@@ -169,3 +169,85 @@ body {
     color: red;
     border: 2px black solid;
 }
+
+.view-event-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.67);
+    z-index: 999;
+}
+
+.view-event-form-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    border: 2px black solid;
+    border-radius: 20px;
+    padding-bottom: 50px;
+}
+
+.view-event-delete-pop-up {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+    align-items: center;
+    gap: 10px;
+}
+
+.view-event-delete-icon {
+    height: 7vh;
+}
+
+.view-event-delete-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.view-event-subtitle-div {
+    width: 300px;
+}
+
+.view-event-subtitle-div p {
+    text-align: center;
+    font-weight: lighter;
+}
+
+.view-event-delete-pop-up-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.delete-pop-up-cancel-btn {
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 10vw;
+}
+
+.delete-pop-up-delete-btn {
+    background-color: black;
+    border-radius: 15px;
+    color: white;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 10vw;
+}
