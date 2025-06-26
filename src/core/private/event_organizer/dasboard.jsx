@@ -1,11 +1,12 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../../context/auth_context";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/auth_context";
 
 import UpcomingEventsSlideshow from "../../../components/dashboard/upcoming_events_slideshow";
 import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
+import Insights from "../../../components/organizer_events/insights";
 import OrganizerFooter from "../../../components/organizer_footer";
 import "../../css_files/private/dashboard.css";
 
@@ -15,6 +16,13 @@ function Dashboard() {
     const [activeEventsCount, setActiveEventsCount] = useState(0);
     const [totalActiveEventTicketsCount, setTotalActiveEventTicketsCount] = useState(0);
     const [totalActiveEventBookingCount, setTotalActiveEventBookingCount] = useState(0);
+    const [showInsights, setShowInsights] = useState(false);
+    const [selectedEvent, setSelectedEvent] = useState(null);
+
+    const handleInsightsClick = (event) => {
+        setSelectedEvent(event);
+        setShowInsights(true);
+    };
 
     const decoded = jwtDecode(authToken);
     const organizerId = decoded._id || decoded.id;
@@ -141,9 +149,18 @@ function Dashboard() {
                         </div>
                     </div>
 
-                    <UpcomingEventsSlideshow />
+                    <UpcomingEventsSlideshow onInsightsClick={handleInsightsClick} />
 
                     <OrganizerFooter />
+
+                    {showInsights && (
+                        <>
+                            <div className="dashboard-overlay" onClick={() => setShowInsights(false)}></div>
+                            <div className="dashboard-form-modal">
+                                <Insights event={selectedEvent} closeForm={() => setShowInsights(false)} />
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </>

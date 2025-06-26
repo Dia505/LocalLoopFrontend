@@ -7,7 +7,7 @@ import UpcomingEventCard from "../organizer_events/upcoming_event_card";
 import noUpcomingevents from "../../assets/no_upcoming_events.png";
 import "../css_files/dashboard/upcoming_events_slideshow.css";
 
-function UpcomingEventsSlideshow() {
+function UpcomingEventsSlideshow({ onInsightsClick }) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [upcomingEvents, setUpcomingEvents] = useState([]);
     const { authToken } = useAuth();
@@ -63,6 +63,7 @@ function UpcomingEventsSlideshow() {
                                     isPaid={event.isPaid}
                                     totalSeats={event.totalSeats}
                                     _id={event._id}
+                                    onInsightsClick={() => onInsightsClick(event)}
                                 />
                             ))}
                         </div>

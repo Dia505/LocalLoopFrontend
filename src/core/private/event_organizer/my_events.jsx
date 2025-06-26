@@ -1,15 +1,16 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../../context/auth_context";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../../context/auth_context";
 
 import noEvents from "../../../assets/no_events.png";
 import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
 import ArchivedEventCard from "../../../components/organizer_events/archived_event_card";
+import EventCreationWrapper from "../../../components/organizer_events/event_creation_wrapper";
 import UpcomingEventCard from "../../../components/organizer_events/upcoming_event_card";
 import OrganizerFooter from "../../../components/organizer_footer";
-import EventCreationWrapper from "../../../components/organizer_events/event_creation_wrapper";
+import Insights from "../../../components/organizer_events/insights";
 import "../../css_files/private/my_events.css";
 
 function MyEvents() {
@@ -18,6 +19,13 @@ function MyEvents() {
     const { authToken } = useAuth();
     const [selectedFilter, setSelectedFilter] = useState("upcoming");
     const [showCreateEventForm, setShowCreateEventForm] = useState(false);
+    const [showInsights, setShowInsights] = useState(false);
+    const [selectedEventForInsights, setSelectedEventForInsights] = useState(null);
+
+    const handleInsightsClick = (event) => {
+        setSelectedEventForInsights(event);
+        setShowInsights(true);
+    };
 
     const decoded = jwtDecode(authToken);
     const organizerId = decoded._id || decoded.id;
@@ -95,6 +103,7 @@ function MyEvents() {
                                         isPaid={event.isPaid}
                                         totalSeats={event.totalSeats}
                                         _id={event._id}
+                                        onInsightsClick={() => handleInsightsClick(event)}
                                     />
                                 ))
                             ) :
@@ -121,6 +130,7 @@ function MyEvents() {
                                     isPaid={event.isPaid}
                                     totalSeats={event.totalSeats}
                                     archivedDate={event.archivedDate}
+                                    onInsightsClick={() => handleInsightsClick(event)}
                                 />
                             ))
                         )}
@@ -132,11 +142,20 @@ function MyEvents() {
                         <>
                             <div className="my-events-overlay" onClick={() => setShowCreateEventForm(false)}></div>
                             <div className="my-events-form-modal">
-                                <EventCreationWrapper closeForm={() => setShowCreateEventForm(false)}/>
+                                <EventCreationWrapper closeForm={() => setShowCreateEventForm(false)} />
                             </div>
                         </>
-                        
                     )}
+
+                    {showInsights && selectedEventForInsights && (
+                        <>
+                            <div className="my-events-overlay" onClick={() => setShowInsights(false)}></div>
+                            <div className="my-events-form-modal2">
+                                <Insights event={selectedEventForInsights} closeForm={() => setShowInsights(false)}/>
+                            </div>
+                        </>
+                    )}
+
                 </div>
             </div>
         </>

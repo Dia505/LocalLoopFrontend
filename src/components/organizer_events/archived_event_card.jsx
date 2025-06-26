@@ -1,6 +1,6 @@
 import "../css_files/organizer_events/archived_event_card.css";
 
-function ArchivedEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats, archivedDate }) {
+function ArchivedEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats, archivedDate, onInsightsClick }) {
     const now = new Date();
     const deletionDate = new Date(new Date(archivedDate).getTime() + 30 * 24 * 60 * 60 * 1000);
     const timeDiff = deletionDate - now;
@@ -38,7 +38,7 @@ function ArchivedEventCard({ eventPhoto, title, date, startTime, endTime, venue,
 
                 <p className="archived-events-days">{daysLeft} days before deletion</p>
 
-                <button className="archived-events-btn">Insights</button>
+                <button className="archived-events-btn" onClick={onInsightsClick}>Insights</button>
             </div>
         </>
     )

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../css_files/organizer_events/upcoming_event_card.css";
 
-function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats, _id }) {
+function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue, city, isPaid, totalSeats, _id, onInsightsClick }) {
     const navigate = useNavigate();
 
     const formatTo12Hour = (timeStr) => {
@@ -50,7 +50,7 @@ function UpcomingEventCard({ eventPhoto, title, date, startTime, endTime, venue,
 
                 <div className="org-upcoming-events-btns-div">
                     <button className="org-upcoming-events-btn" onClick={() => navigate(`/view-event/${_id}`)}>Details</button>
-                    <button className="org-upcoming-events-btn">Insights</button>
+                    <button className="org-upcoming-events-btn" onClick={onInsightsClick}>Insights</button>
                 </div>
             </div>
         </>
