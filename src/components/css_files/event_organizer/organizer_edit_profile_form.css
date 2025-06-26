@@ -1,0 +1,231 @@
+input {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    height: 28px;
+    width: 300px;
+    color: black;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+.input-error {
+    border-color: red;
+}
+
+.input-error:focus {
+    border-width: 2px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+input:focus {
+    border-width: 2px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+select {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: black;
+  background-color: transparent;
+  width: 21vw;
+  height: 35.5px;
+  color: black;
+  outline: none;
+  padding-left: 15px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+select option {
+    background-color: black;
+    color: white;
+}
+
+.select-error {
+    border-color: red;
+}
+
+.select-error option {
+    background-color: black;
+    color: white;
+}
+
+.organizer-edit-form {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4vw;
+    padding-bottom: 7vh;
+    align-items: center;
+    gap: 40px;
+    margin-left: 0px;
+}
+
+.organizer-edit-form-img-div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.organizer-edit-form-img {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    margin-left: 1.5vw;
+}
+
+.hidden-img-input {
+    display: none;
+}
+
+.organizer-edit-form-update-img-btn {
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 0.3s ease-in-out 0s;
+    padding: 15px 35px 15px 35px;
+}
+
+.organizer-edit-form-update-img-btn:hover {
+    background: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.organizer-edit-form-update-img-btn:focus {
+    outline: none;
+}
+
+.organizer-edit-form-details-div {
+    display: flex;
+    gap: 50px;
+}
+
+.organizer-edit-form-details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.organizer-edit-form-title {
+    font-size: 20px;
+    text-decoration: underline;
+    font-weight: lighter;
+    margin-bottom: 0;
+}
+
+.organizer-edit-form-input-label {
+    color: #666666;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.organizer-edit-form-divider {
+    background-color: black;
+    width: 1px;
+}
+
+.organizer-edit-form-address-city-div {
+  display: flex;
+  gap: 1.5vw;
+}
+
+.address-input {
+  width: 130px;
+}
+
+.address-input-error {
+  border-color: red;
+  width: 130px;
+}
+
+.city-drop-down {
+  width: 150px;
+}
+
+.city-drop-down-error {
+  border-color: red;
+  width: 150px;
+}
+
+.city-drop-down option, .city-drop-down-error option {
+  background-color: black;
+  color: white;
+}
+
+.chip-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 300px;
+}
+
+.chip {
+  background-color: black;
+  padding-left: 15px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.chip-close {
+  margin-left: 0px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.organizer-edit-form-btns-div {
+    display: flex;
+    gap: 15px;
+    margin-top: 10vh;
+    margin-left: 35vw;
+}
+
+.organizer-edit-form-cancel-btn {
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    color: black;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 14vw;
+}
+
+.organizer-edit-form-update-btn {
+    background-color: black;
+    border-radius: 15px;
+    color: white;
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 15px;
+    width: 14vw;
+}

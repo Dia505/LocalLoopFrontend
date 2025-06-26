@@ -29,7 +29,6 @@ function ExplorerEditProfileForm({ closeForm }) {
         register,
         handleSubmit,
         formState: { errors },
-        setError,
         setValue,
     } = useForm({
         resolver: yupResolver(explorerEditProfileSchema),
