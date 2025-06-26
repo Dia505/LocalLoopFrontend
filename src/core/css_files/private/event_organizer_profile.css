@@ -1,0 +1,92 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.organizer-profile-main-window {
+    display: flex;
+}
+
+.organizer-profile-main-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    padding-left: 4vw;
+    margin-top: 7vh;
+    padding-bottom: 7vh;
+    align-items: center;
+    gap: 40px;
+    margin-left: 17vw;
+}
+
+.organizer-profile-img {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    margin-left: 4vw;
+}
+
+.organizer-profile-details-div {
+    display: flex;
+    gap: 50px;
+}
+
+.organizer-profile-details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.organizer-profile-title {
+    font-size: 20px;
+    text-decoration: underline;
+    font-weight: lighter;
+    margin-bottom: 0;
+}
+
+.organizer-profile-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+ 
+.organizer-profile-detail-title {
+    color: #666666;
+    font-size: 18px;
+    margin: 0;
+}
+
+.organizer-profile-detail-value {
+    margin: 0;
+}
+
+.organizer-profile-divider {
+    background-color: black;
+    width: 1px;
+}
+
+.organizer-profile-address-city-div {
+    display: flex;
+    gap: 10vw;
+}
+
+.organizer-profile-social-link-div {
+    background-color: #D3D3FF;
+    border-radius: 20px;
+    padding: 8px 30px 8px 30px;
+    width: fit-content;
+}
+
+.organizer-social-link {
+    font-family: "Playfair Display";
+    font-weight: 700;
+}
+
+.organizer-profile-edit-btn {
+    height: 40px;
+    cursor: pointer;
+}

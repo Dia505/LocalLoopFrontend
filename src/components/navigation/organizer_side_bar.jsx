@@ -41,10 +41,12 @@ function OrganizerSideBar() {
                         </div>
                     </Link>
 
-                    <div className="organizer-side-bar-btn-div">
-                        <img className="organizer-side-bar-icon" src={profile} />
-                        <p>Profile</p>
-                    </div>
+                    <Link to="/event-organizer-profile">
+                        <div className={location.pathname === "/event-organizer-profile" ? "organizer-side-bar-selected-btn" : "organizer-side-bar-btn-div"}>
+                            <img className="organizer-side-bar-icon" src={profile} />
+                            <p>Profile</p>
+                        </div>
+                    </Link>
                 </div>
 
                 <div className="organizer-side-bar-logout-div">
