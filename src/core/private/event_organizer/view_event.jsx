@@ -10,6 +10,7 @@ import ticketIcon from "../../../assets/ticket.png";
 import OrganizerSideBar from "../../../components/navigation/organizer_side_bar";
 import "../../css_files/private/view_event.css";
 import deleteIcon from "../../../assets/delete.png";
+import TicketDetailsEditForm from "../../../components/organizer_events/ticket_details_edit_form";
 
 function ViewEvent() {
     const { _id } = useParams();
@@ -20,6 +21,7 @@ function ViewEvent() {
     const [showDeleteEventPopUp, setShowDeleteEventPopUp] = useState(false);
     const { authToken } = useAuth();
     const navigate = useNavigate();
+    const [showTicketEditForm, setShowTicketEditForm] = useState(false);
 
     useEffect(() => {
         if (showDeleteEventPopUp) {
@@ -181,7 +183,7 @@ function ViewEvent() {
                         <div>
                             <div className="view-event-title-edit-div">
                                 <p className="view-event-title">Ticket details</p>
-                                <img src={editIcon} className="view-event-edit-icon" />
+                                <img src={editIcon} onClick={() => setShowTicketEditForm(true)} className="view-event-edit-icon" />
                             </div>
 
                             <div className="view-event-ticket-details-div">
@@ -222,6 +224,15 @@ function ViewEvent() {
                                         <button type='button' className='delete-pop-up-delete-btn' onClick={handleDeleteEvent}>Yes, delete</button>
                                     </div>
                                 </div>
+                            </div>
+                        </>
+                    )}
+
+                    {showTicketEditForm && (
+                        <>
+                            <div className="view-event-overlay" onClick={() => setShowTicketEditForm(false)}></div>
+                            <div className="view-event-form-modal">
+                                <TicketDetailsEditForm tickets={tickets} eventId={event?._id} closeForm={() => setShowTicketEditForm(false)}/>
                             </div>
                         </>
                     )}

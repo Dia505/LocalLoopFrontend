@@ -41,6 +41,7 @@ body {
 
 .view-event-edit-icon {
     height: 35px;
+    cursor: pointer;
 }
 
 .video-container {
