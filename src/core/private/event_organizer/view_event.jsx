@@ -11,6 +11,7 @@ import OrganizerSideBar from "../../../components/navigation/organizer_side_bar"
 import "../../css_files/private/view_event.css";
 import deleteIcon from "../../../assets/delete.png";
 import TicketDetailsEditForm from "../../../components/organizer_events/ticket_details_edit_form";
+import EventEditForm from "../../../components/organizer_events/event_edit_form";
 
 function ViewEvent() {
     const { _id } = useParams();
@@ -22,6 +23,7 @@ function ViewEvent() {
     const { authToken } = useAuth();
     const navigate = useNavigate();
     const [showTicketEditForm, setShowTicketEditForm] = useState(false);
+    const [showEventEditForm, setShowEventEditForm] = useState(false);
 
     useEffect(() => {
         if (showDeleteEventPopUp) {
@@ -106,7 +108,7 @@ function ViewEvent() {
                     />
                     <div className="view-event-title-edit-div">
                         <p className="view-event-title">Event details</p>
-                        <img src={editIcon} className="view-event-edit-icon" />
+                        <img onClick={() => setShowEventEditForm(true)} src={editIcon} className="view-event-edit-icon" />
                     </div>
 
                     {event?.eventVideo.length > 0 && (
@@ -233,6 +235,15 @@ function ViewEvent() {
                             <div className="view-event-overlay" onClick={() => setShowTicketEditForm(false)}></div>
                             <div className="view-event-form-modal">
                                 <TicketDetailsEditForm tickets={tickets} eventId={event?._id} closeForm={() => setShowTicketEditForm(false)}/>
+                            </div>
+                        </>
+                    )}
+
+                    {showEventEditForm && (
+                        <>
+                            <div className="view-event-overlay" onClick={() => setShowEventEditForm(false)}></div>
+                            <div className="view-event-form-modal2">
+                                <EventEditForm event={event} closeForm={() => setShowEventEditForm(false)}/>
                             </div>
                         </>
                     )}

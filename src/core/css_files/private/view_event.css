@@ -196,6 +196,20 @@ body {
     padding-bottom: 50px;
 }
 
+.view-event-form-modal2 {
+    margin-top: -190vh;
+    margin-left: 10vw;
+    z-index: 1000;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    border: 4px black solid;
+    border-radius: 20px;
+    padding-bottom: 50px;
+}
+
 .view-event-delete-pop-up {
     display: flex;
     flex-direction: column;
