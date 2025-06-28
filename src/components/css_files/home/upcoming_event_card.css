@@ -43,7 +43,7 @@
 }
 
 .upcoming-event-card-hover:hover {
-    height: 570px; 
+    height: 570px;
 }
 
 .upcoming-event-img {
@@ -67,9 +67,24 @@
 }
 
 .material-symbols-outlined {
-    font-size: 45px;
+    font-size: 40px;
     color: black;
     margin-top: 5px;
+}
+
+.bookmark-icon {
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+.bookmark-icon.active {
+    background-color: black;
+    color: white;
 }
 
 .upcoming-event-icon-detail-div {
@@ -119,20 +134,20 @@
 }
 
 .upcoming-events-btn {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  font-family: "Playfair Display";
-  border-radius: 15px;
-  width: 215px;
-  padding: 12px 0;
-  margin-top: 25px;
-  margin-left: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    font-family: "Playfair Display";
+    border-radius: 15px;
+    width: 215px;
+    padding: 12px 0;
+    margin-top: 25px;
+    margin-left: 40px;
 }
 
 .upcoming-event-card-hover:hover .upcoming-events-btn {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }

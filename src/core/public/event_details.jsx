@@ -197,9 +197,9 @@ function EventDetails() {
                                 </button>
                             )}
 
-                            <span className="material-symbols-outlined">
+                            {/* <span className="material-symbols-outlined">
                                 bookmark
-                            </span>
+                            </span> */}
                         </div>
                     </div>
 
@@ -302,21 +302,21 @@ function EventDetails() {
                     ) : (
                         <div className="event-details-organizer-event-container">
                             {organizerEvents.map((event) => (
-                            <div onClick={() => navigate(`/event-details/${event._id}`)}>
-                                <SearchResult
-                                    key={event._id}
-                                    image={`http://localhost:3000/event-images/${event.eventPhoto}`}
-                                    venue={event.venue}
-                                    city={event.city}
-                                    date={event.date}
-                                    startTime={event.startTime}
-                                    endTime={event.endTime}
-                                    title={event.title}
-                                    subtitle={event.subtitle}
-                                    priceType={event.isPaid}
-                                    totalSeats={event.totalSeats}
-                                />
-                            </div>
+                                <div onClick={() => navigate(`/event-details/${event._id}`)}>
+                                    <SearchResult
+                                        key={event._id}
+                                        image={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                                        venue={event.venue}
+                                        city={event.city}
+                                        date={event.date}
+                                        startTime={event.startTime}
+                                        endTime={event.endTime}
+                                        title={event.title}
+                                        subtitle={event.subtitle}
+                                        priceType={event.isPaid}
+                                        totalSeats={event.totalSeats}
+                                    />
+                                </div>
                             ))}
                         </div>
                     )}

@@ -67,9 +67,24 @@
 }
 
 .material-symbols-outlined {
-    font-size: 45px;
+    font-size: 40px;
     color: black;
     margin-top: 5px;
+}
+
+.similar-events-bookmark-icon {
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+.similar-events-bookmark-icon.active {
+    background-color: black;
+    color: white;
 }
 
 .similar-event-icon-detail-div {
