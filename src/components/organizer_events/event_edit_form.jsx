@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from "../../context/auth_context";
 
+import alertIcon from "../../assets/alert.png";
 import "../css_files/organizer_events/create_event_form.css";
 
 const eventEditFormSchema = yup.object().shape({
@@ -37,6 +38,9 @@ function EventEditForm({ event, closeForm }) {
     const [videoPreview, setVideoPreview] = useState("");
     const [priceType, setPriceType] = useState("");
     const [limitedSeats, setLimitedSeats] = useState(false);
+    const [initialPriceType, setInitialPriceType] = useState("");
+    const [confirmDeleteTickets, setConfirmDeleteTickets] = useState(false);
+    const [showFreeEventPopUp, setShowFreeEventPopUp] = useState(false);
 
     const {
         register,
@@ -66,6 +70,7 @@ function EventEditForm({ event, closeForm }) {
             setVideoFile(null);
             setVideoPreview(`http://localhost:3000/event-videos/${event.eventVideo}`);
             setPriceType(event.isPaid ? "Paid" : "Free");
+            setInitialPriceType(event.isPaid ? "Paid" : "Free");
             setLimitedSeats(event.totalSeats > 0);
             setValue("totalSeats", event.totalSeats);
         }
@@ -98,7 +103,21 @@ function EventEditForm({ event, closeForm }) {
     };
 
     const handlePriceTypeChange = (value) => {
-        setPriceType((prev) => (prev === value ? "" : value));
+        if (initialPriceType === "Paid" && value === "Free") {
+            setShowFreeEventPopUp(true);
+        } else {
+            setPriceType(value);
+        }
+    };
+
+    const confirmTicketDeletion = () => {
+        setConfirmDeleteTickets(true);
+        setPriceType("Free");
+        setShowFreeEventPopUp(false);
+    };
+
+    const cancelTicketDeletion = () => {
+        setShowFreeEventPopUp(false);
     };
 
     const onSubmit = async (data) => {
@@ -153,6 +172,15 @@ function EventEditForm({ event, closeForm }) {
                         Authorization: `Bearer ${authToken}`,
                     },
                     body: videoForm,
+                });
+            }
+
+            if (initialPriceType === "Paid" && priceType === "Free" && confirmDeleteTickets) {
+                await fetch(`http://localhost:3000/api/event/${event._id}/tickets`, {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                    },
                 });
             }
 
@@ -409,15 +437,48 @@ function EventEditForm({ event, closeForm }) {
 
                             <div className='create-event-form-btns-div'>
                                 <button type='button' className='create-event-form-cancel-btn' onClick={closeForm}>Cancel</button>
-                                <button
-                                    type="submit"
-                                    className="create-event-form-update-btn"
-                                >
-                                    Update
-                                </button>
+                                {initialPriceType === "Free" && priceType === "Paid" ? (
+                                    <button
+                                        type="button"
+                                        className="create-event-form-update-btn"
+                                        onClick={() => {
+                                            openTicketForm();
+                                        }}
+                                    >
+                                        Ticket details →
+                                    </button>
+                                ) : (
+                                    <button
+                                        type="submit"
+                                        className="create-event-form-update-btn"
+                                    >
+                                        Update
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
+
+                    {showFreeEventPopUp && (
+                        <>
+                            <div className="edit-event-overlay" onClick={() => setShowFreeEventPopUp(false)}></div>
+                            <div className="edit-event-form-modal">
+                                <div className="edit-event-alert-pop-up">
+                                    <img src={alertIcon} className="edit-event-alert-icon" />
+                                    <p className="edit-event-alert-title">Change to free event?</p>
+
+                                    <div className="edit-event-alert-subtitle-div">
+                                        <p>Switching this event to free will remove all ticket details. Are you sure you want to continue?</p>
+                                    </div>
+
+                                    <div className="edit-event-alert-pop-up-btns">
+                                        <button type='button' className='alert-pop-up-cancel-btn' onClick={cancelTicketDeletion}>Cancel</button>
+                                        <button type='button' className='alert-pop-up-confirm-btn' onClick={confirmTicketDeletion}>Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
             </form>
         </>
