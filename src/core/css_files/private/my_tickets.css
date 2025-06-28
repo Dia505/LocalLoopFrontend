@@ -15,7 +15,7 @@ body {
 
 .my-tickets-centre-div {
     display: flex;
-    margin-top: -80px;
+    margin-top: 22vh;
     gap: 6vw;
     padding-bottom: 8vh;
 }
@@ -50,4 +50,8 @@ body {
     font-size: 17px;
     cursor: pointer;
     text-decoration: underline;
+}
+
+.my-tickets-footer-div {
+    margin-top: 32vh;
 }

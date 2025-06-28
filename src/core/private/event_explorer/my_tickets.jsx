@@ -5,6 +5,7 @@ import { useAuth } from "../../../context/auth_context";
 import ExplorerNavBar from "../../../components/navigation/explorer_nav_bar";
 import ExplorerSideBar from "../../../components/navigation/explorer_side_bar";
 import MyTicketCard from "../../../components/event_explorer/my_ticket_card";
+import Footer from "../../../components/footer";
 import "../../css_files/private/my_tickets.css";
 
 function MyTickets() {
@@ -118,6 +119,10 @@ function MyTickets() {
                             )}
                         </div>
                     </div>
+                </div>
+
+                <div className="my-tickets-footer-div">
+                    <Footer/>
                 </div>
             </div>
         </>

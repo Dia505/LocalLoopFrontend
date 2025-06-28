@@ -1,14 +1,48 @@
-.upcoming-events-div {
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.bookmarks-main-window {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.bookmarks-centre-div {
+    display: flex;
+    margin-top: 22vh;
+    gap: 6vw;
+    padding-bottom: 15vh;
+}
+
+.bookmarks-main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 10px;
+}
+
+.bookmarks-title {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.bookmarks-div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 cards per row */
-    gap: 50px;
-    padding: 20px;
+    gap: 35px;
+    padding: 20px 30px 0px 0px;
     width: 100%;
     box-sizing: border-box;
 }
 
-.upcoming-event-card {
+.bookmark-card {
     display: flex;
     flex-direction: column;
     padding: 30px;
@@ -25,10 +59,10 @@
     cursor: pointer;
 }
 
-.upcoming-event-card-hover {
+.bookmark-card-hover {
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 30px 30px 50px 30px;
     border-radius: 15px;
     border: 5px solid transparent;
     background:
@@ -42,11 +76,11 @@
     cursor: pointer;
 }
 
-.upcoming-event-card-hover:hover {
+.bookmark-card-hover:hover {
     height: 570px;
 }
 
-.upcoming-event-img {
+.bookmark-img {
     width: 100%;
     height: 208px;
     object-fit: cover;
@@ -55,33 +89,34 @@
     display: block;
 }
 
-.upcoming-event-title-bookmark-div {
+.bookmark-title-bookmark-div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.upcoming-event-title {
+.bookmark-title {
     font-weight: 600;
     font-size: 17px;
 }
 
-.upcoming-event-icon-detail-div {
+.bookmark-icon-detail-div {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 7px;
 }
 
-.upcoming-event-icon {
+.bookmark-detail-icon {
     height: 25px;
 }
 
-.upcoming-event-detail {
+.bookmark-detail {
     color: #7A7A7A;
     font-weight: 600;
 }
 
-.upcoming-events-payment-div {
+.bookmark-payment-div {
     display: flex;
     gap: 10px;
 }
@@ -112,7 +147,7 @@
     font-size: 14px;
 }
 
-.upcoming-events-btn {
+.bookmark-btn {
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -122,10 +157,10 @@
     width: 215px;
     padding: 12px 0;
     margin-top: 25px;
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
-.upcoming-event-card-hover:hover .upcoming-events-btn {
+.bookmark-card-hover:hover .bookmark-btn {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);

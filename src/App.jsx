@@ -22,6 +22,7 @@ const MyTickets = lazy(() => import("./core/private/event_explorer/my_tickets"))
 const MyEvents = lazy(() => import("./core/private/event_organizer/my_events"));
 const ViewEvent = lazy(() => import("./core/private/event_organizer/view_event"));
 const EventOrganizerProfile = lazy(() => import("./core/private/event_organizer/event_organizer_profile"));
+const Bookmarks = lazy(() => import("./core/private/event_explorer/bookmarks"));
 
 const queryClient = new QueryClient();
 
@@ -165,6 +166,13 @@ function App() {
       path: "/event-organizer-profile",
       element: (
         <AuthRoute requiredRole="event organizer" element={<Suspense><EventOrganizerProfile /></Suspense>} />
+      )
+     },
+
+     {
+      path: "/bookmarks",
+      element: (
+        <AuthRoute requiredRole="event explorer" element={<Suspense><Bookmarks /></Suspense>} />
       )
      }
   ]

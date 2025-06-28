@@ -66,12 +66,6 @@
     font-size: 17px;
 }
 
-.material-symbols-outlined {
-    font-size: 40px;
-    color: black;
-    margin-top: 5px;
-}
-
 .similar-events-bookmark-icon {
     border-radius: 50%;
     transition: background-color 0.3s ease, color 0.3s ease;

@@ -5,6 +5,7 @@ import { useAuth } from "../../../context/auth_context";
 import MyBookingCard from "../../../components/event_explorer/my_booking_card";
 import ExplorerNavBar from "../../../components/navigation/explorer_nav_bar";
 import ExplorerSideBar from "../../../components/navigation/explorer_side_bar";
+import Footer from "../../../components/footer";
 import "../../css_files/private/my_bookings.css";
 
 function MyBookings() {
@@ -111,6 +112,10 @@ function MyBookings() {
                         </div>
 
                     </div>
+                </div>
+
+                <div className="my-bookings-footer-div">
+                    <Footer/>
                 </div>
             </div>
         </>

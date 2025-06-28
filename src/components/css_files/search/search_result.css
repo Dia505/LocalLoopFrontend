@@ -142,23 +142,3 @@
   transform: translateY(0);
 }
 
-.material-symbols-outlined {
-    font-size: 40px;
-    color: black;
-    margin-top: 5px;
-}
-
-.bookmark-icon {
-    border-radius: 50%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-    padding: 3px;
-    
-}
-
-.bookmark-icon.active {
-    background-color: black;
-    color: white;
-    height: 40px;
-}
-

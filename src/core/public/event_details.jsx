@@ -16,6 +16,7 @@ import SimilarEvents from "../../components/event/similar_events";
 import Footer from "../../components/footer";
 import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchResult from "../../components/search/search_result";
+import BookmarkIcon from "../../components/bookmark_icon";
 
 import BookSeatsForm from "../../components/event/book_seats_form";
 import BuyTicketsForm from "../../components/event/buy_tickets_form";
@@ -197,9 +198,7 @@ function EventDetails() {
                                 </button>
                             )}
 
-                            {/* <span className="material-symbols-outlined">
-                                bookmark
-                            </span> */}
+                            <BookmarkIcon eventId={event._id}/>
                         </div>
                     </div>
 
@@ -315,6 +314,7 @@ function EventDetails() {
                                         subtitle={event.subtitle}
                                         priceType={event.isPaid}
                                         totalSeats={event.totalSeats}
+                                        eventId={event._id}
                                     />
                                 </div>
                             ))}

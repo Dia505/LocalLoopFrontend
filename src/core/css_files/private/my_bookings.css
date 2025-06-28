@@ -15,9 +15,9 @@ body {
 
 .my-bookings-centre-div {
     display: flex;
-    margin-top: -80px;
     gap: 6vw;
     padding-bottom: 8vh;
+    margin-top: 22vh;
 }
 
 .my-bookings-main-section {
@@ -50,4 +50,8 @@ body {
     font-size: 17px;
     cursor: pointer;
     text-decoration: underline;
+}
+
+.my-bookings-footer-div {
+    margin-top: 32vh;
 }
