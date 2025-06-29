@@ -78,6 +78,26 @@ p {
 
 .notification {
     height: 40px;
+    cursor: pointer;
+    position: relative;
+}
+
+.explorer-nav-bar-notif-div {
+    position: absolute;
+    right: 7.5vw;
+    top: 12vh;
+}
+
+.notification-ping {
+    display: flex;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #0062CD;
+    right: 8.7vw;
+    top: 4vh;
 }
 
 .profile {
@@ -96,3 +116,4 @@ p {
     top: 12vh;
     right: 4vw;
 }
+

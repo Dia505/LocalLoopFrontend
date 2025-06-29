@@ -3,11 +3,12 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import notification from "../../assets/notification_icon.png"
+import notification from "../../assets/notification_icon.png";
 import { useAuth } from "../../context/auth_context";
 
 import "../css_files/navigation/explorer_nav_bar.css";
 import ExplorerMenuWindow from "./explorer_menu_window";
+import Notification from "./notification";
 
 function ExplorerNavBar() {
     const { authToken } = useAuth();
@@ -21,6 +22,8 @@ function ExplorerNavBar() {
     const [user, setUser] = useState(null);
 
     const [isMenuWindowOpen, setIsMenuWindowOpen] = useState(false);
+    const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+    const [notificationCount, setNotificationCount] = useState(0);
 
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -48,6 +51,23 @@ function ExplorerNavBar() {
         fetchUserDetails();
     }, [authToken]);
 
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/api/bookmark/pending-notifications", {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`
+                    }
+                });
+                setNotificationCount(response.data.length);
+            } catch (error) {
+                console.error("Failed to fetch notifications:", error);
+            }
+        };
+
+        if (authToken) fetchNotifications();
+    }, [authToken]);
+
     return (
         <>
             <div className="nav-bar-main-div">
@@ -71,13 +91,13 @@ function ExplorerNavBar() {
                 <div className="nav-bar-auth-buttons">
                     {isLoggedIn ? (
                         <div className="notif-profile-div">
-                            <img className="notification" src={notification} />
+                            <img className="notification" src={notification} onClick={() => { setIsNotificationOpen((prev) => !prev) }} />
                             <img className="profile" src={
                                 user?.profilePicture
                                     ? user.profilePicture
                                     : "http://localhost:3000/event-explorer-images/default_profile_img.png"
-                            } 
-                            onClick={() => {setIsMenuWindowOpen((prev) => !prev)}}
+                            }
+                                onClick={() => { setIsMenuWindowOpen((prev) => !prev) }}
                             />
                         </div>
                     ) : (
@@ -87,6 +107,18 @@ function ExplorerNavBar() {
                         </div>
                     )}
                 </div>
+
+                {notificationCount > 0 && (
+                    <div className="notification-ping">
+                        {notificationCount}
+                    </div>
+                )}
+
+                {isNotificationOpen && (
+                    <div className="explorer-nav-bar-notif-div">
+                        <Notification />
+                    </div>
+                )}
 
                 {isMenuWindowOpen && (
                     <div className="explorer-menu-window">
