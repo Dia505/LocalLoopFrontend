@@ -1,0 +1,60 @@
+.gallery-cover-photo-div {
+    width: 400px;
+    height: 235px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.gallery-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.gallery-cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.67);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+.gallery-cover-photo-div:hover .gallery-cover-overlay {
+    opacity: 1;
+}
+
+.gallery-cover-title-btn-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3vh;
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 30px;
+}
+
+.gallery-cover-title {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 240px;
+}
+
+.gallery-cover-btn {
+    background-color: white;
+    color: black;
+    font-family: "Playfair Display";
+    height: 43px;
+}
+
+.gallery-cover-btn:hover {
+    border: 1px white solid;
+}

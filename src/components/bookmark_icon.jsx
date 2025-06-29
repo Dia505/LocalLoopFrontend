@@ -7,7 +7,7 @@ import { useAuth } from "../context/auth_context";
 
 import "./css_files/bookmark_icon.css";
 
-function BookmarkIcon({eventId}) {
+function BookmarkIcon({ eventId }) {
     const { authToken } = useAuth();
     const [bookmarkedEvents, setBookmarkedEvents] = useState({});
 
@@ -19,6 +19,19 @@ function BookmarkIcon({eventId}) {
 
     const toggleBookmark = (e, eventId) => {
         e.stopPropagation();
+
+        if (!authToken) {
+            toast.info("Want to bookmark? Please sign in.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                theme: "colored",
+            });
+            return;  
+        }
 
         const bookmarkId = bookmarkedEvents[eventId]; // already saved in state
 

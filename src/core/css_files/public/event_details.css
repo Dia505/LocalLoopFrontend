@@ -55,26 +55,6 @@ body {
     outline: none;
 }
 
-/* .material-symbols-outlined {
-    color: black;
-    margin-top: 5px;
-}
-
-.bookmark-icon {
-    border-radius: 50%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3px;
-}
-
-.bookmark-icon.active {
-    background-color: black;
-    color: white;
-} */
-
 .event-details-subtitle-div {
     width: 50vw;
 }
@@ -138,8 +118,8 @@ body {
 }
 
 .social-icon {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     margin-right: 12px;
 }
 

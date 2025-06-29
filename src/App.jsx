@@ -14,6 +14,8 @@ const EventOrganizerRegistration = lazy(() => import("./core/public/event_organi
 const Search = lazy(() => import("./core/public/search"));
 const EventDetails = lazy(() => import("./core/public/event_details"));
 const Contact = lazy(() => import("./core/public/contact"));
+const Gallery = lazy(() => import("./core/public/gallery"));
+const EventGallery = lazy(() => import("./core/public/event_gallery"));
 
 const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
 const EventExplorerProfile = lazy(() => import("./core/private/event_explorer/event_explorer_profile"));
@@ -114,6 +116,26 @@ function App() {
       element: (
         <Suspense>
           <Contact />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/gallery",
+      element: (
+        <Suspense>
+          <Gallery />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/event-gallery/:_id",
+      element: (
+        <Suspense>
+          <EventGallery />
         </Suspense>
       ),
       errorElement: <>error</>
