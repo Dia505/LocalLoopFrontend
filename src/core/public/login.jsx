@@ -126,7 +126,7 @@ function Login() {
                                 <p className='remember-me-text'>Remember me</p>
                             </label>
 
-                            <p className='forgot-password-text'>Forgot password?</p>
+                            <p className='forgot-password-text' onClick={() => navigate("/email-for-otp")}>Forgot password?</p>
                         </div>
 
                         <button type="submit" className='login-button'>Log In</button>

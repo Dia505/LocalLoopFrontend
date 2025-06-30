@@ -16,6 +16,9 @@ const EventDetails = lazy(() => import("./core/public/event_details"));
 const Contact = lazy(() => import("./core/public/contact"));
 const Gallery = lazy(() => import("./core/public/gallery"));
 const EventGallery = lazy(() => import("./core/public/event_gallery"));
+const EmailForOtp = lazy(() => import("./core/public/reset_password/email_for_otp"));
+const VerifyOtp = lazy(() => import("./core/public/reset_password/verify_otp"));
+const ResetPassword = lazy(() => import("./core/public/reset_password/reset_password"));
 
 const Dashboard = lazy(() => import("./core/private/event_organizer/dasboard"));
 const EventExplorerProfile = lazy(() => import("./core/private/event_explorer/event_explorer_profile"));
@@ -136,6 +139,36 @@ function App() {
       element: (
         <Suspense>
           <EventGallery />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/email-for-otp",
+      element: (
+        <Suspense>
+          <EmailForOtp />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/verify-otp",
+      element: (
+        <Suspense>
+          <VerifyOtp />
+        </Suspense>
+      ),
+      errorElement: <>error</>
+    },
+
+    {
+      path: "/reset-password",
+      element: (
+        <Suspense>
+          <ResetPassword />
         </Suspense>
       ),
       errorElement: <>error</>

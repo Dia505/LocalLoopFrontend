@@ -1,0 +1,144 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+p {
+  font-family: "Playfair Display";
+  color: black;
+}
+
+input {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: black;
+  background-color: transparent;
+  height: 28px;
+  width: 300px;
+  color: black;
+  outline: none;
+  padding-left: 7px;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.input-error:focus {
+  border-width: 2px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+input:focus {
+  border-width: 2px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.verify-otp-main-window {
+  background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  padding-left: 100px;
+  gap: 200px;
+}
+
+.verify-otp-left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 80px;
+}
+
+.reset-pwd-img {
+  height: 400px;
+}
+
+.verify-otp-right-section {
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+  border-radius: 18px;
+  border: 5px solid transparent;
+
+  background:
+    linear-gradient(to right, #ffcbe1 10%, #FFAFF5 100%) padding-box,
+
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+
+  background-origin: border-box;
+
+  background-clip: padding-box, border-box;
+
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 30px;
+  margin-top: 130px;
+}
+
+.verify-otp-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.verify-otp-subtitle {
+  font-size: 16px;
+  margin-top: -10px;
+}
+
+.verify-otp-input-title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.verify-otp-button {
+  border: 2px solid black;
+  border-radius: 10px;
+  background: transparent;
+  color: black;
+  font-family: "Playfair Display";
+  font-weight: bold;
+  font-size: 15px;
+  transition: background-color 0.3s ease-in-out 0s;
+  margin-top: 30px;
+}
+
+.verify-otp-button:hover {
+  background: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.verify-otp-button:focus {
+  outline: none;
+}
+
+.verify-otp-back-text {
+    font-size: 14px;
+    font-weight: lighter;
+    margin-left: 6.5vw;
+}
+
+.verify-otp-login-btn {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.verify-otp-login-btn:hover {
+    text-decoration: underline;
+}
