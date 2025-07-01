@@ -1,3 +1,9 @@
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 p {
   font-family: "Playfair Display";
   color: black;
@@ -59,7 +65,7 @@ select {
   border-radius: 10px;
   border-color: black;
   background-color: transparent;
-  width: 21vw;
+  width: 320px;
   height: 35.5px;
   color: black;
   outline: none;
@@ -77,7 +83,9 @@ select {
   color: white;
 }
 
-.business-type-drop-down option, .city-drop-down option, .city-drop-down-error option {
+.business-type-drop-down option,
+.city-drop-down option,
+.city-drop-down-error option {
   background-color: black;
   color: white;
 }
@@ -86,19 +94,21 @@ select {
   background: linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%);
   min-height: 100vh;
   width: 100vw;
-  overflow: visible;
+  overflow-x: hidden;
   display: flex;
+  flex-wrap: wrap;
   padding-left: 5vw;
-  gap: 150px;
-  align-items: center;
+  gap: 13vw;
   padding-bottom: 10vh;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .organizer-reg-left-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 120px;
+  margin-left: 8vw;
   margin-bottom: 80px;
 }
 
@@ -129,15 +139,15 @@ select {
 }
 
 .organizer-reg-backBtn-title-div {
-    display: flex;
-    align-items: center;
-    gap: 1vw;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
 
 .organizer-reg-back-btn {
-    color: black;
-    font-size: 36px;
-    cursor: pointer;
+  color: black;
+  font-size: 36px;
+  cursor: pointer;
 }
 
 .organizer-reg-title {
@@ -151,9 +161,9 @@ select {
 }
 
 .organizer-reg-personal-details {
-    font-weight: 500;
-    font-size: 18px;
-    margin-top: 15px;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 15px;
 }
 
 .input-fields-div {
@@ -225,7 +235,6 @@ select {
   padding-right: 45px;
   padding-top: 0px;
   padding-bottom: 10px;
-  margin-top: 3vh;
 }
 
 .address-city-div {
@@ -309,7 +318,7 @@ select {
 }
 
 .terms-and-condition-text-div {
-  width: 19vw;
+  width: 290px;
 }
 
 .terms-and-condition-text {
@@ -372,5 +381,60 @@ select {
   border: none;
   font-size: 16px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1300px) {
+  .organizer-reg-main-window {
+    padding-left: 5vw;
+    gap: 5vw;
+  }
+}
+
+@media screen and (max-width: 1175px) {
+  .organizer-reg-main-window {
+    padding-left: 0vw;
+  }
+}
+
+@media screen and (max-width: 1125px) {
+  .organizer-reg-main-window {
+    gap: 0vw;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .organizer-reg-img {
+    display: none;
+  }
+  .organizer-reg-main-window {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding-bottom: 10vh;
+  }
+  .organizer-reg-left-section {
+    margin-top: -10vh;
+  }
+  .organizer-reg-right-section {
+    margin-top: -6vh;
+    background:
+    linear-gradient(to right, #faf4c9 8%, #ffb3fa 94%) padding-box,
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+  }
+  .organizer-reg-right-section2 {
+    margin-top: -6vh;
+    background:
+    linear-gradient(to right, #faf4c9 8%, #ffb3fa 94%) padding-box,
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .organizer-reg-right-section {
+    margin-right: 10vw;
+  }
+  .organizer-reg-right-section2 {
+    margin-right: 10vw;
+  }
 }
 

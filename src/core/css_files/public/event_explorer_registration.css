@@ -86,7 +86,7 @@ select {
   overflow: auto;
   display: flex;
   padding-left: 5vw;
-  gap: 150px;
+  gap: 13vw;
   align-items: center;
 }
 
@@ -94,7 +94,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 120px;
+  margin-left: 8vw;
   margin-bottom: 80px;
 }
 
@@ -234,7 +234,7 @@ select {
 }
 
 .terms-and-condition-text-div {
-  width: 19vw;
+  width: 290px;
 }
 
 .terms-and-condition-text {
@@ -288,4 +288,47 @@ select {
 
 .explorer-register-login-text:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1220px) {
+  .explorer-reg-main-window {
+    padding-left: 5vw;
+    gap: 5vw;
+  }
+}
+
+@media screen and (max-width: 1175px) {
+  .explorer-reg-main-window {
+    padding-left: 0vw;
+  }
+}
+
+@media screen and (max-width: 1125px) {
+  .explorer-reg-main-window {
+    gap: 0vw;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .explorer-reg-img {
+    display: none;
+  }
+  .explorer-reg-main-window {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding-bottom: 10vh;
+  }
+  .explorer-reg-left-section {
+    margin-top: -10vh;
+  }
+  .explorer-reg-right-section {
+    margin-top: -6vh;
+    background:
+    linear-gradient(to right, #faf4c9 8%, #ffb3fa 94%) padding-box,
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+  }
+  .explorer-reg-right-section input {
+    width: 57vw;
+  }
 }

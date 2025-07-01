@@ -54,19 +54,19 @@ input:-webkit-autofill {
   width: 100vw;
   overflow: auto;
   display: flex;
-  padding-left: 100px;
-  gap: 200px;
+  padding-left: 6.5vw;
+  gap: 13vw;
 }
 
 .left-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 80px;
+  margin-left: 5.5vw;
 }
 
 .login-img {
-  height: 400px;
+  height: 48.5vh;
 }
 
 .right-section {
@@ -248,4 +248,40 @@ input:-webkit-autofill {
 
 .sign-up-text:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1220px) {
+  .login-main-window {
+    padding-left: 5vw;
+    gap: 5vw;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .login-main-window {
+    padding-left: 0vw;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  .login-img {
+    display: none;
+  }
+  .login-main-window {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .left-section {
+    margin-top: -14vh;
+  }
+  .right-section {
+    margin-top: 5vh;
+    background:
+    linear-gradient(to right, #faf4c9 8%, #ffb3fa 94%) padding-box,
+    linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+  }
+  .right-section input {
+    width: 57vw;
+  }
 }

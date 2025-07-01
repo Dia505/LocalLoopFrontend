@@ -150,22 +150,137 @@ p {
 }
 
 .login-div {
-  display: flex;
-  gap: 5px;
-  align-self: center;
-  margin-left: 6.5vw;
+    display: flex;
+    gap: 5px;
+    align-self: center;
+    margin-left: 6.5vw;
 }
 
 .already-have-account-text,
 .login-text {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .login-text {
-  font-weight: bold;
-  cursor: pointer;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .login-text:hover {
-  text-decoration: underline;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1340px) {
+    .login-div {
+        margin-left: 5vw;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .card-img {
+        height: 18vw;
+        width: 22vw;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1172px) {
+    .login-div {
+        margin-left: 4.5vw;
+    }
+
+    .already-have-account-text,
+    .login-text {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1115px) {
+    .explorer-card-div {
+        width: 35vw;
+    }
+
+    .organizer-card-div {
+        width: 40vw;
+    }
+
+    .card-img {
+        height: 20vw;
+        width: 27vw;
+    }
+
+    .role-card-div {
+        gap: 4vw;
+        margin-right: 100px;
+    }
+
+    .join-btn {
+        width: 100%;
+    }
+
+    .button-login-div {
+        margin-right: 10vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .role-card-div {
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        margin-right: 50px;
+    }
+
+    .explorer-card-div {
+        width: 80vw;
+        flex-direction: row;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .organizer-card-div {
+        width: 80vw;
+        flex-direction: row;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .card-text-div {
+        width: 40vw;
+    }
+
+    .card-img {
+        height: 25vw;
+        width: 32vw;
+    }
+
+    .button-login-div {
+        margin-top: -5vh;
+    }
+
+    .explorer-card-div.active-gradient-border {
+        background:
+            linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%) padding-box,
+            linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    }
+
+    .organizer-card-div.active-gradient-border {
+        background:
+            linear-gradient(to right, #FFF9BE 8%, #FFA9F9 94%) padding-box,
+            linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .card-img {
+        height: 30vw;
+        width: 38vw;
+    }
 }
