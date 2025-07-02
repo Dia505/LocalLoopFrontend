@@ -1,6 +1,6 @@
 .gallery-cover-photo-div {
-    width: 400px;
-    height: 235px;
+    width: 26vw;
+    height: 15.5vw;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
@@ -57,4 +57,42 @@
 
 .gallery-cover-btn:hover {
     border: 1px white solid;
+}
+
+@media (max-width: 1450px) {
+    .gallery-cover-title-btn-div {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media (max-width: 1040px) {
+    .gallery-cover-photo-div {
+        width: 40vw;
+        height: 25vw;
+    }
+
+    .gallery-cover-title-btn-div {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media (max-width: 945px) {
+    .gallery-cover-title-btn-div {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-cover-photo-div {
+        width: 80vw;
+        height: 50vw;
+    }
+
+    .gallery-cover-title-btn-div {
+        flex-direction: row;
+        align-items: center;
+    }
 }
