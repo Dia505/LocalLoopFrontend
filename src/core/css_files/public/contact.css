@@ -70,3 +70,28 @@ body {
 .contact-img {
     height: 45vh;
 }
+
+.contact-img-smaller-screen {
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .contact-content-section {
+        padding-left: 10vw;
+    }
+}
+
+@media (max-width: 845px) {
+    .contact-img {
+        display: none;
+    }
+
+    .contact-img-smaller-screen {
+        display: flex;
+        height: 50vw;
+    }
+
+    .contact-subtitle-div {
+        display: none;
+    }
+}

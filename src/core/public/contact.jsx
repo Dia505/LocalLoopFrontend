@@ -22,6 +22,8 @@ function Contact() {
                                 you might have. We look forward to hearing from you!</p>
                         </div>
 
+                        <img className="contact-img-smaller-screen" src={contact} />
+
                         <div>
                             <div className="contact-icon-detail-div">
                                 <img className="contact-icon" src={location} />
