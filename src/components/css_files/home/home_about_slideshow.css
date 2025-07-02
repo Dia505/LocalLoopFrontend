@@ -1,6 +1,6 @@
 .home-about-slideshow-div {
   position: relative;
-  width: 100%;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
 .home-about-slide {
   display: none;
   align-items: center;
-  gap: 150px;
+  gap: 130px;
   width: 100%;
   justify-content: center;
   position: absolute;
@@ -35,12 +35,16 @@
 }
 
 .home-about-slideshow-subtitle-wrapper {
-  width: 500px;
+  max-width: 30vw;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
 }
 
 .home-about-slideshow-img {
-  width: 610px;
-  height: 390px;
+  width: 42.36vw;
+  height: 27.08vw;
   object-fit: cover;
   object-position: center;
   border-radius: 8px;
@@ -52,7 +56,7 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .dot {
@@ -67,4 +71,26 @@
 
 .dot.active {
   background-color: black;
+}
+
+@media (max-width: 945px) {
+  .home-about-slide.active {
+    flex-direction: column;
+    gap: 4vh;
+  }
+
+  .home-about-slideshow-title {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .home-about-slideshow-subtitle-wrapper {
+    text-align: center;
+    max-width: 60vw;
+  }
+
+  .home-about-slideshow-img {
+    width: 70vw;
+    height: 40vw;
+  }
 }

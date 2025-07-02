@@ -1,11 +1,11 @@
 .home-cat-filter-main-div {
     display: flex;
-    margin-left: 250px;
+    margin-left: 16.5vw;
     margin-top: 50px;
 }
 
 .home-categories-scroll-wrapper {
-    width: 950px;
+    width: 62vw;
     overflow-x: auto;
     padding-bottom: 10px;
     -ms-overflow-style: none;
@@ -13,7 +13,7 @@
 }
 
 .home-categories-scroll-wrapper::-webkit-scrollbar {
-  display: none;            
+    display: none;
 }
 
 .home-categories-div {
@@ -25,4 +25,10 @@
 
 .home_cat_filter_arrow {
     height: 100px;
+}
+
+@media (max-width: 625px) {
+    .home-cat-filter-main-div {
+        margin-left: 10vw;
+    }
 }

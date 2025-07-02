@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import Footer from "../../components/footer";
 import HomeAboutSlideshow from "../../components/home/home_about_slideshow";
 import HomeCategoryFilter from "../../components/home/home_category_filter";
+import HomeLocation from "../../components/home/home_location";
 import HomeTestimonialsSlideshow from "../../components/home/home_testimonials_slideshow";
 import UpcomingEventCard from "../../components/home/upcoming_event_card";
-import HomeLocation from "../../components/home/home_location";
+import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import "../css_files/public/home.css";
 
 function Home() {
@@ -52,7 +52,7 @@ function Home() {
                                 if (e.key === "Enter") handleSearch();
                             }}
                         />
-                        <img className="home-search-icon" src="src\assets\search_icon.png" onClick={handleSearch}/>
+                        <img className="home-search-icon" src="src\assets\search_icon.png" onClick={handleSearch} />
                     </div>
                 </div>
 
@@ -70,20 +70,20 @@ function Home() {
                     </div>
 
                     <div className="home-locations-div">
-                        <HomeLocation location="Kathmandu"/>
-                        <HomeLocation location="Chitwan"/>
-                        <HomeLocation location="Dharan"/>
-                        <HomeLocation location="Janakpur"/>
-                        <HomeLocation location="Lalitpur"/>
-                        <HomeLocation location="Biratnagar"/>
-                        <HomeLocation location="Hetauda"/>
-                        <HomeLocation location="Itahari"/>
-                        <HomeLocation location="Bhaktapur"/>
-                        <HomeLocation location="Birgunj"/>
-                        <HomeLocation location="Nepalgunj"/>
-                        <HomeLocation location="Pokhara"/>
-                        <HomeLocation location="Butwal"/>
-                        <HomeLocation location="Dhangadhi"/>
+                        <HomeLocation location="Kathmandu" />
+                        <HomeLocation location="Chitwan" />
+                        <HomeLocation location="Dharan" />
+                        <HomeLocation location="Janakpur" />
+                        <HomeLocation location="Lalitpur" />
+                        <HomeLocation location="Biratnagar" />
+                        <HomeLocation location="Hetauda" />
+                        <HomeLocation location="Itahari" />
+                        <HomeLocation location="Bhaktapur" />
+                        <HomeLocation location="Birgunj" />
+                        <HomeLocation location="Nepalgunj" />
+                        <HomeLocation location="Pokhara" />
+                        <HomeLocation location="Butwal" />
+                        <HomeLocation location="Dhangadhi" />
                     </div>
                 </div>
 
@@ -106,7 +106,15 @@ function Home() {
                                 <div className="home-gallery-title-div">
                                     <p className="home-gallery-title">A glimpse of the magic we’ve shared</p>
                                 </div>
+
                                 <p className="home-gallery-subtitle">Real people, real moments, real fun.</p>
+
+                                <div className="home-gallery-imgs-small-screen-div">
+                                    <img className="home_gallery_img" src="src\assets\home_gallery1.jpeg" />
+                                    <img className="home_gallery_img" src="src\assets\home_gallery2.jpeg" />
+                                    <img className="home_gallery_img" src="src\assets\home_gallery4.jpg" />
+                                </div>
+
                                 <button className="home-gallery-btn">
                                     <span className="gradient-text">See more in Gallery</span>
                                 </button>

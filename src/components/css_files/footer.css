@@ -78,3 +78,24 @@
 .footer-social-icon {
     height: 30px;
 }
+
+@media (max-width: 600px) {
+    .footer-logo {
+        height: 300px;
+    }
+
+    .footer-main-div {
+        padding-left: 30px;
+        height: 37vh;
+    }
+
+    .footer-second-section {
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+    }
+
+    .footer-first-section {
+        padding-bottom: 20px;
+    }
+}

@@ -137,7 +137,7 @@ input:focus {
 }
 
 .home-upcoming-events-div {
-    margin-left: 150px;
+    margin-left: 9.5vw;
     margin-right: 150px;
 }
 
@@ -148,7 +148,7 @@ input:focus {
 }
 
 .home-location-filter-div {
-    margin-left: 150px;
+    margin-left: 9.5vw;
     margin-top: 30px;
 }
 
@@ -165,8 +165,8 @@ input:focus {
 .home-locations-div {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    width: 800px;
-    margin-left: 250px;
+    width: 70vw;
+    margin-left: 9.5vw;
 }
 
 .home-about-gallery-div {
@@ -182,7 +182,7 @@ input:focus {
 .home-about-gallery-components {
     position: absolute;
     top: 30px;
-    left: 130px;
+    left: 9vw;
 }
 
 .home-about-div {
@@ -206,7 +206,7 @@ input:focus {
 .home-gallery-div {
     margin-top: 18vh;
     display: flex;
-    margin-left: 70px;
+    margin-left: 4.5vw;
 }
 
 .home-gallery-texts {
@@ -215,12 +215,12 @@ input:focus {
     display: flex;
     flex-direction: column;
     padding-left: 60px;
-    padding-right: 250px;
+    padding-right: 16.5vw;
     height: 370px;
 }
 
 .home-gallery-title-div {
-    width: 400px;
+    width: 26vw;
 }
 
 .home-gallery-title {
@@ -255,6 +255,10 @@ input:focus {
     color: transparent;
 }
 
+.home-gallery-imgs-small-screen-div {
+    display: none;
+}
+
 .home-gallery-imgs-div {
     display: flex;
     gap: 10px;
@@ -263,8 +267,8 @@ input:focus {
 }
 
 .home_gallery_img {
-    height: 227px;
-    width: 330px;
+    height: 14.5vw;
+    width: 21.5vw;
     border-radius: 14px;
     object-fit: cover;
     object-position: center;
@@ -298,4 +302,166 @@ input:focus {
 .home-testimonials-subtitle {
     font-size: 17px;
     font-weight: lighter;
+}
+
+@media (max-width: 1400px) {
+    .home-gallery-imgs-div {
+        flex-direction: row-reverse;
+        margin-top: -50px;
+        margin-left: -150px;
+    }
+
+    .home-gallery-imgs-inner-div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home-gallery-imgs-div img:first-child {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home-gallery-texts {
+        padding-right: 17vw;
+    }
+
+    .home-gallery-div {
+        margin-left: 0vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .home-about-gallery-bg {
+        height: 1100px;
+    }
+
+    .home-testimonials-div {
+        margin-left: 12.5vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .home-locations-div {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 945px) {
+    .slideshow-title {
+        font-size: 50px;
+    }
+
+    .home-gallery-div {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        gap: 40px;
+        margin-top: 11vh;
+    }
+
+    .home-gallery-texts {
+        width: 90%;
+        padding: 30px;
+        padding-right: 30px;
+        height: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .home-gallery-title-div {
+        width: 100%;
+    }
+
+    .home-gallery-btn {
+        width: 100%;
+        max-width: 350px;
+        margin: 30px auto 0;
+    }
+
+    .home-gallery-imgs-div {
+        display: none;
+    }
+
+    .home-gallery-imgs-small-screen-div {
+        display: flex;
+        gap: 10px;
+    }
+
+    .home-about-gallery-bg {
+        height: 1300px;
+    }
+
+    .home-testimonials-div {
+        flex-direction: column;
+        margin-top: 40px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-gallery-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 693px) {
+    .slideshow-subtitle-div {
+        width: 70vw;
+    }
+
+    .slideshow-search-bar {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-gallery-texts {
+        padding: 20px;
+    }
+
+    .home-gallery-title {
+        font-size: 26px;
+    }
+
+    .home-gallery-subtitle {
+        font-size: 16px;
+    }
+
+    .home-gallery-btn {
+        font-size: 16px;
+    }
+
+    .home-gallery-imgs-small-screen-div img:nth-child(1),
+    .home-gallery-imgs-small-screen-div img:nth-child(2) {
+        display: none;
+    }
+
+    .home-gallery-imgs-small-screen-div img:nth-child(3) {
+        display: block;
+    }
+
+    .home-gallery-imgs-small-screen-div {
+        justify-content: center;
+    }
+
+    .home_gallery_img {
+        height: 50vw;
+        width: 60vw;
+    }
+}
+
+@media (max-width: 550px) {
+    .home-gallery-div {
+        margin-left: -35px;
+    }
+
+    .home-gallery-texts {
+        padding: 10px;
+        padding-bottom: 50px;
+    }
+
+    .home-testimonials-div {
+        margin-left: 7vw;
+        padding-right: 30px;
+    }
 }

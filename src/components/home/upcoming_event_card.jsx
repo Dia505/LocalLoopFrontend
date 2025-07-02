@@ -49,64 +49,68 @@ function UpcomingEventCard() {
                     } onClick={() => navigate(`/event-details/${event._id}`)}>
                         <img className="upcoming-event-img" src={`http://localhost:3000/event-images/${event.eventPhoto}`} />
 
-                        <div className="upcoming-event-title-bookmark-div">
-                            <p className="upcoming-event-title">{event.title}</p>
-                            <BookmarkIcon eventId={event._id} />
-                        </div>
-
-                        <div className="upcoming-event-icon-detail-div">
-                            <img className="upcoming-event-icon" src="src\assets\grey_calendar.png" />
-                            <p className="upcoming-event-detail">{new Date(event.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                        </div>
-
-                        <div className="upcoming-event-icon-detail-div">
-                            <img className="upcoming-event-icon" src="src\assets\grey_clock.png" />
-                            <p className="upcoming-event-detail">{event?.endTime
-                                ? `${formatTo12Hour(event?.startTime)} - ${formatTo12Hour(event?.endTime)}`
-                                : `${formatTo12Hour(event?.startTime)} onwards`}</p>
-                        </div>
-
-                        <div className="upcoming-event-icon-detail-div">
-                            <img className="upcoming-event-icon" src="src\assets\grey_location.png" />
-                            <p className="upcoming-event-detail">{event.venue}, {event.city}</p>
-                        </div>
-
-                        <div className="upcoming-events-payment-div">
-                            <div className={event.isPaid ? "paid" : "free"}>
-                                {event.isPaid ? "Paid" : "Free"}
+                        <div className="upcoming-event-details-div">
+                            <div className="upcoming-event-title-bookmark-div">
+                                <p className="upcoming-event-title">{event.title}</p>
+                                <BookmarkIcon eventId={event._id} />
                             </div>
-                            {event.totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
+
+                            <div className="upcoming-event-icon-detail-div">
+                                <img className="upcoming-event-icon" src="src\assets\grey_calendar.png" />
+                                <p className="upcoming-event-detail">{new Date(event.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                            </div>
+
+                            <div className="upcoming-event-icon-detail-div">
+                                <img className="upcoming-event-icon" src="src\assets\grey_clock.png" />
+                                <p className="upcoming-event-detail">{event?.endTime
+                                    ? `${formatTo12Hour(event?.startTime)} - ${formatTo12Hour(event?.endTime)}`
+                                    : `${formatTo12Hour(event?.startTime)} onwards`}</p>
+                            </div>
+
+                            <div className="upcoming-event-icon-detail-div">
+                                <img className="upcoming-event-icon" src="src\assets\grey_location.png" />
+                                <p className="upcoming-event-detail">{event.venue}, {event.city}</p>
+                            </div>
+
+                            <div className="upcoming-events-payment-div">
+                                <div className={event.isPaid ? "paid" : "free"}>
+                                    {event.isPaid ? "Paid" : "Free"}
+                                </div>
+                                {event.totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
+                            </div>
                         </div>
 
                         {(event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
-                            <button
-                                className="upcoming-events-btn"
-                                onClick={(e) => {
-                                    e.stopPropagation(); //prevent card's click handler
-                                    if (!event.isPaid) {
-                                        if (authToken) {
-                                            navigate(`/event-details/${event._id}`, {
-                                                state: { openBookingForm: true },
-                                            });
-                                        } else {
-                                            navigate("/login");
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <button
+                                    className="upcoming-events-btn"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); //prevent card's click handler
+                                        if (!event.isPaid) {
+                                            if (authToken) {
+                                                navigate(`/event-details/${event._id}`, {
+                                                    state: { openBookingForm: true },
+                                                });
+                                            } else {
+                                                navigate("/login");
+                                            }
+                                        } else if (event.isPaid) {
+                                            if (authToken) {
+                                                navigate(`/event-details/${event._id}`, {
+                                                    state: { openBuyTicketForm: true },
+                                                });
+                                            } else {
+                                                navigate("/login");
+                                            }
                                         }
-                                    } else if (event.isPaid) {
-                                        if (authToken) {
-                                            navigate(`/event-details/${event._id}`, {
-                                                state: { openBuyTicketForm: true },
-                                            });
-                                        } else {
-                                            navigate("/login");
+                                        else {
+                                            navigate(`/event-details/${event._id}`);
                                         }
-                                    }
-                                    else {
-                                        navigate(`/event-details/${event._id}`);
-                                    }
-                                }}
-                            >
-                                {event.isPaid ? "Buy tickets" : "Book seats"}
-                            </button>
+                                    }}
+                                >
+                                    {event.isPaid ? "Buy tickets" : "Book seats"}
+                                </button>
+                            </div>
                         )}
                     </div>
                 ))}

@@ -4,8 +4,10 @@ import footer_facebok from "../assets/footer_facebook.png";
 import footer_instagram from "../assets/footer_instagram.png";
 import footer_x from "../assets/footer_x.png";
 import footer_tiktok from "../assets/footer_tiktok.png";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+    const navigate = useNavigate();
     return (
         <>
             <div className="footer-main-div">
@@ -15,17 +17,17 @@ function Footer() {
 
                         <div className="footer-nav-details-div">
                             <div className="footer-nav-detail1">
-                                <p className="footer-text1">Home</p>
-                                <p className="footer-text1">Contact us</p>
+                                <p onClick={() => navigate("/")} className="footer-text1">Home</p>
+                                <p onClick={() => navigate("/contact")} className="footer-text1">Contact us</p>
                             </div>
 
                             <div className="footer-nav-detail1">
-                                <p className="footer-text1">Explore</p>
+                                <p onClick={() => navigate("/search")} className="footer-text1">Explore</p>
                                 <p className="footer-text2">01-44869987</p>
                             </div>
 
                             <div className="footer-nav-detail1">
-                                <p className="footer-text1">Gallery</p>
+                                <p onClick={() => navigate("/gallery")} className="footer-text1">Gallery</p>
                                 <p className="footer-text2">localloop2025@gmail.com</p>
                             </div>
                         </div>

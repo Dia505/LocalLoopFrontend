@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /* 3 cards per row */
-    gap: 50px;
+    gap: 3vw;
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
@@ -28,19 +28,21 @@
 .upcoming-event-card-hover {
     display: flex;
     flex-direction: column;
+    justify-content: space-between; 
+    align-items: stretch; 
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 12px;
     border: 5px solid transparent;
     background:
         linear-gradient(white, white) padding-box,
         linear-gradient(180deg, #E487B0 6%, #D2B7F2 18%, #A874DD 40%, #7E49F0 64%, #6FA0D6 100%) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    border-radius: 12px;
     transition: height 0.3s ease;
     height: 500px;
     cursor: pointer;
 }
+
 
 .upcoming-event-card-hover:hover {
     height: 570px;
@@ -48,11 +50,16 @@
 
 .upcoming-event-img {
     width: 100%;
-    height: 208px;
+    height: 13.5vw;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
     display: block;
+}
+
+.upcoming-event-details-div {
+    display: flex;
+    flex-direction: column;
 }
 
 .upcoming-event-title-bookmark-div {
@@ -122,11 +129,49 @@
     width: 215px;
     padding: 12px 0;
     margin-top: 25px;
-    margin-left: 40px;
 }
 
 .upcoming-event-card-hover:hover .upcoming-events-btn {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+@media (max-width: 1200px) {
+    .upcoming-events-div {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 3vw;
+        column-gap: 35px;
+    }
+
+    .upcoming-event-img {
+        height: 18vw;
+    }
+
+    .upcoming-event-card,
+    .upcoming-event-card-hover {
+        width: 31vw;
+    }
+}
+
+@media (max-width: 1112px) {
+    .upcoming-events-div {
+        column-gap: 3vw;
+        max-width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .upcoming-events-div {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .upcoming-event-card,
+    .upcoming-event-card-hover {
+        width: 65vw;
+    }
+
+    .upcoming-event-img {
+        height: 200px;
+    }
 }
