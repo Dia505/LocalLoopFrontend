@@ -162,3 +162,35 @@
     font-weight: lighter;
     text-align: center;
 }
+
+@media (max-width: 1200px) {
+    .similar-events-div {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 3vw;
+        column-gap: 35px;
+    }
+
+    .similar-event-img {
+        height: 18vw;
+    }
+
+    .similar-event-card,
+    .similar-event-card-hover {
+        width: 31vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .similar-events-div {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .similar-event-card,
+    .similar-event-card-hover {
+        width: 65vw;
+    }
+
+    .similar-event-img {
+        height: 200px;
+    }
+}
