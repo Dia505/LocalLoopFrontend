@@ -10,6 +10,7 @@
     border-radius: 12px;
     gap: 25px;
     cursor: pointer;
+    width: 62vw;
 }
 
 .search-result-main-div-hover {
@@ -27,6 +28,7 @@
     height: 240px;
     transition: height 0.3s ease;
     cursor: pointer;
+    width: 61.5vw;
 }
 
 .search-result-main-div-hover:hover {
@@ -52,6 +54,10 @@
 .search-result-details-first-layer {
     display: flex;
     gap: 25px;
+}
+
+.search-result-details-first-layer2 {
+    display: none
 }
 
 .search-result-icon-detail-div {
@@ -124,21 +130,199 @@
 }
 
 .search-result-ticket-btn {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  font-family: "Playfair Display";
-  border-radius: 15px;
-  width: 215px;
-  padding: 12px 0;
-  margin-top: 25px;
-  margin-left: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    font-family: "Playfair Display";
+    border-radius: 15px;
+    width: 215px;
+    padding: 12px 0;
+    margin-top: 25px;
+    margin-left: 40px;
 }
 
 .search-result-main-div-hover:hover .search-result-ticket-btn {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-result-price-type-bookmark {
+    display: none;
+}
+
+@media (max-width: 1270px) {
+
+    .search-result-main-bookmark {
+        display: none;
+    }
+
+    .search-result-price-type-bookmark {
+        display: block;
+    }
+}
+
+@media (max-width: 1200px) {
+    .search-result-details-first-layer {
+        display: none;
+    }
+
+    .search-result-subtitle-div {
+        width: 35vw;
+        margin-top: 5px;
+    }
+
+    .search-result-details-first-layer2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-result-details-second-layer {
+        margin-top: 15px;
+    }
+
+    .search-result-img {
+        height: auto;
+    }
+
+    .search-result-main-div-hover {
+        height: auto;
+        transition: none;
+    }
+
+    .search-result-main-div-hover:hover {
+        height: auto;
+    }
+
+    .search-result-ticket-btn {
+        padding: 10px 0;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .search-result-main-bookmark {
+        display: block;
+    }
+
+    .search-result-price-type-bookmark {
+        display: none;
+    }
+
+    .search-result-details-first-layer {
+        display: flex;
+        gap: 25px;
+    }
+
+    .search-result-details-first-layer2 {
+        display: none;
+    }
+
+    .search-result-main-div,
+    .search-result-main-div-hover {
+        width: 90vw;
+    }
+
+    .search-result-img {
+        height: 240px;
+    }
+
+    .search-result-main-div-hover {
+        height: auto;
+        overflow: visible;
+        transition: padding 0.3s ease, box-shadow 0.3s ease;
+        padding-bottom: 20px;
+    }
+
+    .search-result-main-div-hover:hover {
+        padding-bottom: 40px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        /* subtle elevation effect */
+    }
+
+    .search-result-subtitle-div {
+        width: 50vw;
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 806px) {
+    .search-result-details-first-layer {
+        display: none;
+    }
+
+    .search-result-subtitle-div {
+        display: none;
+    }
+
+    .search-result-details-first-layer2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-result-details-second-layer {
+        margin-top: 15px;
+    }
+
+    .search-result-img {
+        height: auto;
+    }
+
+    .search-result-main-div-hover {
+        height: auto;
+        transition: none;
+    }
+
+    .search-result-main-div-hover:hover {
+        height: auto;
+    }
+
+    .search-result-ticket-btn {
+        padding: 10px 0;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 670px) {
+    .search-result-main-bookmark {
+        display: none;
+    }
+
+    .search-result-price-type-bookmark {
+        display: block;
+    }
+
+    .search-result-main-div,
+    .search-result-main-div-hover {
+        flex-direction: column;
+    }
+
+    .search-result-main-div-hover {
+        padding-right: 0;
+    }
+
+    .search-result-img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .search-result-details-div {
+        padding-left: 30px;
+        padding-bottom: 20px;
+    }
+
+    .search-result-ticket-btn {
+        margin-left: 25vw;
+        margin-top: 2vh;
+    }
+}
+
+@media (max-width: 500px) {
+    .search-result-ticket-btn {
+        margin-left: 20vw;
+    }
 }
 

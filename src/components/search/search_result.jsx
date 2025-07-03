@@ -1,9 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { jwtDecode } from "jwt-decode";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useAuth } from "../../context/auth_context";
 
 import calendarIcon from "../../assets/grey_calendar.png";
@@ -14,7 +9,7 @@ import "../css_files/search/search_result.css";
 
 function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats, eventId }) {
     const navigate = useNavigate();
-    const {authToken} = useAuth();
+    const { authToken } = useAuth();
 
     const formatTo12Hour = (timeStr) => {
         if (!timeStr) return "";
@@ -61,8 +56,29 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
 
                     <div className="search-result-details-second-layer">
                         <p className="search-result-title">{title}</p>
+
                         <div className="search-result-subtitle-div">
                             <p className="search-result-subtitle">{subtitle}</p>
+                        </div>
+
+                        {/* For responsive screen */}
+                        <div className="search-result-details-first-layer2">
+                            <div className="search-result-icon-detail-div">
+                                <img className="search-result-icon" src={locationIcon} />
+                                <p className="search-result-detail">{venue}, {city}</p>
+                            </div>
+
+                            <div className="search-result-icon-detail-div">
+                                <img className="search-result-icon" src={calendarIcon} />
+                                <p className="search-result-detail">{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                            </div>
+
+                            <div className="search-result-icon-detail-div">
+                                <img className="search-result-icon" src={clockIcon} />
+                                <p className="search-result-detail">{endTime
+                                    ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
+                                    : `${formatTo12Hour(startTime)} onwards`}</p>
+                            </div>
                         </div>
                     </div>
 
@@ -71,6 +87,9 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
                             {priceType ? "Paid" : "Free"}
                         </div>
                         {totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
+                        <div className="search-result-price-type-bookmark">
+                            <BookmarkIcon eventId={eventId} />
+                        </div>
                     </div>
 
                     {(priceType || (!priceType && totalSeats > 0)) && (
@@ -80,7 +99,9 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
                     )}
                 </div>
 
-                <BookmarkIcon eventId={eventId}/>
+                <div className="search-result-main-bookmark">
+                    <BookmarkIcon eventId={eventId} />
+                </div>
             </div>
         </>
     )
