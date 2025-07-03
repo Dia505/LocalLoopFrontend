@@ -46,7 +46,7 @@ input {
     font-size: 40px;
     font-weight: lighter;
     cursor: pointer;
-    margin-left: 37vw;
+    margin-left: 565px;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -293,4 +293,14 @@ input {
     width: 30px;
     margin-left: 14vw;
     margin-top: 5vh;
+}
+
+@media (max-width: 800px) {
+    .buy-tickets-form-close-btn {
+        margin-left: 69vw;
+    }
+
+    .buy-tickets-form-details-container {
+        flex-wrap: wrap;
+    }
 }

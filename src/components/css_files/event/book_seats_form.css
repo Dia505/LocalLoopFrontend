@@ -31,7 +31,7 @@ input {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 0;
+    top: -10px;
     padding-left: 20px;
 }
 
@@ -39,7 +39,7 @@ input {
     font-size: 40px;
     font-weight: lighter;
     cursor: pointer;
-    margin-left: 37vw;
+    margin-left: 565px;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -86,7 +86,7 @@ input {
 
 .booking-form-btn-div {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 20vh;
 }
 
@@ -158,4 +158,20 @@ input {
     height: 30px;
     width: 30px;
     margin-left: 8vw;
+}
+
+@media (max-width: 800px) {
+    .booking-form-close-btn {
+        margin-left: 69vw;
+    }
+
+    .booking-form-details-container {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 564px) {
+    .booking-form-close-btn {
+        margin-left: 75vw;
+    }
 }
