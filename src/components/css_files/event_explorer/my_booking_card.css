@@ -49,3 +49,10 @@
     color: #1EC20A;
     margin-top: 0px;
 }
+
+@media (max-width: 850px) {
+    .my-booking-card-location-date-time-div {
+        flex-direction: column;
+        gap: 0;
+    }
+}

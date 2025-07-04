@@ -38,3 +38,9 @@
     font-weight: lighter;
     font-size: 18px;
 }
+
+@media (max-width: 1160px) {
+    .explorer-side-bar-main-window {
+        display: none;
+    }
+}

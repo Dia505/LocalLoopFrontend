@@ -55,3 +55,10 @@ body {
 .my-bookings-footer-div {
     margin-top: 32vh;
 }
+
+@media (max-width: 1160px) {
+    .my-bookings-main-section {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}

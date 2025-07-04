@@ -55,3 +55,10 @@ body {
 .my-tickets-footer-div {
     margin-top: 32vh;
 }
+
+@media (max-width: 1160px) {
+    .my-tickets-main-section {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}
