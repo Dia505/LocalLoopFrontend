@@ -182,3 +182,30 @@ select {
     width: 14vw;
 }
 
+@media (max-width: 1160px) {
+    .explorer-edit-profile-form {
+        padding-left: 10vw;
+    }
+}
+
+@media (max-width: 750px) {
+    .explorer-edit-profile-img-inputs-div {
+        flex-direction: column;
+        gap: 2vw;
+        padding-left: 15vw;
+    }
+
+    .explorer-edit-profile-img-div {
+        align-items: center;
+    }
+
+    .explorer-edit-profile-cancel-btn, .explorer-edit-profile-update-btn {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .explorer-edit-profile-img-inputs-div {
+        padding-left: 5vw;
+    }
+}

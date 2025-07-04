@@ -54,21 +54,23 @@ function EventExplorerProfile() {
                         <div className="explorer-profile-div">
                             <div className="explorer-profile-title-btn-div">
                                 <p className="explorer-profile-title">Profile</p>
-                                <img className="explorer-profile-edit-btn" src={edit} onClick={() => setShowEditProfileForm(true)}/>
+                                <img className="explorer-profile-edit-btn" src={edit} onClick={() => setShowEditProfileForm(true)} />
                             </div>
 
                             <div className="explorer-profile-img-details-div">
                                 <img className="explorer-profile-img" src={user?.profilePicture} />
 
                                 <div className="explorer-profile-details-div">
-                                    <div className="explorer-profile-detail-div">
-                                        <p className="explorer-profile-detail-title">Name</p>
-                                        <p>{user?.fullName}</p>
-                                    </div>
+                                    <div className="explorer-profile-name-number-div">
+                                        <div className="explorer-profile-detail-div">
+                                            <p className="explorer-profile-detail-title">Name</p>
+                                            <p>{user?.fullName}</p>
+                                        </div>
 
-                                    <div className="explorer-profile-detail-div">
-                                        <p className="explorer-profile-detail-title">Mobile number</p>
-                                        <p>{user?.mobileNumber}</p>
+                                        <div className="explorer-profile-detail-div">
+                                            <p className="explorer-profile-detail-title">Mobile number</p>
+                                            <p>{user?.mobileNumber}</p>
+                                        </div>
                                     </div>
 
                                     <div className="explorer-profile-address-city-div">
