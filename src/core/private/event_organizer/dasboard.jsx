@@ -115,7 +115,9 @@ function Dashboard() {
     return (
         <>
             <div className="dashboard-main-window">
-                <OrganizerSideBar />
+                <div className="dashboard-side-bar">
+                    <OrganizerSideBar />
+                </div>
 
                 <div className="dashboard-main-div">
                     <p className="dashboard-title">Dashboard</p>

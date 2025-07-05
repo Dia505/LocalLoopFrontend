@@ -127,3 +127,24 @@ body {
     width: 90%;
 }
 
+@media (max-width: 980px) {
+    .dashboard-side-bar {
+        display: none;
+    }
+
+    .dashboard-main-div {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 740px) {
+    .dashboard-insights-div {
+        flex-wrap: wrap;
+        margin-top: 20px;
+        gap: 30px;
+    }
+
+    .dashboard-main-div {
+        padding-right: 30px;
+    }
+}
