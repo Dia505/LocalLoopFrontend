@@ -2,16 +2,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from "../../context/auth_context";
-import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 import calendar from "../../assets/calendar.png";
 import clock from "../../assets/clock.png";
 import esewa from "../../assets/esewa.png";
 import khalti from "../../assets/khalti.png";
-import location from "../../assets/location.png";
 import loading from "../../assets/loading.gif";
+import location from "../../assets/location.png";
 import "../css_files/event/buy_tickets_form.css";
 
 const ticketDetailsSchema = yup.object().shape({
@@ -30,6 +31,8 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
     });
 
     const { authToken } = useAuth();
+
+    const navigate = useNavigate();
 
     const [ticketAmount, setTicketAmount] = useState(1);
     const [ticketDetails, setTicketDetails] = useState([]);
@@ -82,6 +85,7 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
 
         if (!selectedPaymentMethod) {
             toast.error("Please select a payment method.");
+            setIsLoading(false);
             return;
         }
 
@@ -100,16 +104,14 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
                 }
             );
 
-            toast.success("Tickets purchased successfully! We've sent you a confirmation email.", {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                theme: "colored",
+            // Show payment processing screen
+            navigate("/payment-processing", {
+                state: {
+                    paymentMethod: selectedPaymentMethod,
+                    redirectTo: `/event-details/${eventId}`, // make sure eventId is accessible
+                    toastMessage: "Tickets purchased successfully! We've sent you a confirmation email.",
+                },
             });
-            closeForm();
         } catch (error) {
             console.error("Error purchasing ticket:", error);
             toast.error("Failed to purchase tickets");
@@ -145,8 +147,8 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
                             <div className="buy-tickets-form-icon-detail-div">
                                 <img className="buy-tickets-form-icon" src={clock} />
                                 <p className="buy-tickets-form-detail">{endTime
-                                ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
-                                : `${formatTo12Hour(startTime)} onwards`}</p>
+                                    ? `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`
+                                    : `${formatTo12Hour(startTime)} onwards`}</p>
                             </div>
                         </div>
                     </div>
@@ -247,7 +249,7 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
                                 </div>
 
                                 {isLoading
-                                    ? <img src={loading} className="buy-tickets-form-loading"/>
+                                    ? <img src={loading} className="buy-tickets-form-loading" />
                                     : <div className='payment-method-form-btns-div'>
                                         <button className='payment-method-form-btn' onClick={() => setBuyTicketFormState(1)}>Previous</button>
                                         <button type='submit' className='payment-method-form-btn' onClick={handleBuyTickets}>Buy tickets</button>

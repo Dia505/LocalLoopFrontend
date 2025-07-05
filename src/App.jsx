@@ -28,6 +28,7 @@ const MyEvents = lazy(() => import("./core/private/event_organizer/my_events"));
 const ViewEvent = lazy(() => import("./core/private/event_organizer/view_event"));
 const EventOrganizerProfile = lazy(() => import("./core/private/event_organizer/event_organizer_profile"));
 const Bookmarks = lazy(() => import("./core/private/event_explorer/bookmarks"));
+const PaymentProcessing = lazy(() => import("./components/event/payment_processing"));
 
 const queryClient = new QueryClient();
 
@@ -228,6 +229,13 @@ function App() {
       path: "/bookmarks",
       element: (
         <AuthRoute requiredRole="event explorer" element={<Suspense><Bookmarks /></Suspense>} />
+      )
+     },
+
+     {
+      path: "/payment-processing",
+      element: (
+        <AuthRoute requiredRole="event explorer" element={<Suspense><PaymentProcessing /></Suspense>} />
       )
      }
   ]

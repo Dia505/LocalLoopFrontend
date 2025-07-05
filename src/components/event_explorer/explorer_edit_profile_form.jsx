@@ -39,14 +39,16 @@ function ExplorerEditProfileForm({ closeForm }) {
     const [user, setUser] = useState(null);
     const [image, setImage] = useState("");
     const [updatedProfilePicture, setUpdatedProfilePicture] = useState(null);
-
-    const decoded = jwtDecode(authToken);
-    const userId = decoded._id;
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         const fetchUserDetails = async () => {
+            if (!authToken) return;
             try {
-                if (!authToken) return;
+                const decoded = jwtDecode(authToken);
+                const userId = decoded._id;
+
+                console.log("User id: ", userId);
 
                 const response = await axios.get(
                     `http://localhost:3000/api/event-explorer/${userId}`,
@@ -66,6 +68,7 @@ function ExplorerEditProfileForm({ closeForm }) {
                 setValue("email", data.email);
                 setValue("password", data.password);
                 setImage(data?.profilePicture);
+                setUserId(data._id);
             } catch (error) {
                 console.error("Error fetching user details:", error);
             }
@@ -84,6 +87,8 @@ function ExplorerEditProfileForm({ closeForm }) {
     };
 
     const onSubmit = async (data) => {
+        if (!authToken) return;
+
         const updatedData = {
             fullName: data.fullName,
             mobileNumber: data.mobileNumber,
@@ -95,7 +100,7 @@ function ExplorerEditProfileForm({ closeForm }) {
             updatedData.email = data.email;
         }
 
-        if (data.password) {
+        if (data.password && data.password !== user.password) {
             updatedData.password = data.password;
         }
 
@@ -150,7 +155,6 @@ function ExplorerEditProfileForm({ closeForm }) {
             toast.error("Failed to update profile");
         }
     };
-
 
     const handleCancel = () => {
         reset(user);

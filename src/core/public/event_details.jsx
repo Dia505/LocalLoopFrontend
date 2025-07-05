@@ -2,6 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuth } from "../../context/auth_context";
 
 import facebook from "../../assets/facebook2.png";
@@ -12,11 +13,11 @@ import ticketIcon from "../../assets/grey_ticket.png";
 import instagram from "../../assets/instagram.png";
 import noOrganizerEvents from "../../assets/no_organizer_events.png";
 import tiktok from "../../assets/tiktok.png";
+import BookmarkIcon from "../../components/bookmark_icon";
 import SimilarEvents from "../../components/event/similar_events";
 import Footer from "../../components/footer";
 import ExplorerNavBar from "../../components/navigation/explorer_nav_bar";
 import SearchResult from "../../components/search/search_result";
-import BookmarkIcon from "../../components/bookmark_icon";
 
 import BookSeatsForm from "../../components/event/book_seats_form";
 import BuyTicketsForm from "../../components/event/buy_tickets_form";
@@ -55,6 +56,20 @@ function EventDetails() {
             hour12: true,
         }).toLowerCase();
     };
+
+    useEffect(() => {
+        if (location.state?.toastMessage) {
+            toast.success(location.state.toastMessage, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                theme: "colored",
+            });
+        }
+    }, [location.state?.toastMessage]);
 
     useEffect(() => {
         const fetchEventDetails = async () => {
@@ -156,7 +171,7 @@ function EventDetails() {
                 <p className="event-loading-msg">Loading event details...</p>
             </div>
         );
-    }
+    };
 
     return (
         <div className="event-details-main-window">
@@ -198,7 +213,7 @@ function EventDetails() {
                                 </button>
                             )}
 
-                            <BookmarkIcon eventId={event._id}/>
+                            <BookmarkIcon eventId={event._id} />
                         </div>
                     </div>
 

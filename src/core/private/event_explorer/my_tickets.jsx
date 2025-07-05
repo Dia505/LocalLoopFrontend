@@ -79,7 +79,7 @@ function MyTickets() {
                             </p>
                         </div>
 
-                        <div>
+                        <div className="my-tickets-list">
                             {selectedFilter === "upcoming" ? (
                                 upcomingTickets.map((event) => (
                                     <MyTicketCard
