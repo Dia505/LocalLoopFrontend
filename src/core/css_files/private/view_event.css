@@ -181,6 +181,21 @@ body {
     z-index: 999;
 }
 
+.view-event-delete-form-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    border: 2px black solid;
+    border-radius: 20px;
+    padding-bottom: 50px;
+}
+
 .view-event-form-modal {
     position: fixed;
     top: 50%;
@@ -194,6 +209,8 @@ body {
     border: 2px black solid;
     border-radius: 20px;
     padding-bottom: 50px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .view-event-form-modal2 {
@@ -210,9 +227,9 @@ body {
 
     width: 90%;
     max-width: 700px;
-    max-height: 90vh;      
-    overflow-y: auto;       
-    box-sizing: border-box;   
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .view-event-delete-pop-up {
@@ -259,7 +276,7 @@ body {
     font-family: "Playfair Display";
     font-weight: bold;
     font-size: 15px;
-    width: 10vw;
+    width: 150px;
 }
 
 .delete-pop-up-delete-btn {
@@ -269,5 +286,98 @@ body {
     font-family: "Playfair Display";
     font-weight: bold;
     font-size: 15px;
-    width: 10vw;
+    width: 150px;
+}
+
+@media (max-width: 1200px) {
+    .video-container {
+        margin-left: 7vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .view-event-main-div {
+        margin-left: 230px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .view-event-side-bar {
+        display: none;
+    }
+
+    .view-event-main-div {
+        margin-left: 5vw;
+    }
+
+    .view-event-img {
+        width: 370px;
+    }
+}
+
+@media (max-width: 850px) {
+    .view-event-main-div {
+        margin-left: 0px;
+        padding-left: 20px;
+    }
+
+    .video-container {
+        margin-left: 10vw;
+        width: 90vw;
+    }
+}
+
+@media (max-width: 830px) {
+    .view-event-details-div {
+        flex-direction: column;
+        gap: 0px;
+        padding: 0 20px;
+    }
+
+    .view-event-details {
+        gap: 0px;
+    }
+
+    .view-event-detail-title {
+        font-size: 16px;
+    }
+
+    .view-event-subtitle-div {
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .view-event-delete-form-modal {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        margin-left: 5vw;
+    }
+}
+
+@media (max-width: 725px) {
+    .video-container {
+        margin-left: 0vw;
+    }
+
+    .view-event-img {
+        margin-left: 8vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .view-event-ticket-details-div {
+        flex-direction: column;
+    }
+
+    .view-event-delete-btn {
+        margin-left: 24vw;
+    }
+
+    .view-event-form-modal {
+        max-width: 380px;
+    }
 }

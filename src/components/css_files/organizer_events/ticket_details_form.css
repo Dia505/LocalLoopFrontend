@@ -62,12 +62,12 @@ input:-webkit-autofill {
 }
 
 .ticket-details-form-input {
-  width: 130px;
+    width: 130px;
 }
 
 .ticket-details-form-input-error {
-  border-color: red;
-  width: 130px;
+    border-color: red;
+    width: 130px;
 }
 
 .ticket-details-form-divider {
@@ -79,7 +79,7 @@ input:-webkit-autofill {
 
 .ticket-details-form-add-btn-div {
     margin-top: 25px;
-    margin-left: 17vw;
+    margin-left: 270px;
 }
 
 .ticket-details-form-add-btn {
@@ -142,4 +142,59 @@ input:-webkit-autofill {
     cursor: pointer;
     margin-left: 20px;
     margin-top: 4vh;
+}
+
+@media (max-width: 1055px) {
+    .ticket-details-edit-form-btns-div {
+        margin-left: 150px;
+    }
+
+    .ticket-details-form-cancel-btn,
+    .ticket-details-form-create-btn {
+        width: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ticket-details-form-input-div {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .ticket-details-form-input {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .ticket-details-form-input-label {
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+
+    .ticket-remove-btn {
+        align-self: flex-end;
+        margin-left: auto;
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ticket-details-form-add-btn-div {
+        margin-left: 190px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ticket-details-form-add-btn-div {
+        margin-left: 150px;
+    }
 }

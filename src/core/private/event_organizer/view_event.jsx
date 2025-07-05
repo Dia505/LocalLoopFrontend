@@ -99,7 +99,9 @@ function ViewEvent() {
     return (
         <>
             <div className="view-event-main-window">
-                <OrganizerSideBar />
+                <div className="view-event-side-bar">
+                    <OrganizerSideBar />
+                </div>
 
                 <div className="view-event-main-div">
                     <img
@@ -212,7 +214,7 @@ function ViewEvent() {
                     {showDeleteEventPopUp && (
                         <>
                             <div className="view-event-overlay" onClick={() => setShowDeleteEventPopUp(false)}></div>
-                            <div className="view-event-form-modal">
+                            <div className="view-event-delete-form-modal">
                                 <div className="view-event-delete-pop-up">
                                     <img src={deleteIcon} className="view-event-delete-icon"/>
                                     <p className="view-event-delete-title">Delete Event</p>
