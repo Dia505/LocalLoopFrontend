@@ -122,9 +122,9 @@ body {
 
     width: 90%;
     max-width: 700px;
-    max-height: 90vh;      
-    overflow-y: auto;       
-    box-sizing: border-box; 
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .my-events-form-modal2 {
@@ -138,4 +138,79 @@ body {
     border-radius: 20px;
     max-width: 900px;
     width: 90%;
+}
+
+@media (max-width: 1436px) {
+    .my-events-grid {
+        gap: 0px;
+    }
+}
+
+@media (max-width: 1390px) {
+    .my-events-grid {
+        width: 95%;
+    }
+
+    .my-events-title-create-div {
+        justify-content: start;
+        gap: 50vw;
+    }
+}
+
+@media (max-width: 1350px) {
+    .my-events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        width: 50%;
+    }
+}
+
+@media (max-width: 1276px) {
+    .my-events-title-create-div {
+        gap: 45vw;
+    }
+}
+
+@media (max-width: 1155px) {
+    .my-events-title-create-div {
+        gap: 40vw;
+    }
+}
+
+@media (max-width: 1140px) {
+    .my-events-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 1040px) {
+    .my-events-title-create-div {
+        gap: 30vw;
+    }
+}
+
+@media (max-width: 880px) {
+    .my-events-side-bar {
+        display: none;
+    }
+
+    .my-events-main-div {
+        margin-left: 20px;
+    }
+
+    .my-events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 790px) {
+    .my-events-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 530px) {
+    .my-events-title-create-div {
+        gap: 25vw;
+    }
 }

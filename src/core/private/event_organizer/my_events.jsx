@@ -62,7 +62,9 @@ function MyEvents() {
     return (
         <>
             <div className="my-events-main-window">
-                <OrganizerSideBar />
+                <div className="my-events-side-bar">
+                    <OrganizerSideBar />
+                </div>
 
                 <div className="my-events-main-div">
                     <div className="my-events-title-create-div">

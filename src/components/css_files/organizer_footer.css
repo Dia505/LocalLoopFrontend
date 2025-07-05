@@ -6,7 +6,7 @@
     padding-right: 100px;
     padding-bottom: 50px;
     border-radius: 20px;
-    width: 950px;
+    width: 62vw;
     margin-top: 10vh;
 }
 
@@ -66,4 +66,47 @@
 
 .org-footer-social-icon {
     height: 30px;
+}
+
+@media (max-width: 1300px) {
+    .org-footer-main-div {
+        width: 57vw;
+    }
+}
+
+@media (max-width: 1300px) {
+    .org-footer-main-div {
+        width: 55vw;
+    }
+}
+
+@media (max-width: 1270px) {
+    .org-footer-main-div {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 950px) {
+    .org-footer-main-div {
+        width: 45vw;
+    }
+}
+
+@media (max-width: 880px) {
+    .org-footer-main-div {
+        width: 65vw;
+    }
+}
+
+@media (max-width: 670px) {
+    .org-footer-main-div {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .org-footer-main-div {
+        padding-left: 30px;
+        padding-right: 90px;
+    }
 }

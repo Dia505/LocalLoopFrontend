@@ -13,6 +13,7 @@
     height: 500px;
     cursor: pointer;
     width: 250px;
+    align-items: center;
 }
 
 .org-upcoming-event-main-div:hover {
@@ -110,4 +111,48 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+@media (max-width: 1350px) {
+    .org-upcoming-event-img {
+        height: 15vw;
+    }
+
+    .org-upcoming-event-main-div,
+    .org-upcoming-event-main-div-hover {
+        width: 27vw;
+    }
+}
+
+@media (max-width: 1140px) {
+    .org-upcoming-event-img {
+        height: 20vw;
+    }
+
+    .org-upcoming-event-main-div,
+    .org-upcoming-event-main-div-hover {
+        width: 45vw;
+    }
+}
+
+@media (max-width: 880px) {
+    .org-upcoming-event-img {
+        height: 20vw;
+    }
+
+    .org-upcoming-event-main-div,
+    .org-upcoming-event-main-div-hover {
+        width: 32vw;
+    }
+}
+
+@media (max-width: 790px) {
+    .org-upcoming-event-img {
+        height: 30vw;
+    }
+
+    .org-upcoming-event-main-div,
+    .org-upcoming-event-main-div-hover {
+        width: 60vw;
+    }
 }
