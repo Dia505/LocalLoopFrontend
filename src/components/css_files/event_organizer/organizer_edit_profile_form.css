@@ -38,17 +38,17 @@ input:-webkit-autofill {
 }
 
 select {
-  border: 1px solid;
-  border-radius: 10px;
-  border-color: black;
-  background-color: transparent;
-  width: 21vw;
-  height: 35.5px;
-  color: black;
-  outline: none;
-  padding-left: 15px;
-  padding-top: 4px;
-  padding-bottom: 2px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: transparent;
+    width: 21vw;
+    height: 35.5px;
+    color: black;
+    outline: none;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 2px;
 }
 
 select option {
@@ -145,61 +145,62 @@ select option {
 }
 
 .organizer-edit-form-address-city-div {
-  display: flex;
-  gap: 1.5vw;
+    display: flex;
+    gap: 1.5vw;
 }
 
 .address-input {
-  width: 130px;
+    width: 130px;
 }
 
 .address-input-error {
-  border-color: red;
-  width: 130px;
+    border-color: red;
+    width: 130px;
 }
 
 .city-drop-down {
-  width: 150px;
+    width: 150px;
 }
 
 .city-drop-down-error {
-  border-color: red;
-  width: 150px;
+    border-color: red;
+    width: 150px;
 }
 
-.city-drop-down option, .city-drop-down-error option {
-  background-color: black;
-  color: white;
+.city-drop-down option,
+.city-drop-down-error option {
+    background-color: black;
+    color: white;
 }
 
 .chip-input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .chip-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 300px;
 }
 
 .chip {
-  background-color: black;
-  padding-left: 15px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
+    background-color: black;
+    padding-left: 15px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
 }
 
 .chip-close {
-  margin-left: 0px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
+    margin-left: 0px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .organizer-edit-form-btns-div {
@@ -228,4 +229,33 @@ select option {
     font-weight: bold;
     font-size: 15px;
     width: 14vw;
+}
+
+@media (max-width: 855px) {
+    .organizer-edit-form-details-div {
+        flex-direction: column;
+        width: 80vw;
+    }
+
+    .organizer-edit-form-divider {
+        height: 1px;
+        width: auto;
+    }
+
+    .organizer-edit-form-cancel-btn,
+    .organizer-edit-form-update-btn {
+        width: 150px;
+    }
+}
+
+@media (max-width: 630px) {
+    .organizer-edit-form-btns-div {
+        margin-left: 25vw;
+    }
+}
+
+@media (max-width: 550px) {
+    .organizer-edit-form {
+        padding-left: 0vw;
+    }
 }

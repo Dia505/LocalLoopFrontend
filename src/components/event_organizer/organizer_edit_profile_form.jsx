@@ -20,7 +20,6 @@ const organizerEditProfileSchema = yup.object().shape({
         .matches(/[a-z]/, "Password must contain at least one lowercase letter")
         .matches(/[0-9]/, "Password must contain at least one number")
         .matches(/[@$!%*?&#]/, "Password must contain at least one special character"),
-    companyEmail: yup.string(),
     businessType: yup.string(),
     panNumber: yup.string().matches(/^\d{9}$/, "PAN number must be exactly 9 digits"),
     address: yup.string(),

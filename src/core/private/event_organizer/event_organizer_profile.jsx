@@ -43,7 +43,9 @@ function EventOrganizerProfile() {
     return (
         <>
             <div className="organizer-profile-main-window">
-                <OrganizerSideBar />
+                <div className="organizer-profile-side-bar">
+                    <OrganizerSideBar />
+                </div>
 
                 <div className="organizer-profile-main-div">
                     {showEditForm ? (
@@ -54,7 +56,10 @@ function EventOrganizerProfile() {
 
                             <div className="organizer-profile-details-div">
                                 <div className="organizer-profile-details-section">
-                                    <p className="organizer-profile-title">Personal details</p>
+                                    <div className="personal-details-edit-div">
+                                        <p className="organizer-profile-title">Personal details</p>
+                                        <img className="organizer-profile-edit-btn2" src={editIcon} onClick={() => setShowEditForm(true)} />
+                                    </div>
 
                                     <div className="organizer-profile-detail">
                                         <p className="organizer-profile-detail-title">Full name</p>
