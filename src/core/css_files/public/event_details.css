@@ -55,6 +55,14 @@ body {
     outline: none;
 }
 
+.event-details-sold-out-div {
+    background-color: red;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
 .event-details-subtitle-div {
     width: 50vw;
 }

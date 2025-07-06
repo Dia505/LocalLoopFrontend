@@ -38,6 +38,10 @@ function EventDetails() {
     const [showBookingForm, setShowBookingForm] = useState(false);
     const [showBuyTicketsForm, setShowBuyTicketsForm] = useState(false);
 
+    const [isSoldOut, setIsSoldOut] = useState(false);
+
+    const [soldOutEvents, setSoldOutEvents] = useState([]);
+
     const handleVideoPlay = () => {
         videoRef.current.play();
         setIsPlaying(true);
@@ -76,12 +80,22 @@ function EventDetails() {
             try {
                 const response = await axios.get(`http://localhost:3000/api/event/${_id}`);
                 setEvent(response.data);
+
+                if (!response.data.isPaid) {
+                    setIsSoldOut(false);
+                    return;
+                }
+
+                const soldOutResponse = await axios.get(`http://localhost:3000/api/ticket/soldOut/${_id}`);
+                setIsSoldOut(soldOutResponse.data?.soldOut ?? false);
             } catch (error) {
                 console.error("Error fetching event:", error);
             }
         };
         fetchEventDetails();
     }, [_id]);
+
+    console.log("Sold out? ", isSoldOut);
 
     useEffect(() => {
         if (event && event.isPaid) {
@@ -110,6 +124,24 @@ function EventDetails() {
                     const randomTwo = shuffled.slice(0, 2);
 
                     setOrganizerEvents(randomTwo);
+
+                    const soldOutEvents = [];
+
+                    for (const event of randomTwo) {
+                        if (!event.isPaid) continue;
+
+                        const soldOutResponse = await axios.get(
+                            `http://localhost:3000/api/ticket/soldOut/${event._id}`
+                        );
+
+                        const isSoldOut = soldOutResponse?.data?.soldOut;
+
+                        if (isSoldOut) {
+                            soldOutEvents.push(event);
+                        }
+                    }
+
+                    setSoldOutEvents(soldOutEvents);
                 } catch (error) {
                     console.error("Error fetching organizer's events:", error);
                 }
@@ -189,7 +221,11 @@ function EventDetails() {
                         <p className="event-details-title">{event.title}</p>
 
                         <div className="event-details-buttons-div">
-                            {(event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
+                            {isSoldOut ? (
+                                <div className="event-details-sold-out-div">
+                                    SOLD OUT
+                                </div>
+                            ) : (event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
                                 <button
                                     className="event-details-ticket-btn"
                                     onClick={() => {
@@ -315,24 +351,29 @@ function EventDetails() {
                         </div>
                     ) : (
                         <div className="event-details-organizer-event-container">
-                            {organizerEvents.map((event) => (
-                                <div onClick={() => navigate(`/event-details/${event._id}`)}>
-                                    <SearchResult
-                                        key={event._id}
-                                        image={`http://localhost:3000/event-images/${event.eventPhoto}`}
-                                        venue={event.venue}
-                                        city={event.city}
-                                        date={event.date}
-                                        startTime={event.startTime}
-                                        endTime={event.endTime}
-                                        title={event.title}
-                                        subtitle={event.subtitle}
-                                        priceType={event.isPaid}
-                                        totalSeats={event.totalSeats}
-                                        eventId={event._id}
-                                    />
-                                </div>
-                            ))}
+                            {organizerEvents.map((event) => {
+                                const isSoldOut = soldOutEvents.some(e => e._id === event._id);
+
+                                return (
+                                    <div onClick={() => navigate(`/event-details/${event._id}`)} key={event._id}>
+                                        <SearchResult
+                                            image={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                                            venue={event.venue}
+                                            city={event.city}
+                                            date={event.date}
+                                            startTime={event.startTime}
+                                            endTime={event.endTime}
+                                            title={event.title}
+                                            subtitle={event.subtitle}
+                                            priceType={event.isPaid}
+                                            totalSeats={event.totalSeats}
+                                            eventId={event._id}
+                                            isSoldOut={isSoldOut} 
+                                        />
+                                    </div>
+                                );
+                            })}
+
                         </div>
                     )}
                 </div>

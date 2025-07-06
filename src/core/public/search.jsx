@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/auth_context";
 
 import art from "../../assets/art.png";
@@ -39,7 +39,7 @@ function Search() {
     const categoryFromQuery = searchParams.get("category");
     const locationFromQuery = searchParams.get("location");
 
-    const navigate = useNavigate();
+    const [soldOutEvents, setSoldOutEvents] = useState([]);
 
     const handleCheckboxChange = (value) => {
         setPriceType((prev) => (prev === value ? "" : value));
@@ -52,8 +52,28 @@ function Search() {
                 setEventType("");
                 setPriceType("");
 
-                const response = await axios.get("http://localhost:3000/api/event/home-events");
-                setEvents(response.data);
+                const eventResponse = await axios.get("http://localhost:3000/api/event/home-events");
+                const events = eventResponse.data;
+
+                setEvents(events);
+
+                const soldOutEvents = [];
+
+                for (const event of events) {
+                    if (!event.isPaid) continue;
+
+                    const soldOutResponse = await axios.get(
+                        `http://localhost:3000/api/ticket/soldOut/${event._id}`
+                    );
+
+                    const isSoldOut = soldOutResponse?.data?.soldOut;
+
+                    if (isSoldOut) {
+                        soldOutEvents.push(event);
+                    }
+                }
+
+                setSoldOutEvents(soldOutEvents);
             } catch (error) {
                 console.error("Error fetching events:", error);
             }
@@ -270,22 +290,26 @@ function Search() {
                                 <p className="no-results-message">Looks like there’s nothing here right now. Try something else!</p>
                             </div>
                         ) : (
-                            events.map((event) => (
-                                <SearchResult
-                                    key={event._id}
-                                    image={`http://localhost:3000/event-images/${event.eventPhoto}`}
-                                    venue={event.venue}
-                                    city={event.city}
-                                    date={event.date}
-                                    startTime={event.startTime}
-                                    endTime={event.endTime}
-                                    title={event.title}
-                                    subtitle={event.subtitle}
-                                    priceType={event.isPaid}
-                                    totalSeats={event.totalSeats}
-                                    eventId={event._id}
-                                />
-                            ))
+                            events.map((event) => {
+                                const isSoldOut = soldOutEvents.some(se => se._id === event._id);
+
+                                return (
+                                    <SearchResult
+                                        key={event._id}
+                                        image={`http://localhost:3000/event-images/${event.eventPhoto}`}
+                                        venue={event.venue}
+                                        city={event.city}
+                                        date={event.date}
+                                        startTime={event.startTime}
+                                        endTime={event.endTime}
+                                        title={event.title}
+                                        subtitle={event.subtitle}
+                                        priceType={event.isPaid}
+                                        totalSeats={event.totalSeats}
+                                        eventId={event._id}
+                                        isSoldOut={isSoldOut}
+                                    />);
+                            })
                         )}
                     </div>
 

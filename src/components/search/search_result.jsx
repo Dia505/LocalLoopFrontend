@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/auth_context";
 
 import calendarIcon from "../../assets/grey_calendar.png";
 import clockIcon from "../../assets/grey_clock.png";
@@ -7,9 +6,8 @@ import locationIcon from "../../assets/grey_location.png";
 import BookmarkIcon from "../bookmark_icon";
 import "../css_files/search/search_result.css";
 
-function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats, eventId }) {
+function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats, eventId, isSoldOut }) {
     const navigate = useNavigate();
-    const { authToken } = useAuth();
 
     const formatTo12Hour = (timeStr) => {
         if (!timeStr) return "";
@@ -28,7 +26,7 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
     return (
         <>
             <div className={
-                (priceType || (!priceType && totalSeats > 0))
+                (priceType || (!priceType && totalSeats > 0)) && !isSoldOut
                     ? "search-result-main-div-hover"
                     : "search-result-main-div"
             } onClick={() => navigate(`/event-details/${eventId}`)}>
@@ -83,8 +81,16 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
                     </div>
 
                     <div className="search-result-payment-div">
-                        <div className={priceType ? "paid" : "free"}>
-                            {priceType ? "Paid" : "Free"}
+                        <div
+                            className={
+                                isSoldOut
+                                    ? "soldOut"
+                                    : priceType
+                                        ? "paid"
+                                        : "free"
+                            }
+                        >
+                            {isSoldOut ? "SOLD OUT" : priceType ? "Paid" : "Free"}
                         </div>
                         {totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
                         <div className="search-result-price-type-bookmark">

@@ -94,7 +94,8 @@
 }
 
 .paid,
-.free {
+.free,
+.soldOut {
     width: 87px;
     height: 25px;
     display: flex;
@@ -112,6 +113,11 @@
 
 .free {
     background-color: #5CC750;
+}
+
+.soldOut {
+    background-color: red;
+    width: 100px;
 }
 
 .limited-seats-text {

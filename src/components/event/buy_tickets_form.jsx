@@ -2,10 +2,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from "../../context/auth_context";
-import { useNavigate } from 'react-router-dom';
 
 import calendar from "../../assets/calendar.png";
 import clock from "../../assets/clock.png";
@@ -35,14 +35,26 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
     const navigate = useNavigate();
 
     const [ticketAmount, setTicketAmount] = useState(1);
+    const [maxAvailable, setMaxAvailable] = useState(null);
     const [ticketDetails, setTicketDetails] = useState([]);
     const [ticketPrice, setTicketPrice] = useState(0);
     const [buyTicketFormState, setBuyTicketFormState] = useState(1);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [soldOutTickets, setSoldOutTickets] = useState([]);
 
-    const increment = () => setTicketAmount((prev) => prev + 1);
-    const decrement = () => setTicketAmount((prev) => (prev > 1 ? prev - 1 : 1));
+    const increment = () => {
+        setTicketAmount((prev) => {
+            if (maxAvailable && prev < maxAvailable) {
+                return prev + 1;
+            }
+            return prev;
+        });
+    };
+
+    const decrement = () => {
+        setTicketAmount((prev) => (prev > 1 ? prev - 1 : 1));
+    };
 
     const formatTo12Hour = (timeStr) => {
         if (!timeStr) return "";
@@ -120,6 +132,30 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
         }
     };
 
+    useEffect(() => {
+        const fetchSoldOutTickets = async () => {
+            try {
+                const { data } = await axios.get(
+                    `http://localhost:3000/api/ticket/ticket-availability/${eventId}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${authToken}`
+                        }
+                    }
+                );
+
+                const soldOut = data.availability.filter(ticket => ticket.soldOut);
+                setSoldOutTickets(soldOut);
+            } catch (error) {
+                console.error("Error fetching sold out tickets:", error);
+            }
+        };
+
+        if (eventId && authToken) {
+            fetchSoldOutTickets();
+        }
+    }, [eventId, authToken]);
+
     return (
         <>
             <div className="buy-tickets-form-main-div">
@@ -168,16 +204,21 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
                                         const selectedTicket = ticketDetails.find(ticket => ticket._id === selectedTicketId);
                                         if (selectedTicket) {
                                             setTicketPrice(selectedTicket.ticketPrice);
+                                            setMaxAvailable(selectedTicket.ticketQuantity - selectedTicket.sold);
+                                            setTicketAmount(1);
                                         }
                                     }}
                                 >
                                     <option value="" disabled>Select a ticket</option>
 
-                                    {ticketDetails?.map((ticket) => (
-                                        <option key={ticket._id} value={ticket._id}>
-                                            {ticket.ticketType} | Rs. {ticket.ticketPrice}
-                                        </option>
-                                    ))}
+                                    {ticketDetails?.map((ticket) => {
+                                        const isSoldOut = soldOutTickets.some(t => t.ticketId === ticket._id);
+                                        return (
+                                            <option key={ticket._id} value={ticket._id} disabled={isSoldOut}>
+                                                {`${ticket.ticketType} | Rs. ${ticket.ticketPrice}${isSoldOut ? " (Sold Out)" : ""}`}
+                                            </option>
+                                        );
+                                    })}
                                 </select>
 
                                 {errors.ticketType && <p className="error-message">{errors.ticketType.message}</p>}
@@ -195,7 +236,13 @@ function BuyTicketsForm({ eventId, eventPhoto, title, venue, city, date, startTi
 
                                     <p onClick={decrement} className="minus-ticket-amount-btn">-</p>
                                     <p className="ticket-amount-btn-divider">|</p>
-                                    <p onClick={increment} className="plus-ticket-amount-btn">+</p>
+                                    <p
+                                        onClick={ticketAmount < maxAvailable ? increment : null}
+                                        className={`plus-ticket-amount-btn ${ticketAmount >= maxAvailable ? "disabled" : ""}`}
+                                    >
+                                        +
+                                    </p>
+
                                 </div>
                             </div>
 

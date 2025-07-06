@@ -295,6 +295,11 @@ input {
     margin-top: 5vh;
 }
 
+.plus-ticket-amount-btn.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
 @media (max-width: 800px) {
     .buy-tickets-form-close-btn {
         margin-left: 69vw;
