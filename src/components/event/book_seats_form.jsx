@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/auth_context";
@@ -11,11 +11,17 @@ import "../css_files/event/book_seats_form.css";
 
 function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTime, endTime, fullName, mobileNumber, email, closeForm }) {
     const [seats, setSeats] = useState(1);
+    const [maxAvailable, setMaxAvailable] = useState(null);
     const { authToken } = useAuth();
     const { handleSubmit } = useForm();
     const [isLoading, setIsLoading] = useState(false);
 
-    const increment = () => setSeats((prev) => prev + 1);
+    const increment = () => setSeats((prev) => {
+        if (maxAvailable && prev < maxAvailable) {
+            return prev + 1;
+        }
+        return prev;
+    });
     const decrement = () => setSeats((prev) => (prev > 1 ? prev - 1 : 1));
 
     const formatTo12Hour = (timeStr) => {
@@ -31,6 +37,21 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
             hour12: true,
         }).toLowerCase();
     };
+
+    useEffect(() => {
+        const fetchAvailableSeats = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/api/booking/available-seats/${eventId}`);
+                const data = await response.json();
+                setMaxAvailable(data.availableSeats);
+            } catch (error) {
+                console.error("Error fetching available seats:", error);
+            }
+        };
+
+        fetchAvailableSeats();
+    }, [eventId]);
+
 
     const onSubmit = async (data) => {
         setIsLoading(true);
@@ -149,7 +170,12 @@ function BookSeatsForm({ eventId, eventPhoto, title, venue, city, date, startTim
 
                                     <p onClick={decrement} className="minus-seat-btn">-</p>
                                     <p className="seat-btn-divider">|</p>
-                                    <p onClick={increment} className="plus-seat-btn">+</p>
+                                    <p 
+                                        onClick={seats < maxAvailable ? increment : null} 
+                                        className={`plus-seat-btn ${seats >= maxAvailable ? "disabled" : ""}`}
+                                    >
+                                        +
+                                    </p>
                                 </div>
                             </div>
 

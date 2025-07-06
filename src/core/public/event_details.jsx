@@ -39,8 +39,10 @@ function EventDetails() {
     const [showBuyTicketsForm, setShowBuyTicketsForm] = useState(false);
 
     const [isSoldOut, setIsSoldOut] = useState(false);
-
     const [soldOutEvents, setSoldOutEvents] = useState([]);
+
+    const [isFullyBooked, setIsFullyBooked] = useState(false);
+    const [fullyBookedEvents, setFullyBookedEvents] = useState([]);
 
     const handleVideoPlay = () => {
         videoRef.current.play();
@@ -79,23 +81,37 @@ function EventDetails() {
         const fetchEventDetails = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/api/event/${_id}`);
-                setEvent(response.data);
+                const eventData = response.data;
+                setEvent(eventData);
 
-                if (!response.data.isPaid) {
+                if (!eventData.isPaid && eventData.totalSeats > 0) {
+                    const fullyBookedResponse = await axios.get(
+                        `http://localhost:3000/api/booking/full-booking/${_id}`
+                    );
+                    setIsFullyBooked(fullyBookedResponse.data?.fullyBooked ?? false);
                     setIsSoldOut(false);
                     return;
                 }
 
-                const soldOutResponse = await axios.get(`http://localhost:3000/api/ticket/soldOut/${_id}`);
-                setIsSoldOut(soldOutResponse.data?.soldOut ?? false);
+                if (eventData.isPaid) {
+                    const soldOutResponse = await axios.get(
+                        `http://localhost:3000/api/ticket/soldOut/${_id}`
+                    );
+                    setIsSoldOut(soldOutResponse.data?.soldOut ?? false);
+                    setIsFullyBooked(false);
+                    return;
+                }
+
+                setIsSoldOut(false);
+                setIsFullyBooked(false);
+
             } catch (error) {
                 console.error("Error fetching event:", error);
             }
         };
+
         fetchEventDetails();
     }, [_id]);
-
-    console.log("Sold out? ", isSoldOut);
 
     useEffect(() => {
         if (event && event.isPaid) {
@@ -142,6 +158,22 @@ function EventDetails() {
                     }
 
                     setSoldOutEvents(soldOutEvents);
+
+                    for (const event of randomTwo) {
+                        if (event.totalSeats === 0) continue;
+
+                        const fullBookingResponse = await axios.get(
+                            `http://localhost:3000/api/booking/full-booking/${event._id}`
+                        );
+
+                        const isFullyBooked = fullBookingResponse?.data?.fullyBooked;
+
+                        if (isFullyBooked) {
+                            fullyBookedEvents.push(event);
+                        }
+                    }
+
+                    setFullyBookedEvents(fullyBookedEvents);
                 } catch (error) {
                     console.error("Error fetching organizer's events:", error);
                 }
@@ -205,6 +237,8 @@ function EventDetails() {
         );
     };
 
+    console.log("Is event fully booked?", isFullyBooked);
+
     return (
         <div className="event-details-main-window">
             <ExplorerNavBar />
@@ -225,6 +259,10 @@ function EventDetails() {
                                 <div className="event-details-sold-out-div">
                                     SOLD OUT
                                 </div>
+                            ) : isFullyBooked ? (
+                                <div className="event-details-sold-out-div">
+                                    Fully booked
+                                </div>
                             ) : (event.isPaid || (!event.isPaid && event.totalSeats > 0)) && (
                                 <button
                                     className="event-details-ticket-btn"
@@ -235,8 +273,7 @@ function EventDetails() {
                                             } else {
                                                 navigate("/login");
                                             }
-                                        }
-                                        if (event.isPaid) {
+                                        } else {
                                             if (authToken) {
                                                 setShowBuyTicketsForm(true);
                                             } else {
@@ -248,6 +285,7 @@ function EventDetails() {
                                     {event.isPaid ? "Buy tickets" : "Book seats"}
                                 </button>
                             )}
+
 
                             <BookmarkIcon eventId={event._id} />
                         </div>
@@ -353,6 +391,7 @@ function EventDetails() {
                         <div className="event-details-organizer-event-container">
                             {organizerEvents.map((event) => {
                                 const isSoldOut = soldOutEvents.some(e => e._id === event._id);
+                                const isFullyBooked = fullyBookedEvents.some(fb => fb._id === event._id);
 
                                 return (
                                     <div onClick={() => navigate(`/event-details/${event._id}`)} key={event._id}>
@@ -368,7 +407,8 @@ function EventDetails() {
                                             priceType={event.isPaid}
                                             totalSeats={event.totalSeats}
                                             eventId={event._id}
-                                            isSoldOut={isSoldOut} 
+                                            isSoldOut={isSoldOut}
+                                            isFullyBooked={isFullyBooked}
                                         />
                                     </div>
                                 );

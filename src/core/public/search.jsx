@@ -41,6 +41,8 @@ function Search() {
 
     const [soldOutEvents, setSoldOutEvents] = useState([]);
 
+    const [fullyBookedEvents, setFullyBookedEvents] = useState([]);
+
     const handleCheckboxChange = (value) => {
         setPriceType((prev) => (prev === value ? "" : value));
     };
@@ -55,25 +57,35 @@ function Search() {
                 const eventResponse = await axios.get("http://localhost:3000/api/event/home-events");
                 const events = eventResponse.data;
 
-                setEvents(events);
-
                 const soldOutEvents = [];
+                const fullyBookedEvents = [];
 
-                for (const event of events) {
-                    if (!event.isPaid) continue;
-
-                    const soldOutResponse = await axios.get(
-                        `http://localhost:3000/api/ticket/soldOut/${event._id}`
-                    );
-
-                    const isSoldOut = soldOutResponse?.data?.soldOut;
-
-                    if (isSoldOut) {
-                        soldOutEvents.push(event);
+                // Wait for all per-event status checks in parallel
+                await Promise.all(events.map(async (event) => {
+                    if (event.isPaid) {
+                        const soldOutResponse = await axios.get(
+                            `http://localhost:3000/api/ticket/soldOut/${event._id}`
+                        );
+                        if (soldOutResponse.data?.soldOut) {
+                            soldOutEvents.push(event);
+                        }
                     }
-                }
 
+                    if (event.totalSeats > 0) {
+                        const fullBookingResponse = await axios.get(
+                            `http://localhost:3000/api/booking/full-booking/${event._id}`
+                        );
+                        if (fullBookingResponse.data?.fullyBooked) {
+                            fullyBookedEvents.push(event);
+                        }
+                    }
+                }));
+
+                // Set state only after all async operations are done
+                setEvents(events);
                 setSoldOutEvents(soldOutEvents);
+                setFullyBookedEvents(fullyBookedEvents);
+
             } catch (error) {
                 console.error("Error fetching events:", error);
             }
@@ -292,6 +304,7 @@ function Search() {
                         ) : (
                             events.map((event) => {
                                 const isSoldOut = soldOutEvents.some(se => se._id === event._id);
+                                const isFullyBooked = fullyBookedEvents.some(fb => fb._id === event._id);
 
                                 return (
                                     <SearchResult
@@ -308,6 +321,7 @@ function Search() {
                                         totalSeats={event.totalSeats}
                                         eventId={event._id}
                                         isSoldOut={isSoldOut}
+                                        isFullyBooked={isFullyBooked}
                                     />);
                             })
                         )}

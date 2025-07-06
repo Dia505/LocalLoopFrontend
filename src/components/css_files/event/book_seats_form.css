@@ -160,6 +160,11 @@ input {
     margin-left: 8vw;
 }
 
+.plus-seat-btn.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
 @media (max-width: 800px) {
     .booking-form-close-btn {
         margin-left: 69vw;

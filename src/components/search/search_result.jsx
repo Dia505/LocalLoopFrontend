@@ -6,7 +6,7 @@ import locationIcon from "../../assets/grey_location.png";
 import BookmarkIcon from "../bookmark_icon";
 import "../css_files/search/search_result.css";
 
-function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats, eventId, isSoldOut }) {
+function SearchResult({ image, venue, city, date, startTime, endTime, title, subtitle, priceType, totalSeats, eventId, isSoldOut, isFullyBooked }) {
     const navigate = useNavigate();
 
     const formatTo12Hour = (timeStr) => {
@@ -26,7 +26,7 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
     return (
         <>
             <div className={
-                (priceType || (!priceType && totalSeats > 0)) && !isSoldOut
+                (priceType || (!priceType && totalSeats > 0)) && !isSoldOut && !isFullyBooked
                     ? "search-result-main-div-hover"
                     : "search-result-main-div"
             } onClick={() => navigate(`/event-details/${eventId}`)}>
@@ -81,16 +81,22 @@ function SearchResult({ image, venue, city, date, startTime, endTime, title, sub
                     </div>
 
                     <div className="search-result-payment-div">
-                        <div
-                            className={
-                                isSoldOut
+                        <div className={
+                            isSoldOut
+                                ? "soldOut"
+                                : isFullyBooked
                                     ? "soldOut"
                                     : priceType
                                         ? "paid"
                                         : "free"
-                            }
-                        >
-                            {isSoldOut ? "SOLD OUT" : priceType ? "Paid" : "Free"}
+                        }>
+                            {isSoldOut
+                                ? "SOLD OUT"
+                                : isFullyBooked
+                                    ? "Fully booked"
+                                    : priceType
+                                        ? "Paid"
+                                        : "Free"}
                         </div>
                         {totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
                         <div className="search-result-price-type-bookmark">

@@ -11,6 +11,7 @@ function UpcomingEventCard() {
     const { authToken } = useAuth();
     const navigate = useNavigate();
     const [soldOutEvents, setSoldOutEvents] = useState([]);
+    const [fullyBookedEvents, setFullyBookedEvents] = useState([]);
 
     const formatTo12Hour = (timeStr) => {
         if (!timeStr) return "";
@@ -36,6 +37,8 @@ function UpcomingEventCard() {
 
                 const soldOutEvents = [];
 
+                const fullyBookedEvents = [];
+
                 for (const event of events) {
                     if (!event.isPaid) continue;
 
@@ -52,15 +55,29 @@ function UpcomingEventCard() {
 
                 setSoldOutEvents(soldOutEvents);
 
+                for (const event of events) {
+                    if (event.totalSeats === 0) continue;
+
+                    const fullBookingResponse = await axios.get(
+                        `http://localhost:3000/api/booking/full-booking/${event._id}`
+                    );
+
+                    const isFullyBooked = fullBookingResponse?.data?.fullyBooked;
+
+                    if (isFullyBooked) {
+                        fullyBookedEvents.push(event);
+                    }
+                }
+
+                setFullyBookedEvents(fullyBookedEvents);
+
             } catch (error) {
-                console.error("Error fetching sold out events:", error);
+                console.error("Error fetching events:", error);
             }
         };
 
         fetchUpcomingEvents();
     }, [authToken]);
-
-    console.log(soldOutEvents);
 
     return (
         <>
@@ -68,10 +85,14 @@ function UpcomingEventCard() {
                 {upcomingEvents.map((event) => {
                     const isSoldOut =
                         soldOutEvents.some(se => se._id === event._id);
+
+                    const isFullyBooked =
+                        fullyBookedEvents.some(fb => fb._id === event._id);
                     return (
                         <div key={event._id} className={
                             (event.isPaid || (!event.isPaid && event.totalSeats > 0)) &&
-                                !soldOutEvents.some(soldOut => soldOut._id === event._id)
+                                !soldOutEvents.some(soldOut => soldOut._id === event._id) &&
+                                !fullyBookedEvents.some(fullyBooked => fullyBooked._id === event._id)
                                 ? "upcoming-event-card-hover"
                                 : "upcoming-event-card"
                         } onClick={() => navigate(`/event-details/${event._id}`)}>
@@ -101,16 +122,22 @@ function UpcomingEventCard() {
                                 </div>
 
                                 <div className="upcoming-events-payment-div">
-                                    <div
-                                        className={
-                                            isSoldOut
+                                    <div className={
+                                        isSoldOut
+                                            ? "soldOut"
+                                            : isFullyBooked
                                                 ? "soldOut"
                                                 : event.isPaid
                                                     ? "paid"
                                                     : "free"
-                                        }
-                                    >
-                                        {isSoldOut ? "SOLD OUT" : event.isPaid ? "Paid" : "Free"}
+                                    }>
+                                        {isSoldOut
+                                            ? "SOLD OUT"
+                                            : isFullyBooked
+                                                ? "Fully Booked"
+                                                : event.isPaid
+                                                    ? "Paid"
+                                                    : "Free"}
                                     </div>
                                     {event.totalSeats > 0 && <p className="limited-seats-text">*limited seats</p>}
                                 </div>
