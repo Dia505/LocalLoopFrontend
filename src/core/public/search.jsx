@@ -47,64 +47,64 @@ function Search() {
         setPriceType((prev) => (prev === value ? "" : value));
     };
 
+    console.log(categoryFromQuery);
+    console.log(locationFromQuery);
+
     useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                setCity("");
-                setEventType("");
-                setPriceType("");
+        if (!categoryFromQuery && !locationFromQuery) {
+            const fetchEvents = async () => {
+                try {
+                    setCity("");
+                    setEventType("");
+                    setPriceType("");
 
-                const eventResponse = await axios.get("http://localhost:3000/api/event/home-events");
-                const events = eventResponse.data;
+                    const eventResponse = await axios.get("http://localhost:3000/api/event/home-events");
+                    const events = eventResponse.data;
 
-                const soldOutEvents = [];
-                const fullyBookedEvents = [];
+                    const soldOutEvents = [];
+                    const fullyBookedEvents = [];
 
-                // Wait for all per-event status checks in parallel
-                await Promise.all(events.map(async (event) => {
-                    if (event.isPaid) {
-                        const soldOutResponse = await axios.get(
-                            `http://localhost:3000/api/ticket/soldOut/${event._id}`
-                        );
-                        if (soldOutResponse.data?.soldOut) {
-                            soldOutEvents.push(event);
+                    // Wait for all per-event status checks in parallel
+                    await Promise.all(events.map(async (event) => {
+                        if (event.isPaid) {
+                            const soldOutResponse = await axios.get(
+                                `http://localhost:3000/api/ticket/soldOut/${event._id}`
+                            );
+                            if (soldOutResponse.data?.soldOut) {
+                                soldOutEvents.push(event);
+                            }
                         }
-                    }
 
-                    if (event.totalSeats > 0) {
-                        const fullBookingResponse = await axios.get(
-                            `http://localhost:3000/api/booking/full-booking/${event._id}`
-                        );
-                        if (fullBookingResponse.data?.fullyBooked) {
-                            fullyBookedEvents.push(event);
+                        if (event.totalSeats > 0) {
+                            const fullBookingResponse = await axios.get(
+                                `http://localhost:3000/api/booking/full-booking/${event._id}`
+                            );
+                            if (fullBookingResponse.data?.fullyBooked) {
+                                fullyBookedEvents.push(event);
+                            }
                         }
-                    }
-                }));
+                    }));
 
-                // Set state only after all async operations are done
-                setEvents(events);
-                setSoldOutEvents(soldOutEvents);
-                setFullyBookedEvents(fullyBookedEvents);
+                    // Set state only after all async operations are done
+                    setEvents(events);
+                    setSoldOutEvents(soldOutEvents);
+                    setFullyBookedEvents(fullyBookedEvents);
 
-            } catch (error) {
-                console.error("Error fetching events:", error);
-            }
-        };
+                } catch (error) {
+                    console.error("Error fetching events:", error);
+                }
+            };
 
-        fetchEvents();
-    }, [authToken]);
+            fetchEvents();
+        }
+    }, [authToken, categoryFromQuery, locationFromQuery]);
 
     useEffect(() => {
-        if (categoryFromQuery) {
-            setEventType(categoryFromQuery);
+        if (categoryFromQuery || locationFromQuery) {
+            setEventType(categoryFromQuery ?? "");
+            setCity(locationFromQuery ?? "");
         }
-    }, [categoryFromQuery]);
-
-    useEffect(() => {
-        if (locationFromQuery) {
-            setCity(locationFromQuery);
-        }
-    }, [locationFromQuery]);
+    }, [categoryFromQuery, locationFromQuery]);
 
     useEffect(() => {
         const fetchFilteredEvents = async () => {
@@ -122,7 +122,7 @@ function Search() {
             }
         };
 
-        if (categoryFromQuery || locationFromQuery || city || eventType || priceType) {
+        if (city || eventType || priceType) {
             fetchFilteredEvents();
         }
     }, [city, eventType, priceType]);
