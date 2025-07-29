@@ -304,6 +304,20 @@ input:focus {
     font-weight: lighter;
 }
 
+.home-faq-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-right: 150px;
+    padding-bottom: 70px;
+}
+
+.home-faq-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
 @media (max-width: 1400px) {
     .home-gallery-imgs-div {
         flex-direction: row-reverse;
@@ -337,6 +351,12 @@ input:focus {
 
     .home-testimonials-div {
         margin-left: 12.5vw;
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .home-faq-div {
+        margin-left: 50px;
     }
 }
 
@@ -398,6 +418,13 @@ input:focus {
     }
 }
 
+@media (max-width: 900px) {
+    .home-faq-list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .home-gallery-title {
         font-size: 28px;
@@ -452,7 +479,7 @@ input:focus {
 
 @media (max-width: 550px) {
     .home-gallery-div {
-        margin-left: -35px;
+        margin-left: -15px;
     }
 
     .home-gallery-texts {
@@ -461,7 +488,6 @@ input:focus {
     }
 
     .home-testimonials-div {
-        margin-left: 7vw;
-        padding-right: 30px;
+        margin-left: 10vw;
     }
 }
